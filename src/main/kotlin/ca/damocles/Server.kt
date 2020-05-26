@@ -36,7 +36,7 @@ object Server{
 
 }
 
-/*object ClientGate{
+object ClientGate{
     var open = true
     fun start(){
         GlobalScope.launch {
@@ -52,4 +52,4 @@ object Server{
             }
         }
     }
-}*/
+}

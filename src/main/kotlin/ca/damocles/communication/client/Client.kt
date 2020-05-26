@@ -4,11 +4,8 @@ import ca.damocles.communication.Packet
 import java.io.*
 import javax.net.ssl.SSLSocket
 
-class Client{
-
-}
-
 class EstablishedConnection(val connectionSocket: SSLSocket){
+    val account: Account
     val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
     val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
 
