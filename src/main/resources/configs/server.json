@@ -1,0 +1,4 @@
+{
+  "maxClientConnections": 3500,
+  "defaultPort": 8989
+}
