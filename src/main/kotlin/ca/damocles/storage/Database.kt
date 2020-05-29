@@ -1,12 +1,9 @@
 package ca.damocles.storage
 
-import com.mongodb.client.FindIterable
-import com.mongodb.client.MongoClient
-import com.mongodb.client.MongoClients
-import com.mongodb.client.MongoDatabase
+import com.mongodb.client.*
+import com.mongodb.client.model.Filters.eq
 import org.bson.Document
 import org.bson.conversions.Bson
-import org.mindrot.jbcrypt.BCrypt
 import java.util.*
 
 interface Storable{
@@ -30,9 +27,33 @@ object Database{
     }
 }
 
+object AccountDatabase{
+
+    private val accountCollection: MongoCollection<Document> = Database.database.getCollection("account")
+
+    private fun getAccountByField(field: String, value: String): Account {
+        val foundAccount: Document? = accountCollection.find(eq(field, value)).first()
+        return if (foundAccount != null){
+            fromJson(foundAccount.toJson())
+        }else{
+            Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", "")
+        }
+    }
+
+    fun getAccountByUsername(username: String): Account = getAccountByField("username", username)
+
+    fun getAccountByEmail(email: String): Account = getAccountByField("email", email)
+
+    fun getAccountByUUID(uuid: UUID): Account = getAccountByField("uuid", uuid.toString())
+
+}
+
 fun main(){
-    val newAccount: Account = Account(UUID.randomUUID(), "nnryanp@gmail.com", "Nick", BCrypt.hashpw("12345qwesd", BCrypt.gensalt()))
-    println(newAccount)
+    //val newAccount: Account = Account(UUID.randomUUID(), "nnryanp@gmail.com", "Nick", BCrypt.hashpw("12345qwesd", BCrypt.gensalt()))
+    //println(newAccount)
     //Database.add(newAccount, "account")
-    //println(Database.find(eq("username", "Nick"), "account").first())
+    //println(Database.find(eq("username", "Nick"), "account").first()?.get("username"))
+    //Database.find(eq("username", "Nick"), "account").first()?.toJson()
+    //println(AccountDatabase.accountCollection.find(eq("username", "Nick")).first()?.email)
+    //println(AccountDatabase.getAccountByUsername("Dalton").email)
 }
