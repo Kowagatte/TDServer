@@ -1,7 +1,9 @@
 package ca.damocles
 
+import ca.damocles.communication.client.EstablishedConnection
 import ca.damocles.storage.Database
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.*
 import java.net.URLDecoder
@@ -13,6 +15,8 @@ import javax.xml.bind.JAXBElement
 object Server{
 
     lateinit var serverSocket: SSLServerSocket
+    val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
+    const val maxClientConnections: Int = 3500
     var isRunning: Boolean = true
 
     val serverPath: String
@@ -34,6 +38,8 @@ object Server{
         }
     }
 
+    fun isFull(): Boolean = listOfEstablishedConnections.size >= maxClientConnections
+
 }
 
 object ClientGate{
@@ -44,8 +50,12 @@ object ClientGate{
                 val clientSocket: SSLSocket
                 try{
                     clientSocket = Server.serverSocket.accept() as SSLSocket
-                    val connection: EstablishedConnection = EstablishedConnection(clientSocket)
-                    if(Server.)
+                    val connection = EstablishedConnection(clientSocket)
+                    if(Server.isFull()){
+                        connection.disconnect()
+                    }else{
+                        Server.listOfEstablishedConnections.add(connection)
+                    }
                 }catch(e: IOException){
                     break
                 }
