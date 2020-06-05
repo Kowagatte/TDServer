@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class EstablishedConnection(private val connectionSocket: SSLSocket){
 
-    val account: Account = AccountDatabase.getAccountByUUID(UUID.fromString("00000000-0000-0000-0000-000000000000"))
+    var account: Account = AccountDatabase.getEmptyAccount()
     private val coroutine: CoroutineContext
     private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
     private val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
@@ -21,7 +21,13 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
         coroutine = GlobalScope.launch {
             while(true){
                 try{
-                    var line: String = getMessageFromClient()
+                    val line: String = getMessageFromClient()
+                    val incomingPacket: Packet = Packet.fromJson(line)
+                    when(incomingPacket.type){
+                        0.toByte() -> {
+                            incomingPacket.handle(this@EstablishedConnection)
+                        }
+                    }
                     TODO("Process( Line -> Packet ) : Then -> Handle the packet.")
                 }catch(e: IOException){
                     disconnect()
