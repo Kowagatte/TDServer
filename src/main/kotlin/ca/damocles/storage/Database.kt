@@ -40,12 +40,9 @@ object AccountDatabase{
      * Returns a list of results with an empty account attached at the end.
      * This way empty lists (aka..no results found) will return a list with only an empty account instead of null.
      */
-    private fun findWithBackup(field: String, value: Any): List<Document>{
+    fun findWithBackup(field: String, value: Any): List<Document>{
         val results: MutableList<Document> = accountCollection.find(eq(field, value)).toMutableList()
-        val emptyDoc = accountCollection.find(eq("username", "Not Found")).first()
-        if(emptyDoc != null){
-            results.add(emptyDoc)
-        }
+        results.add(getEmptyAccount().toDatabaseObject())
         return results
     }
 
@@ -55,6 +52,10 @@ object AccountDatabase{
      */
     private fun getAccountByField(field: String, value: Any): Account {
         return Account.fromJson(findWithBackup(field, value).first().toJson())
+    }
+
+    fun getEmptyAccount(): Account{
+        return Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", "")
     }
 
     fun getAccountByUsername(username: String): Account = getAccountByField("username", username)
