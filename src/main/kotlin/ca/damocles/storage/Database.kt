@@ -34,7 +34,7 @@ object AccountDatabase{
     private fun getAccountByField(field: String, value: String): Account {
         val foundAccount: Document? = accountCollection.find(eq(field, value)).first()
         return if (foundAccount != null){
-            fromJson(foundAccount.toJson())
+            Account.fromJson(foundAccount.toJson())
         }else{
             Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", "")
         }

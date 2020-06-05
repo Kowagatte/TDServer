@@ -11,7 +11,7 @@ import kotlin.coroutines.CoroutineContext
 class EstablishedConnection(private val connectionSocket: SSLSocket){
 
     val account: Account? = null
-    val coroutine: CoroutineContext
+    private val coroutine: CoroutineContext
     private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
     private val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
 

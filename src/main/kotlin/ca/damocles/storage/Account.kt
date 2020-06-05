@@ -8,11 +8,12 @@ data class AuthAccount(val username: String, val password: String){
 }
 
 data class Account(val uuid: UUID, var email: String, var username: String, var password: String): Storable{
+    companion object{
+        fun fromJson(accountJson: String): Account {
+            return Gson().fromJson(accountJson, Account::class.java)
+        }
+    }
     override fun toString(): String = Gson().toJson(this)
-}
-
-fun fromJson(accountJson: String): Account {
-    return Gson().fromJson(accountJson, Account::class.java)
 }
 
 /**
