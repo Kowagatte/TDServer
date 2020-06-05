@@ -16,7 +16,7 @@ object Server{
 
     lateinit var serverSocket: SSLServerSocket
     val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
-    const val maxClientConnections: Int = 3500
+    private const val maxClientConnections: Int = 3500
     var isRunning: Boolean = true
 
     val serverPath: String

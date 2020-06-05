@@ -13,6 +13,10 @@ interface Storable{
 }
 
 object Database{
+    /**
+     * MongoClient
+     * ***Contains the login credentials for the read/write MongoDB account, do not leak.***
+     */
     private val mongoClient: MongoClient = MongoClients.create("mongodb+srv://accountdb_connection:ZLFAfSFyvfF9VbZ2@damocles-fcf0g.mongodb.net/test?retryWrites=true&w=majority")
     val database: MongoDatabase = mongoClient.getDatabase("damocles")
 
@@ -31,13 +35,26 @@ object AccountDatabase{
 
     private val accountCollection: MongoCollection<Document> = Database.database.getCollection("account")
 
-    private fun getAccountByField(field: String, value: String): Account {
-        val foundAccount: Document? = accountCollection.find(eq(field, value)).first()
-        return if (foundAccount != null){
-            fromJson(foundAccount.toJson())
-        }else{
-            Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", "")
+    /**
+     * Used inside AccountDatabase instead of MongoCollection<Document>#find(Bson)
+     * Returns a list of results with an empty account attached at the end.
+     * This way empty lists (aka..no results found) will return a list with only an empty account instead of null.
+     */
+    private fun findWithBackup(field: String, value: Any): List<Document>{
+        val results: MutableList<Document> = accountCollection.find(eq(field, value)).toMutableList()
+        val emptyDoc = accountCollection.find(eq("username", "Not Found")).first()
+        if(emptyDoc != null){
+            results.add(emptyDoc)
         }
+        return results
+    }
+
+    /**
+     * Gets an Account that matches the corresponding field, partial matches are not returned.
+     * If no match is found it returns an empty account of UUID: 00000000-0000-0000-0000-000000000000
+     */
+    private fun getAccountByField(field: String, value: Any): Account {
+        return Account.fromJson(findWithBackup(field, value).first().toJson())
     }
 
     fun getAccountByUsername(username: String): Account = getAccountByField("username", username)
@@ -51,7 +68,7 @@ object AccountDatabase{
 fun main(){
     //val newAccount: Account = Account(UUID.randomUUID(), "nnryanp@gmail.com", "Nick", BCrypt.hashpw("12345qwesd", BCrypt.gensalt()))
     //println(newAccount)
-    //Database.add(newAccount, "account")
+    //Database.add(Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", ""), "account")
     //println(Database.find(eq("username", "Nick"), "account").first()?.get("username"))
     //Database.find(eq("username", "Nick"), "account").first()?.toJson()
     //println(AccountDatabase.accountCollection.find(eq("username", "Nick")).first()?.email)
