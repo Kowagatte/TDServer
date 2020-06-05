@@ -7,13 +7,6 @@ import java.util.*
 import org.mindrot.jbcrypt.BCrypt
 
 /**
- * Skeleton Account Objects used for authentication.
- */
-data class AuthAccount(val username: String, val password: String){
-    override fun toString(): String = Gson().toJson(this)
-}
-
-/**
  * Data Class for storing Account Objects.
  */
 data class Account(val uuid: UUID, var email: String, var username: String, var password: String): Storable{
@@ -29,33 +22,14 @@ data class Account(val uuid: UUID, var email: String, var username: String, var 
  * Take an AuthAccount as a parameter
  * Check if an account exists with the username of the auth account
  * if it does, compare passwords (BCrypt.checkpw)
- * return a pair, (boolean, Account) (true if it passes and the corrosponding account), ( false if it doesnt pass and null for the account)
- *
- * Testing purposes:
- * username: Nick
- * password: 12345qwesd
+ * return a pair, (boolean, Account) (true if it passes and the corresponding account), ( false if it doesnt pass and null for the account)
  */
-
-/*fun authenticateLogin(): Pair<Boolean,Account> {
-    TODO("Fix This.")
-    val loggingAccount = AuthAccount(username, password)
-
-    if(loggingAccount.username == AccountDatabase.getAccountByUsername(username).username)
-        if(BCrypt.checkpw(loggingAccount.password, AccountDatabase.getAccountByUsername(loggingAccount.username).password))
-            return Pair<True,>
-}
-*/
-
-
-
-fun authenticateLogin(account: AuthAccount): Pair<Boolean, Account> {
-
-    var databaseAccount = AccountDatabase.getAccountByUsername(account.username)
-    //if there's an account with this username is the database.
-    if (account.username == databaseAccount.username) {
+fun authenticateLogin(email: String, password: String): Pair<Boolean, Account> {
+    val databaseAccount = AccountDatabase.getAccountByEmail(email)
+    //if there's an account with this email in the database.
+    if (email == databaseAccount.email)
         //and if the password provided matches the one stored.
-        if (BCrypt.checkpw(account.password, databaseAccount.password))
+        if (BCrypt.checkpw(password, databaseAccount.password))
             return Pair(true, databaseAccount)
-    }
-    return Pair(false,  Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", ""))
+    return Pair(false,  AccountDatabase.getEmptyAccount())
 }

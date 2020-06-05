@@ -6,7 +6,7 @@ fun generateAlphaString(length: Int): String{
     val builder = StringBuilder()
     val random = Random()
     val characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789".toCharArray()
-    for(i: Int in 0..length){
+    for(i: Int in 1..length){
         builder.append(characters[random.nextInt(characters.size)])
     }
     return builder.toString()
