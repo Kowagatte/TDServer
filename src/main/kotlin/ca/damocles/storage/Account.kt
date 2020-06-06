@@ -19,7 +19,22 @@ data class Account(val uuid: UUID, var email: String, var username: String, var 
 }
 
 /**
- * Take an AuthAccount as a parameter
+ * Take a String, email as a parameter
+ * Take a String, username as a parameter
+ * Take a String, password as a parameter
+ * Check if the username is taken,
+ * check if the email has already been used,
+ * Create an account data object representing the data if both conditions are met (password must be encrypted)
+ * encrypting password -> [BCrypt.hashpw(password, BCrypt.gensalt())]
+ * Store to account database
+ */
+fun createAccount(): Boolean{
+    TODO("Not Yet Implemented")
+}
+
+/**
+ * Take a String, email as a parameter
+ * Take a String, password as a parameter
  * Check if an account exists with the username of the auth account
  * if it does, compare passwords (BCrypt.checkpw)
  * return a pair, (boolean, Account) (true if it passes and the corresponding account), ( false if it doesnt pass and null for the account)
