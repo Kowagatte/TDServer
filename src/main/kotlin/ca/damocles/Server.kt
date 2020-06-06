@@ -11,6 +11,7 @@ import javax.net.ssl.SSLServerSocket
 import javax.net.ssl.SSLServerSocketFactory
 import javax.net.ssl.SSLSocket
 import javax.xml.bind.JAXBElement
+import kotlin.concurrent.thread
 
 object Server{
 
@@ -31,10 +32,15 @@ object Server{
 
     fun start(){
         try{
-            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(8989) as SSLServerSocket
+            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(8888) as SSLServerSocket
+            println("Started")
         }catch(e: IOException){
             println("Server failed to start, perhaps there is already a server open on this port?")
             e.printStackTrace()
+        }
+        thread {
+            ClientGate.start()
+            while(true){ }
         }
     }
 
