@@ -1,7 +1,7 @@
 package ca.damocles
 
 fun main(args: Array<String>) {
-    System.setProperty("javax.net.ssl.keyStore", "keystore.pfx")
-    System.setProperty("javax.net.ssl.keyStorePassword", "-~uE8@-A3Zr6Dy~%")
+    System.setProperty("javax.net.ssl.keyStore", "serverkeystore.pfx")
+    System.setProperty("javax.net.ssl.keyStorePassword", "oPkiCv43")
     Server.start()
 }
