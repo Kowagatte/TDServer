@@ -4,6 +4,7 @@ import com.mongodb.client.*
 import com.mongodb.client.model.Filters.eq
 import org.bson.Document
 import org.bson.conversions.Bson
+import org.mindrot.jbcrypt.BCrypt
 import java.util.*
 
 interface Storable{
@@ -64,6 +65,8 @@ object AccountDatabase{
 
     fun getAccountByUUID(uuid: UUID): Account = getAccountByField("uuid", uuid.toString())
 
+    fun addAccount(account: Account) = accountCollection.insertOne(account.toDatabaseObject())
+
 }
 
 fun main(){
@@ -74,4 +77,5 @@ fun main(){
     //Database.find(eq("username", "Nick"), "account").first()?.toJson()
     //println(AccountDatabase.accountCollection.find(eq("username", "Nick")).first()?.email)
     //println(AccountDatabase.getAccountByUsername("Dalton").email)
+    //AccountDatabase.addAccount(Account(UUID.randomUUID(), "craftartonline@gmail.com", "kowagatte", BCrypt.hashpw("password", BCrypt.gensalt())))
 }
