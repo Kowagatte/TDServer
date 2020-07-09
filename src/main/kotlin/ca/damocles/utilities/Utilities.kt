@@ -2,7 +2,7 @@ package ca.damocles.utilities
 
 import java.util.*
 
-fun generateAlphaString(length: Int): String{
+fun generateAlphaString(length: Int = 4): String{
     val builder = StringBuilder()
     val random = Random()
     val characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789".toCharArray()

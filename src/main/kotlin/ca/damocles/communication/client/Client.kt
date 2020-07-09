@@ -2,10 +2,12 @@ package ca.damocles.communication.client
 
 import ca.damocles.Server
 import ca.damocles.communication.Packet
+import ca.damocles.communication.PingPacket
 import ca.damocles.communication.ResponsePacket
 import ca.damocles.storage.Account
 import ca.damocles.storage.AccountDatabase
 import ca.damocles.storage.authenticateLogin
+import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
 import java.util.*
@@ -16,8 +18,10 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
 
     var account: Account = AccountDatabase.getEmptyAccount()
     private val coroutine: CoroutineContext
+    private val heartbeat: CoroutineContext
     private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
     private val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
+    private var beating = true
 
     init{
         coroutine = GlobalScope.launch {
@@ -32,9 +36,9 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
                                 val response = authenticateLogin(incomingPacket.body["email"].toString(), incomingPacket.body["password"].toString())
                                 if(response.first){
                                     account = response.second
-                                    send(ResponsePacket(incomingPacket.identity, "Login Successful!"))
+                                    send(ResponsePacket(incomingPacket.identity, "Login Successful!", 200))
                                 }else{
-                                    send(ResponsePacket(incomingPacket.identity, "Login Not Successful!"))
+                                    send(ResponsePacket(incomingPacket.identity, "Login Not Successful!", 401))
                                 }
                             }
                             1.toByte() -> {
@@ -42,6 +46,9 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
                             }
                             2.toByte() ->{
                                 TODO("CLIENT WANTS TO CREATE ACCOUNT")
+                            }
+                            3.toByte() ->{
+                                beating = true
                             }
                         }
                         //TODO("Process( Line -> Packet ) : Then -> Handle the packet.")
@@ -51,6 +58,17 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
                 }
             }
         }
+        heartbeat = GlobalScope.launch {
+            while(true){
+                beating = false
+                send(PingPacket(generateAlphaString()))
+                delay(30000L)
+                if(!beating){
+                    disconnect()
+                }
+            }
+        }
+
     }
 
     private suspend fun getMessageFromClient(): String =
@@ -61,6 +79,7 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
     fun disconnect(){
         Server.listOfEstablishedConnections.remove(this)
         coroutine.cancel()
+        heartbeat.cancel()
         //TODO("Send disconnect packet.")
     }
 
