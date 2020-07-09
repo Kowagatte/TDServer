@@ -15,7 +15,7 @@ A free to play online game programmed in ~~java~~ kotlin.
 * ~~Allow clients to connect to the server.~~
 * ~~Store Accounts in a Database~~
 * ~~Connections can log in to accounts.~~
-* Accounts can be created
+* ~~Accounts can be created~~
 * ~~Responses can be sent to the client from the server.~~
 * Games can be stored and managed
 * Maps can be loaded

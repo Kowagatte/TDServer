@@ -4,7 +4,7 @@ import com.google.gson.Gson
 
 /**
  * PACKETS:
- * SIDE: 1=To be received by SERVER, 2=To be received by CLIENT
+ * SIDE: 1=To be received by SERVER, 0=To be received by CLIENT
  * TYPE: Packets ID
  */
 open class Packet(val identity: String, val side: Byte, val type: Byte, val body: HashMap<String, Any> = HashMap()){

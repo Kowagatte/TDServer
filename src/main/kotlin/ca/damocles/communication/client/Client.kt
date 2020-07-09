@@ -7,6 +7,7 @@ import ca.damocles.communication.ResponsePacket
 import ca.damocles.storage.Account
 import ca.damocles.storage.AccountDatabase
 import ca.damocles.storage.authenticateLogin
+import ca.damocles.storage.createAccount
 import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
@@ -45,7 +46,12 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
                                 disconnect()
                             }
                             2.toByte() ->{
-                                TODO("CLIENT WANTS TO CREATE ACCOUNT")
+                                val response = createAccount(incomingPacket.body["email"].toString(), incomingPacket.body["username"].toString(), incomingPacket.body["password"].toString())
+                                if(response){
+                                    send(ResponsePacket(incomingPacket.identity, "Created account!", 200))
+                                }else{
+                                    send(ResponsePacket(incomingPacket.identity, "Could not create account!", 400))
+                                }
                             }
                             3.toByte() ->{
                                 beating = true

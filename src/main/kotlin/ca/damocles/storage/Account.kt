@@ -1,6 +1,7 @@
 
 package ca.damocles.storage
 
+
 import com.google.gson.Gson
 import com.sun.org.apache.xpath.internal.operations.Bool
 import java.util.*
@@ -28,8 +29,13 @@ data class Account(val uuid: UUID, var email: String, var username: String, var 
  * encrypting password -> [BCrypt.hashpw(password, BCrypt.gensalt())]
  * Store to account database
  */
-fun createAccount(): Boolean{
-    TODO("Not Yet Implemented")
+fun createAccount(email: String, username: String, password: String): Boolean{
+    //check if username or email is taken.
+    if(AccountDatabase.getAccountByUsername(username) != AccountDatabase.getEmptyAccount() && AccountDatabase.getAccountByEmail(email) != AccountDatabase.getEmptyAccount())
+        return false
+
+    AccountDatabase.addAccount(Account(UUID.randomUUID(), email, username, BCrypt.hashpw(password, BCrypt.gensalt())))
+    return true
 }
 
 /**
