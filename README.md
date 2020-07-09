@@ -16,10 +16,13 @@ A free to play online game programmed in ~~java~~ kotlin.
 * ~~Store Accounts in a Database~~
 * ~~Connections can log in to accounts.~~
 * Accounts can be created
-* Responses can be sent to the client from the server.
+* ~~Responses can be sent to the client from the server.~~
 * Games can be stored and managed
+* Maps can be loaded
 * MMR Implementation
 * Players can be assigned into games against players of equal skill
+* Collision detection
+* Objective controlling (Respawning, Points, Time, Win conditions)
 
 
 ### Post-Beta Milestones
