@@ -12,4 +12,10 @@ class EloRating(private val ratingOne: Float, private val ratingTwo: Float){
         val newRatingTwo: Float = ratingTwo + (kconstant * ((1 - actualOutcome) - playerTwoExpectedOutcome))
         return Pair(newRatingOne, newRatingTwo)
     }
+
+    fun getDiffs(actualOutcome: Int): Pair<Float, Float>{
+        val ratingOneDiff: Float = (kconstant * (actualOutcome - playerOneExpectedOutcome))
+        val ratingTwoDiff: Float = (kconstant * ((1 - actualOutcome) - playerTwoExpectedOutcome))
+        return Pair(ratingOneDiff, ratingTwoDiff)
+    }
 }
