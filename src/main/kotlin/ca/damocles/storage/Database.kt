@@ -67,15 +67,14 @@ object AccountDatabase{
 
     fun addAccount(account: Account) = accountCollection.insertOne(account.toDatabaseObject())
 
-}
+    private fun changeRatingByField(field: String, value: Any, newRating: Float){
+        val old = getAccountByField(field, value).toDatabaseObject()
+        old["rating"] = newRating
+        accountCollection.findOneAndReplace(eq(field, value), old)
+    }
 
-fun main(){
-    //val newAccount: Account = Account(UUID.randomUUID(), "nnryanp@gmail.com", "Nick", BCrypt.hashpw("12345qwesd", BCrypt.gensalt()))
-    //println(newAccount)
-    //Database.add(Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", ""), "account")
-    //println(Database.find(eq("username", "Nick"), "account").first()?.get("username"))
-    //Database.find(eq("username", "Nick"), "account").first()?.toJson()
-    //println(AccountDatabase.accountCollection.find(eq("username", "Nick")).first()?.email)
-    //println(AccountDatabase.getAccountByUsername("Dalton").email)
-    //AccountDatabase.addAccount(Account(UUID.randomUUID(), "craftartonline@gmail.com", "kowagatte", BCrypt.hashpw("password", BCrypt.gensalt())))
+    fun changeRating(username: String, newRating: Float) = changeRatingByField("username", username, newRating)
+
+    fun changeRating(uuid: UUID, newRating: Float) = changeRatingByField("uuid", uuid.toString(), newRating)
+
 }
