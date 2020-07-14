@@ -4,7 +4,6 @@ import com.mongodb.client.*
 import com.mongodb.client.model.Filters.eq
 import org.bson.Document
 import org.bson.conversions.Bson
-import org.mindrot.jbcrypt.BCrypt
 import java.util.*
 
 interface Storable{
