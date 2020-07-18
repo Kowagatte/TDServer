@@ -1,16 +1,13 @@
 package ca.damocles
 
 import ca.damocles.communication.client.EstablishedConnection
-import ca.damocles.storage.Database
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.*
 import java.net.URLDecoder
 import javax.net.ssl.SSLServerSocket
 import javax.net.ssl.SSLServerSocketFactory
 import javax.net.ssl.SSLSocket
-import javax.xml.bind.JAXBElement
 import kotlin.concurrent.thread
 
 object Server{

@@ -2,6 +2,8 @@
 package ca.damocles.storage
 
 
+import ca.damocles.storage.database.AccountDatabase
+import ca.damocles.storage.database.Storable
 import com.google.gson.Gson
 import java.util.*
 import org.mindrot.jbcrypt.BCrypt
@@ -9,7 +11,7 @@ import org.mindrot.jbcrypt.BCrypt
 /**
  * Data Class for storing Account Objects.
  */
-data class Account(val uuid: UUID, var email: String, var username: String, var password: String, val rating: Float = 1000f, val gameRecords: List<GameRecord> = listOf<GameRecord>()): Storable{
+data class Account(val uuid: UUID, var email: String, var username: String, var password: String, val rating: Float = 1000f, val gameRecords: List<GameRecord> = listOf<GameRecord>()): Storable {
     companion object{
         fun fromJson(accountJson: String): Account {
             return Gson().fromJson(accountJson, Account::class.java)

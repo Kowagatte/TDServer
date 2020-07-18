@@ -5,13 +5,12 @@ import ca.damocles.communication.Packet
 import ca.damocles.communication.PingPacket
 import ca.damocles.communication.ResponsePacket
 import ca.damocles.storage.Account
-import ca.damocles.storage.AccountDatabase
+import ca.damocles.storage.database.AccountDatabase
 import ca.damocles.storage.authenticateLogin
 import ca.damocles.storage.createAccount
 import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
-import java.util.*
 import javax.net.ssl.SSLSocket
 import kotlin.coroutines.CoroutineContext
 
