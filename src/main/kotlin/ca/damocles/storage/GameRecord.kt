@@ -1,11 +1,12 @@
 package ca.damocles.storage
 
-import ca.damocles.game.GameMap
+import ca.damocles.game.map.GameMap
+import ca.damocles.storage.database.Storable
 import ca.damocles.utilities.EloRating
 import com.google.gson.Gson
 import java.util.*
 
-class GameRecord(map: GameMap, playerOne: Account, playerTwo: Account, val outcome: Int): Storable{
+class GameRecord(map: GameMap, playerOne: Account, playerTwo: Account, val outcome: Float): Storable {
 
     val date: Date = Date()
     val mapID: UUID = map.mapID
@@ -15,8 +16,8 @@ class GameRecord(map: GameMap, playerOne: Account, playerTwo: Account, val outco
     val playerTwoUUID: UUID = playerTwo.uuid
     val playerOneRating: Float = playerOne.rating
     val playerTwoRating: Float = playerTwo.rating
-    val playerOneRatingDiff: Float = EloRating(playerOneRating, playerTwoRating).getDiffs(outcome).first
-    val playerTwoRatingDiff: Float = EloRating(playerOneRating, playerTwoRating).getDiffs(outcome).second
+    val playerOneRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).first
+    val playerTwoRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).second
 
 
     companion object{
