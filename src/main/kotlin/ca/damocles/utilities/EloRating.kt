@@ -9,13 +9,13 @@ class EloRating(val accountOne: Account, val accountTwo: Account){
     private val kConstantPlayerOne: Int = getKConstant(accountOne)
     private val kConstantPlayerTwo: Int = getKConstant(accountTwo)
 
-    fun getNewRatings(actualOutcome: Int): Pair<Float, Float>{
+    fun getNewRatings(actualOutcome: Float): Pair<Float, Float>{
         val newRatingOne: Float = accountOne.rating + (kConstantPlayerOne * (actualOutcome - playerOneExpectedOutcome))
         val newRatingTwo: Float = accountTwo.rating + (kConstantPlayerTwo * ((1 - actualOutcome) - playerTwoExpectedOutcome))
         return Pair(newRatingOne, newRatingTwo)
     }
 
-    fun getDiffs(actualOutcome: Int): Pair<Float, Float>{
+    fun getDiffs(actualOutcome: Float): Pair<Float, Float>{
         val ratingOneDiff: Float = (kConstantPlayerOne * (actualOutcome - playerOneExpectedOutcome))
         val ratingTwoDiff: Float = (kConstantPlayerTwo * ((1 - actualOutcome) - playerTwoExpectedOutcome))
         return Pair(ratingOneDiff, ratingTwoDiff)
