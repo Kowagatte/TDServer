@@ -1,12 +1,11 @@
 package ca.damocles.storage
 
-import ca.damocles.game.map.GameMap
 import ca.damocles.storage.database.Storable
 import ca.damocles.utilities.EloRating
 import com.google.gson.Gson
 import java.util.*
 
-class GameRecord(map: GameMap, playerOne: Account, playerTwo: Account, val outcome: Float): Storable {
+class GameRecord(map: MapRecord, playerOne: Account, playerTwo: Account, val outcome: Float): Storable {
 
     val date: Date = Date()
     val mapID: UUID = map.mapID

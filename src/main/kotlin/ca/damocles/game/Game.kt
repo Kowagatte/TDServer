@@ -10,7 +10,5 @@ class Game(val playerOne: Account, val playerTwo: Account){
     val score: MutableList<Int> = mutableListOf(0, 0)
     val level: Level = Level()
 
-    fun incrementScore(player: Int){
-        score[player-1]++
-    }
+    fun incrementScore(player: Int) = score[player-1]++
 }
