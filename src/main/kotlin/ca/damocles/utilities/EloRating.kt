@@ -1,6 +1,8 @@
 package ca.damocles.utilities
 
+import ca.damocles.game.GameOutcome
 import ca.damocles.storage.Account
+import java.util.*
 import kotlin.math.pow
 
 class EloRating(val accountOne: Account, val accountTwo: Account){
@@ -15,11 +17,15 @@ class EloRating(val accountOne: Account, val accountTwo: Account){
         return Pair(newRatingOne, newRatingTwo)
     }
 
+    fun getNewRatings(actualOutcome: GameOutcome) = getNewRatings(actualOutcome.value)
+
     fun getDiffs(actualOutcome: Float): Pair<Float, Float>{
         val ratingOneDiff: Float = (kConstantPlayerOne * (actualOutcome - playerOneExpectedOutcome))
         val ratingTwoDiff: Float = (kConstantPlayerTwo * ((1 - actualOutcome) - playerTwoExpectedOutcome))
         return Pair(ratingOneDiff, ratingTwoDiff)
     }
+
+    fun getDiffs(actualOutcome: GameOutcome) = getDiffs(actualOutcome.value)
 
     private fun getKConstant(account: Account): Int{
         return if(account.rating > 2400){

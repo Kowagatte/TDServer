@@ -12,3 +12,10 @@ class Game(val playerOne: Account, val playerTwo: Account){
 
     fun incrementScore(player: Int) = score[player-1]++
 }
+
+enum class GameOutcome(val value: Float){
+    PLAYER_ONE(1f),
+    PLAYER_TWO(0f),
+    TIE(0.5f),
+    NONE_YET(-1f);
+}
