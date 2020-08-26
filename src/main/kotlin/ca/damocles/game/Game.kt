@@ -6,7 +6,8 @@ import ca.damocles.utilities.EloRating
 import java.util.*
 
 class Game(val playerOne: Account, val playerTwo: Account){
-    var outcome: Float = -1f
+
+    var outcome: GameOutcome = GameOutcome.NONE_YET
     val score: MutableList<Int> = mutableListOf(0, 0)
     val level: Level = Level()
 
