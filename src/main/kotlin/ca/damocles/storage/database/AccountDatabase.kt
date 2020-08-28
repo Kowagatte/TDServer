@@ -2,11 +2,13 @@ package ca.damocles.storage.database
 
 import ca.damocles.storage.Account
 import com.mongodb.client.MongoCollection
-import com.mongodb.client.model.Filters
+import com.mongodb.client.model.Filters.eq
 import org.bson.Document
+import org.mindrot.jbcrypt.BCrypt
 import java.util.*
+import javax.management.Query.eq
 
-object AccountDatabase{
+object AccountDatabase {
 
     private val accountCollection: MongoCollection<Document> = Database.database.getCollection("account")
 
@@ -15,8 +17,8 @@ object AccountDatabase{
      * Returns a list of results with an empty account attached at the end.
      * This way empty lists (aka..no results found) will return a list with only an empty account instead of null.
      */
-    private fun findWithBackup(field: String, value: Any): List<Document>{
-        val results: MutableList<Document> = accountCollection.find(Filters.eq(field, value)).toMutableList()
+    private fun findWithBackup(field: String, value: Any): List<Document> {
+        val results: MutableList<Document> = accountCollection.find(eq(field, value)).toMutableList()
         results.add(getEmptyAccount().toDatabaseObject())
         return results
     }
@@ -29,6 +31,10 @@ object AccountDatabase{
         return Account.fromJson(findWithBackup(field, value).first().toJson())
     }
 
+    /**
+     * Returns an empty account, this is a placeholder account for when searches yield no result or are the result of
+     * an unauthorized search.
+     */
     fun getEmptyAccount(): Account {
         return Account(UUID.fromString("00000000-0000-0000-0000-000000000000"), "Not Found", "Not Found", "")
     }
@@ -41,10 +47,17 @@ object AccountDatabase{
 
     fun addAccount(account: Account) = accountCollection.insertOne(account.toDatabaseObject())
 
-    private fun changeRatingByField(field: String, value: Any, newRating: Float){
+    /**
+     * Changes the given accounts password, you MUST pass through a hash & salted password.
+     */
+    fun changePassword(account: Account, password: String) {
+        accountCollection.updateOne(eq("uuid", account.uuid.toString()), Document("\$set", Document("password", password)))
+    }
+
+    private fun changeRatingByField(field: String, value: Any, newRating: Float) {
         val old = getAccountByField(field, value).toDatabaseObject()
         old["rating"] = newRating
-        accountCollection.findOneAndReplace(Filters.eq(field, value), old)
+        accountCollection.findOneAndReplace(eq(field, value), old)
     }
 
     fun changeRating(username: String, newRating: Float) = changeRatingByField("username", username, newRating)
