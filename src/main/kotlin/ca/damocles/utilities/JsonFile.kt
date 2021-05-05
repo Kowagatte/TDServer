@@ -13,7 +13,6 @@ class JsonFile(path: String){
 
     private val gson: Gson = GsonBuilder().setPrettyPrinting().create()
     private val file: File = File(path)
-    private val reader: BufferedReader
     private val jsonObject: JsonObject
 
     /**
@@ -21,12 +20,15 @@ class JsonFile(path: String){
      * and loads any json if it is there.
      */
     init{
-        file.createNewFile()
-        reader = BufferedReader(FileReader(file))
-        jsonObject = try {
-            gson.fromJson(reader, JsonObject::class.java)
-        }catch(e: JsonIOException){
-            println("Could not parse")
+        jsonObject = if(exists()){
+            val reader = BufferedReader(FileReader(file))
+            try {
+                gson.fromJson(reader, JsonObject::class.java)
+            }catch(e: JsonIOException){
+                println("Could not parse")
+                JsonObject()
+            }
+        }else{
             JsonObject()
         }
     }
@@ -50,7 +52,7 @@ class JsonFile(path: String){
      * @param key: the key used to retrieve the corresponding value
      * @return: a value from the JsonObject using the given key
      */
-    fun getValue(key: String): Any{
+    fun getValue(key: String): Any?{
         return jsonObject.get(key)
     }
 
@@ -66,6 +68,7 @@ class JsonFile(path: String){
      * @return: whether the operation was successful or not.
      */
     fun save(): Boolean{
+        if(!exists()) file.createNewFile()
         val writer = BufferedWriter(FileWriter(file))
         return try {
             gson.toJson(jsonObject, writer)
