@@ -17,13 +17,13 @@ class JsonFileTest {
     fun setValue() {
         val file = JsonFile("./test.json")
         file.setValue("test", JsonPrimitive("Testing"))
-        assertEquals(JsonPrimitive("Testing"), file.getValue("test"))
+        assertEquals(JsonPrimitive("Testing"), file.get("test"))
     }
 
     @Test
     fun getValue() {
         val file = JsonFile("./test.json")
-        assertEquals(null, file.getValue("nothing"))
+        assertEquals(null, file.get("nothing"))
     }
 
     @Test
