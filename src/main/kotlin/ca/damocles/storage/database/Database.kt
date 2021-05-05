@@ -1,11 +1,9 @@
 package ca.damocles.storage.database
 
-import ca.damocles.storage.Account
+import ca.damocles.utilities.JsonFile
 import com.mongodb.client.*
-import com.mongodb.client.model.Filters.eq
 import org.bson.Document
 import org.bson.conversions.Bson
-import java.util.*
 
 interface Storable{
     fun toDatabaseObject(): Document{
@@ -18,7 +16,17 @@ object Database{
      * MongoClient
      * ***Contains the login credentials for the read/write MongoDB account, do not leak.***
      */
-    private val mongoClient: MongoClient = MongoClients.create("mongodb+srv://accountdb_connection:ZLFAfSFyvfF9VbZ2@damocles-fcf0g.mongodb.net/test?retryWrites=true&w=majority")
+
+    private val mongoURI: String
+
+    init{
+        val passFile = JsonFile.openJsonFile("passwords.json")
+        val username = passFile.getJsonObject("mongodb").getAsJsonPrimitive("username").asString
+        val password = passFile.getJsonObject("mongodb").getAsJsonPrimitive("password").asString
+        mongoURI = "mongodb+srv://$username:$password@damocles-fcf0g.mongodb.net/test?retryWrites=true&w=majority"
+    }
+
+    private val mongoClient: MongoClient = MongoClients.create(mongoURI)
     val database: MongoDatabase = mongoClient.getDatabase("damocles")
 
     fun add(element: Storable, collection: String) =
