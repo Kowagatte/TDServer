@@ -7,6 +7,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
+/*
+TODO Clean this class up, maybe create an event system to handle delayed or
+time sensitive activities such as map rotations or player events like game modes?
+ */
 object MapRotation {
     var mapsInRotation: MutableList<MapRecord> = MapDatabase.getTopMaps(4)
 

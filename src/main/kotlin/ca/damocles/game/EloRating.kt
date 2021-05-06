@@ -1,10 +1,9 @@
 package ca.damocles.game
 
-import ca.damocles.game.GameOutcome
 import ca.damocles.storage.Account
-import java.util.*
 import kotlin.math.pow
 
+//TODO clean this up.
 class EloRating(val accountOne: Account, val accountTwo: Account){
     val playerOneExpectedOutcome: Float = 1.0f * 1.0f / (1 + 1.0f * (10.0f.pow(1.0f * (accountTwo.rating - accountOne.rating) / 400)))
     val playerTwoExpectedOutcome: Float = 1.0f - playerOneExpectedOutcome

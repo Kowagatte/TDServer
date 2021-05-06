@@ -1,6 +1,6 @@
 package ca.damocles.networking.client
 
-import ca.damocles.Server
+import ca.damocles.networking.Server
 import ca.damocles.networking.Packet
 import ca.damocles.networking.PingPacket
 import ca.damocles.networking.ResponsePacket
@@ -14,7 +14,21 @@ import java.io.*
 import javax.net.ssl.SSLSocket
 import kotlin.coroutines.CoroutineContext
 
-class EstablishedConnection(val connectionSocket: SSLSocket){
+/**
+ * Class EstablishedConnection
+ *
+ * This acts currently as a wrapper for the Clients Socket.
+ * It also acts as the current storage of Client related information,
+ * such as what account it is logged into and maybe in the future, where it should
+ * be in the application process such as the main screen, in game or interacting with
+ * specific components. Maybe this should be moved to a separate class? Probably.
+ *
+ * TODO It handles all packets sent to the server from the client, which should be moved to a packet handler class
+ * as well as having the incoming packet's queued instead of having them all being resolved at once.
+ *
+ *
+ */
+class EstablishedConnection(private val connectionSocket: SSLSocket){
 
     var account: Account = AccountDatabase.getEmptyAccount()
     private val coroutine: CoroutineContext
@@ -22,16 +36,22 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
     private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
     private val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
     private var beating = true
+    private var isRunning = true
 
+    /**
+     * Starts a coroutine that accepts incoming packets from the
+     * client this socket is connected too.
+     */
     init{
         coroutine = GlobalScope.launch {
-            while(connectionSocket.isConnected){
+            while(isRunning){
                 try{
                     val line: String = getMessageFromClient()
                     if(line != ""){
                         println(line)
                         val incomingPacket: Packet = Packet.fromJson(line)
                         when(incomingPacket.type){
+                            //TODO Move this to a packetHandler class
                             0.toByte() -> {
                                 val response = authenticateLogin(incomingPacket.body["email"].toString(), incomingPacket.body["password"].toString())
                                 if(response.first){
@@ -63,6 +83,11 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
                 }
             }
         }
+        /*
+        This is a coroutine that determines if this connection is
+        still alive, if beating is false for 30 continuous seconds
+        the server will terminate this connection.
+         */
         heartbeat = GlobalScope.launch {
             while(true){
                 beating = false
@@ -76,18 +101,30 @@ class EstablishedConnection(val connectionSocket: SSLSocket){
 
     }
 
+    /**
+     * IO blocking call done in a separate context.
+     */
     private suspend fun getMessageFromClient(): String =
-            withContext(Dispatchers.Default){
-                bufferedReader.readLine()
-            }
+        withContext(Dispatchers.IO){
+            bufferedReader.readLine()
+        }
 
+    /**
+     * Disconnects this EstablishedConnection from the server and sends
+     * a disconnected packet so the client knows it was terminated.
+     */
     fun disconnect(){
+        isRunning = false
         Server.listOfEstablishedConnections.remove(this)
         coroutine.cancel()
         heartbeat.cancel()
         //TODO("Send disconnect packet.")
+        connectionSocket.close()
     }
 
+    /**
+     *
+     */
     fun send(packet: Packet){
         bufferedWriter.write(packet.toString())
         bufferedWriter.newLine()
