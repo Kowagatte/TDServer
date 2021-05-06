@@ -1,4 +1,4 @@
-package ca.damocles
+package ca.damocles.utilities
 
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
