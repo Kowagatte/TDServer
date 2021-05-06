@@ -1,6 +1,6 @@
 package ca.damocles
 
-import ca.damocles.communication.client.EstablishedConnection
+import ca.damocles.networking.client.EstablishedConnection
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.*

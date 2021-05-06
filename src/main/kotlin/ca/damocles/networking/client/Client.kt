@@ -1,9 +1,9 @@
-package ca.damocles.communication.client
+package ca.damocles.networking.client
 
 import ca.damocles.Server
-import ca.damocles.communication.Packet
-import ca.damocles.communication.PingPacket
-import ca.damocles.communication.ResponsePacket
+import ca.damocles.networking.Packet
+import ca.damocles.networking.PingPacket
+import ca.damocles.networking.ResponsePacket
 import ca.damocles.storage.Account
 import ca.damocles.storage.database.AccountDatabase
 import ca.damocles.storage.authenticateLogin

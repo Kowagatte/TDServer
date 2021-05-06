@@ -1,7 +1,7 @@
 package ca.damocles.storage
 
 import ca.damocles.storage.database.Storable
-import ca.damocles.utilities.EloRating
+import ca.damocles.game.EloRating
 import com.google.gson.Gson
 import java.util.*
 

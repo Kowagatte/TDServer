@@ -1,4 +1,4 @@
-package ca.damocles.utilities
+package ca.damocles.game
 
 import ca.damocles.game.GameOutcome
 import ca.damocles.storage.Account

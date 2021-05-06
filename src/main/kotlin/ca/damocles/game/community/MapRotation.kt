@@ -1,4 +1,4 @@
-package ca.damocles.community
+package ca.damocles.game.community
 
 import ca.damocles.storage.MapRecord
 import ca.damocles.storage.database.MapDatabase
@@ -6,7 +6,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import java.util.*
 
 object MapRotation {
     var mapsInRotation: MutableList<MapRecord> = MapDatabase.getTopMaps(4)

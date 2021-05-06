@@ -1,4 +1,4 @@
-package ca.damocles.communication
+package ca.damocles.networking
 
 import com.google.gson.Gson
 
@@ -9,7 +9,7 @@ import com.google.gson.Gson
  */
 open class Packet(val identity: String, val side: Byte, val type: Byte, val body: HashMap<String, Any> = HashMap()){
     companion object{
-        fun fromJson(packet: String): Packet{
+        fun fromJson(packet: String): Packet {
             return Gson().fromJson(packet, Packet::class.java)
         }
     }
