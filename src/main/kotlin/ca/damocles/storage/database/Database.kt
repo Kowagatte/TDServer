@@ -20,7 +20,7 @@ object Database{
     private val mongoURI: String
 
     init{
-        val passFile = JsonFile.openJsonFile("passwords.json")
+        val passFile = JsonFile.openJsonFile("passwords.json", true)
         val username = passFile.getJsonObject("mongodb").getAsJsonPrimitive("username").asString
         val password = passFile.getJsonObject("mongodb").getAsJsonPrimitive("password").asString
         mongoURI = "mongodb+srv://$username:$password@damocles-fcf0g.mongodb.net/test?retryWrites=true&w=majority"
