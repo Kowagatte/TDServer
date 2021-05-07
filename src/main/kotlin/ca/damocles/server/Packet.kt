@@ -1,4 +1,4 @@
-package ca.damocles.networking
+package ca.damocles.server
 
 import com.google.gson.Gson
 

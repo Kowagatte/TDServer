@@ -1,6 +1,6 @@
-package ca.damocles.networking
+package ca.damocles.server
 
-import ca.damocles.networking.client.EstablishedConnection
+import ca.damocles.server.client.EstablishedConnection
 import java.io.IOException
 import javax.net.ssl.SSLSocket
 import kotlin.concurrent.thread
