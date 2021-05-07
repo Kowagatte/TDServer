@@ -1,15 +1,10 @@
-package ca.damocles.networking
+package ca.damocles.server
 
-import ca.damocles.networking.client.EstablishedConnection
+import ca.damocles.server.client.EstablishedConnection
 import ca.damocles.utilities.JsonFile
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import java.io.*
-import java.net.URLDecoder
 import javax.net.ssl.SSLServerSocket
 import javax.net.ssl.SSLServerSocketFactory
-import javax.net.ssl.SSLSocket
 import kotlin.concurrent.thread
 import kotlin.system.exitProcess
 
@@ -23,12 +18,14 @@ import kotlin.system.exitProcess
 object Server{
 
     lateinit var serverSocket: SSLServerSocket
+    private lateinit var ServerThread: CommandHandler
     //TODO change to a Hashed List with an identifier key attached to an established connection.
     val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
     private val maxClientConnections: Int
     private val port: Int
-    var isRunning: Boolean = true
-    private val amountOfPlayers: Int
+    val isRunning: Boolean
+        get() = ServerThread.isRunning
+    val amountOfPlayers: Int
         get() = listOfEstablishedConnections.size
 
     init{
@@ -42,38 +39,15 @@ object Server{
      */
     fun start(){
         try{
-            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(8888) as SSLServerSocket
+            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(port) as SSLServerSocket
             ClientGate.start()
             println("Started")
         }catch(e: IOException){
             println("Server failed to start, perhaps there is already a server open on this port?")
             e.printStackTrace()
         }
-
-        thread(start = true) {
-            while(isRunning){
-                //TODO Move to a proper command pattern and move this handler to a seperate class.
-                val input = readLine()
-                when(input){
-                    "stop"->{
-                        println("Closing the server.")
-                        stop()
-                    }
-                    "stop connections"->{
-                        ClientGate.stop()
-                        println("Stopped incoming connections")
-                    }
-                    "players"->{
-                        listOfEstablishedConnections.forEach {
-                            println(it.account.username)
-                        }
-                    }
-                    "amount"->{
-                        println(amountOfPlayers)
-                    }
-                }
-            }
-        }
+        ServerThread = CommandHandler(true)
+        ServerThread.start()
     }
 
     /**
@@ -81,10 +55,15 @@ object Server{
      * if you only want to stop clients from connecting stop the ClientGate.
      */
     fun stop(){
-        isRunning = false
+        ServerThread.isRunning = false
         exitProcess(0)
     }
 
+    /**
+     * Returns if the server is currently full of connections.
+     * @return: true if the amountOfPlayers connected is greater than
+     * the max amount of connections, false otherwise.
+     */
     fun isFull(): Boolean = amountOfPlayers >= maxClientConnections
 
 }

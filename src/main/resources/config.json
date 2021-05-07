@@ -1,0 +1,4 @@
+{
+  "max_connections": 3500,
+  "port": 8888
+}
