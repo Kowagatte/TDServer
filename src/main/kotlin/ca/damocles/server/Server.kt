@@ -1,6 +1,7 @@
 package ca.damocles.networking
 
 import ca.damocles.networking.client.EstablishedConnection
+import ca.damocles.utilities.JsonFile
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -22,21 +23,19 @@ import kotlin.system.exitProcess
 object Server{
 
     lateinit var serverSocket: SSLServerSocket
+    //TODO change to a Hashed List with an identifier key attached to an established connection.
     val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
-    private const val maxClientConnections: Int = 3500
+    private val maxClientConnections: Int
+    private val port: Int
     var isRunning: Boolean = true
     private val amountOfPlayers: Int
         get() = listOfEstablishedConnections.size
 
-    val serverPath: String
-        get() {
-            return try{
-                URLDecoder.decode(Server::class.java.protectionDomain.codeSource.location.path, "UTF-8")
-            }catch(e: UnsupportedEncodingException){
-                e.printStackTrace()
-                "NO PATH"
-            }
-        }
+    init{
+        val properties: JsonFile = JsonFile.openJsonFile("config.json", true)
+        maxClientConnections = properties.getNumber("max_connections").toInt()
+        port = properties.getNumber("port").toInt()
+    }
 
     /**
      * Starts the server socket, the main thread and the ClientGate.

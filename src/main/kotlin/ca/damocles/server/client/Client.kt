@@ -25,8 +25,6 @@ import kotlin.coroutines.CoroutineContext
  *
  * TODO It handles all packets sent to the server from the client, which should be moved to a packet handler class
  * as well as having the incoming packet's queued instead of having them all being resolved at once.
- *
- *
  */
 class EstablishedConnection(private val connectionSocket: SSLSocket){
 
