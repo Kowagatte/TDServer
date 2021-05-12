@@ -14,7 +14,7 @@ import kotlin.concurrent.thread
  * add it to the list of EstablishedConnections.
  */
 object ClientGate{
-    var isOpen = false
+    private var isOpen = false
     private lateinit var acceptanceThread: Thread
 
     /**
