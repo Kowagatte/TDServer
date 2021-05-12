@@ -1,6 +1,8 @@
 # ![Icon](https://imgur.com/GpaOt95.png) TDServer
 #### This software is programmed and maintained by:
 + --=[ Kowagatte | Nicholas Noel Ryan ]=--
+
+##### With assistance from:
 + --=[ Aikanwha | Dalton Wettlaufer ]=--
 
 This is the main server application for the game TopDownShooter aka TDS.
@@ -12,17 +14,24 @@ A free to play online game programmed in ~~java~~ kotlin.
 ***
 
 ### Milestones
-* ~~Allow clients to connect to the server.~~
-* ~~Store Accounts in a Database~~
+* Allow clients to connect to the server.
+* Store Accounts in a Database
 * ~~Connections can log in to accounts.~~
 * ~~Accounts can be created~~
 * ~~Responses can be sent to the client from the server.~~
+* Password recovery
+* Load a map
+* Collision Detection
+* Coins
+* Portals!
+* Match objectives
+* Match points
+* Play a game
+* Players can be rated
 * Games can be stored and managed
-* Maps can be loaded
-* MMR Implementation
-* Players can be assigned into games against players of equal skill
-* Collision detection
-* Objective controlling (Respawning, Points, Time, Win conditions)
+* Map rotations
+* Queues
+* Servers are live
 
 
 ### Post-Beta Milestones
@@ -31,27 +40,15 @@ A free to play online game programmed in ~~java~~ kotlin.
 * Leaderboards
 * Live game viewer
 * Match History
+* Additional Game-modes
+
+### Way Future releases
+* Text chat for friends,
+* Workshop for levels
+* Skins
 
 ***
-### Design
 
-#### Networking:
-```
-Server has a Socket that client sockets can connect too, this is stored
-in the Server Object in Server.kt
-Client Sockets accepted through the Server socket are accepted in the ClientGate.
-After being accepted they are assigned an EstablishedConnection Object and stored
-in a listOfEstablished connections in the Server Object.
-```
-#### Assigning Accounts to EstablishedConnections
-```
-An EstablishedConnection cannot interact with the server until it is assigned
-an Account. It will be assigned an account when it sends a login packet
-containing a username and password that matches the credentials of an Account
-stored in the database.
-```
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
-#### Creating an Account
-```
-
-```
+This software belongs to Nicholas N Ryan.
