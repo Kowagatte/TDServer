@@ -42,7 +42,7 @@ A free to play online game programmed in ~~java~~ kotlin.
 * Match History
 * Additional Game-modes
 
-### Way Future releases
+### Way Future Milestones
 * Text chat for friends,
 * Workshop for levels
 * Skins
