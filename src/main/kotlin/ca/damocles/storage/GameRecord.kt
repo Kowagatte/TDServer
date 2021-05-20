@@ -15,8 +15,9 @@ class GameRecord(map: MapRecord, playerOne: Account, playerTwo: Account, val out
     val playerTwoUUID: UUID = playerTwo.uuid
     val playerOneRating: Float = playerOne.rating
     val playerTwoRating: Float = playerTwo.rating
-    val playerOneRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).first
-    val playerTwoRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).second
+    //TODO fix this to save the difference in ratings the players encountered
+    //val playerOneRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).first
+    //val playerTwoRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).second
 
 
     companion object{
