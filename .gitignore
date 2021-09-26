@@ -1,0 +1,4 @@
+TDServer.iml
+target/
+/src/main/resources/passwords.json
+.idea/

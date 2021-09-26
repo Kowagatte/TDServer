@@ -1,11 +1,10 @@
 package ca.damocles.server
 
 import ca.damocles.server.client.EstablishedConnection
-import ca.damocles.utilities.JsonFile
+import ca.damocles.utilities.Files
 import java.io.*
 import javax.net.ssl.SSLServerSocket
 import javax.net.ssl.SSLServerSocketFactory
-import kotlin.concurrent.thread
 import kotlin.system.exitProcess
 
 /**
@@ -29,9 +28,8 @@ object Server{
         get() = listOfEstablishedConnections.size
 
     init{
-        val properties: JsonFile = JsonFile.openJsonFile("config.json", true)
-        maxClientConnections = properties.getNumber("max_connections").toInt()
-        port = properties.getNumber("port").toInt()
+        maxClientConnections = Files.properties.getNumber("max_connections").toInt()
+        port = Files.properties.getNumber("port").toInt()
     }
 
     /**
