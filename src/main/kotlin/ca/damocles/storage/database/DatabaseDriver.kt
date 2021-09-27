@@ -18,12 +18,12 @@ interface DatabaseDriver {
 
     /**
      * Query is used to search for multiple records of a specific parameter.
-     * @param parameter: the parameter being compared.
-     * @param key: the key being checked for in the parameter.
+     * @param key: the parameter being compared.
+     * @param value: the value being checked for in the parameter.
      * @param size: the size of the response we want to cap it at.
      * @return: a list of related records.
      */
-    fun query(table: String, parameter: String, key: Any, size: Int = 20): List<JsonObject>
+    fun query(table: String, key: String, value: Any, size: Int = 20): List<JsonObject>
 
     /**
      * Query is used to search for multiple records of a specific parameter.
@@ -37,11 +37,11 @@ interface DatabaseDriver {
 
     /**
      * Finds the most relevant record of a specific parameter.
-     * @param parameter: the parameter being searched for.
-     * @param key: the key of the param being checked.
+     * @param key: the parameter being searched for.
+     * @param value: the value of the param being checked.
      * @return: the most relevant record.
      */
-    fun find(table: String, parameter: String, key: Any): JsonObject
+    fun find(table: String, key: String, value: Any): JsonObject?
 
     /**
      * Updates a list of values in a record where a condition is met.
