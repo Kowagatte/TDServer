@@ -7,7 +7,7 @@ import com.mongodb.client.*
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.Filters.eq
 import org.bson.Document
-import org.jongo.Jongo
+import org.jetbrains.annotations.Nullable
 
 /**
  * MongoDB Database Implementation
@@ -33,10 +33,10 @@ class MongoDatabase : DatabaseDriver {
 
     /**
      * Query is used to search for multiple records of a specific parameter.
-     * @param key: the parameter being compared.
-     * @param value: the key being checked for in the parameter.
-     * @param size: the size of the response we want to cap it at.
-     * @return: a list of related records.
+     * @param key: the key being compared.
+     * @param value: the value being checked for in the key.
+     * @param size: the size of the response we want to cap it at, defaults at 20, a value of 0 defaults to 1.
+     * @return: a list of related records, empty if none exist.
      */
     override fun query(table: String, key: String, value: Any, size: Int): List<JsonObject> {
         val list: MutableList<JsonObject> = mutableListOf()
@@ -48,11 +48,12 @@ class MongoDatabase : DatabaseDriver {
     }
 
     /**
-     * Finds the most relevant record of a specific parameter.
-     * @param key: the parameter being searched for.
-     * @param value: the key of the param being checked.
-     * @return: the most relevant record.
+     * Finds the most relevant record of a specified key and value.
+     * @param key: the key being searched for.
+     * @param value: the value of the key being checked.
+     * @return: the most relevant record, null if one does not exist
      */
+    @Nullable
     override fun find(table: String, key: String, value: Any): JsonObject? {
         val document = database.getCollection(table).find(eq(key, value)).limit(1).first()
         return if(document != null){
