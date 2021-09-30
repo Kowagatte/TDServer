@@ -2,6 +2,9 @@ package ca.damocles.storage.database
 
 import org.bson.Document
 
+/**
+ * TODO is this still relevant?
+ */
 interface Storable{
     fun toDatabaseObject(): Document{
         return Document.parse(this.toString())
@@ -19,4 +22,13 @@ interface Storable{
  */
 object Database{
     val database: DatabaseDriver = MongoDatabase()
+}
+
+/**
+ * TODO document
+ */
+enum class TableConstants(namespace: String){
+    ACCOUNT("account"),
+    MAP("map"),
+    MATCH_RECORDS("matches");
 }
