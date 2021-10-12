@@ -22,6 +22,7 @@ interface Storable{
  */
 object Database{
     val database: DatabaseDriver = MongoDatabase()
+    val accounts = AccountDatabase(database)
 }
 
 /**

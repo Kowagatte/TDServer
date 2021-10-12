@@ -3,6 +3,7 @@ package ca.damocles.storage
 
 
 import ca.damocles.storage.database.AccountDatabase
+import ca.damocles.storage.database.Database
 import ca.damocles.storage.database.Storable
 import com.google.gson.Gson
 import java.util.*
@@ -32,11 +33,13 @@ data class Account(val uuid: UUID, var email: String, var username: String, var 
  */
 fun createAccount(email: String, username: String, password: String): Boolean{
     //check if username or email is taken.
-    if(AccountDatabase.getAccountByUsername(username) != AccountDatabase.getEmptyAccount() && AccountDatabase.getAccountByEmail(email) != AccountDatabase.getEmptyAccount())
-        return false
-
-    AccountDatabase.addAccount(Account(UUID.randomUUID(), email, username, BCrypt.hashpw(password, BCrypt.gensalt())))
-    return true
+    if(Database.accounts.byEmail(email) == Database.accounts.emptyAccount()) {
+        if (Database.accounts.byExactUsername(username) == Database.accounts.emptyAccount()) {
+            AccountDatabase.addAccount(Account(UUID.randomUUID(), email, username, BCrypt.hashpw(password, BCrypt.gensalt())))
+            return true
+        }
+    }
+    return false
 }
 
 /**
