@@ -13,10 +13,10 @@ import java.util.*
  * ***There should be no calls to specific database implementations here.***
  *
  */
-class AccountDatabase(val db: DatabaseDriver) {
+class AccountDatabase(private val db: DatabaseDriver) {
 
     //The namespace of the tables storing the accounts
-    private val accountTable: String = TableConstants.ACCOUNT.name
+    private val accountTable: String = TableConstants.ACCOUNT.namespace
 
     /**
      * Get's a reference of the default empty account.
@@ -93,8 +93,28 @@ class AccountDatabase(val db: DatabaseDriver) {
         return emptyAccount()
     }
 
+    /**
+     * Inserts an account into the database,
+     * ***Currently no conflict checking***
+     * ***Always returns true***
+     *
+     * @param account: the account object being inserted into the database.
+     * @return: if the operation was successful or not.
+     */
     fun add(account: Account): Boolean{
-        TODO("Write this method")
+        return db.insert(accountTable, account.toDatabaseObject())
+    }
+
+    fun remove(account: Account): Boolean{
+        TODO("Implement")
+    }
+
+    fun change(account: Account, attributes: List<Pair<String, Any>>): Boolean{
+        TODO("Implement")
+    }
+
+    fun change(condition: Pair<String, Any>, attributes: List<Pair<String, Any>>){
+        TODO("Implement")
     }
 
 
