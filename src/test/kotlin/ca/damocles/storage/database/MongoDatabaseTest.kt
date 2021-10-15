@@ -6,6 +6,10 @@ import org.junit.Test
 import org.junit.Assert.*
 import java.util.*
 
+/*
+TODO fix the tests so they run independent of each other.
+Currently fail if they are run in a non-specific order.
+ */
 class MongoDatabaseTest {
 
     @Test

@@ -117,16 +117,4 @@ class AccountDatabase(private val db: DatabaseDriver) {
         TODO("Implement")
     }
 
-
-    fun main(args: Array<String>){
-        val gson = Gson()
-        val account = Account(UUID.randomUUID(), "test@damocles.ca", "87pen", "---")
-
-        val s = account.toString()
-        val restruct = gson.fromJson(s, account::class.java)
-        println(restruct)
-
-    }
-
-
 }

@@ -5,9 +5,6 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import org.bson.Document
 
-/**
- * TODO is this still relevant?
- */
 interface Storable{
 
     fun toDatabaseObject(): JsonObject{
@@ -34,7 +31,7 @@ object Database{
 }
 
 /**
- * TODO document
+ * Holds the table namespace constants for database implementations.
  */
 enum class TableConstants(val namespace: String){
     ACCOUNT("account"),
