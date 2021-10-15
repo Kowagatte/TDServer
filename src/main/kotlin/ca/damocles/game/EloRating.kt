@@ -21,9 +21,9 @@ class EloRating(private val accountOne: Account, private val accountTwo: Account
      * Get's three possible rating change outcomes for the given player.
      * @param player: a byte representing which player to get the differences for, 0 for player one, 1 for player two.
      * @return: A Triple, each value representing a possible difference in rating;
-     * first represents the difference if the player lost,
+     * first represents the difference if the player wins,
      * second represents the difference if the player ties,
-     * third represents the difference if the player wins.
+     * third represents the difference if the player loses.
      */
     fun getRatingChangePossibilities(player: Byte): Triple<Float, Float, Float>{
         /**
@@ -34,17 +34,29 @@ class EloRating(private val accountOne: Account, private val accountTwo: Account
          * were to occur.
          */
         fun getDiff(theoreticalOutcome: Float): Float{
-            return if(player == 0.toByte())
+            return if(player == 1.toByte())
                 (kConstantPlayerOne * (theoreticalOutcome - expectedOutcomes.first))
             else
                 (kConstantPlayerTwo * (theoreticalOutcome - expectedOutcomes.second))
         }
 
         return Triple(
-            getDiff(GameOutcome.PLAYER_TWO.value),
+            getDiff(GameOutcome.PLAYER_ONE.value),
             getDiff(GameOutcome.TIE.value),
-            getDiff(GameOutcome.PLAYER_ONE.value))
+            getDiff(GameOutcome.PLAYER_TWO.value)
+        )
     }
+
+    /**
+     * Gets the difference in ratings for player one and player two if the given outcome were to happen
+     * @param outcome: the outcome of the match
+     * @return: a pair of floats where the first value is player one's rating change, and the second value
+     * is player two's rating change.
+     */
+    fun getDiffs(outcome: Float): Pair<Float, Float> = Pair(
+            (kConstantPlayerOne * (outcome - expectedOutcomes.first)),
+            (kConstantPlayerTwo * (outcome - expectedOutcomes.second))
+        )
 
     /**
      * Gets the k-constant for a specific account.
@@ -127,8 +139,8 @@ class EloRating(private val accountOne: Account, private val accountTwo: Account
  * Test driver to see the expected change in ratings
  */
 fun main(){
-    val ratingOne = 1000f
-    val ratingTwo = 1000f
+    val ratingOne = 2000f
+    val ratingTwo = 1500f
 
     val accountOne = Account(UUID.randomUUID(), "", "Bob", "", ratingOne)
     val accountTwo = Account(UUID.randomUUID(), "", "Tom", "", ratingTwo)
@@ -140,11 +152,11 @@ fun main(){
     val expected = eloRating.expectedOutcomes(accountOne.rating, accountTwo.rating)
     println("Chance ${accountOne.username} wins: ${expected.first}")
     println("Chance ${accountTwo.username} wins: ${expected.second}")
-    val diffsOne = eloRating.getRatingChangePossibilities(0)
-    println("${accountOne.username} diffs | Lose: ${diffsOne.first}, Tie: ${diffsOne.second}, Win: ${diffsOne.third}")
+    val diffsOne = eloRating.getRatingChangePossibilities(1)
+    println("${accountOne.username} diffs | Win: ${diffsOne.first}, Tie: ${diffsOne.second}, Lose: ${diffsOne.third}")
 
-    val diffsTwo = eloRating.getRatingChangePossibilities(1)
-    println("${accountTwo.username} diffs | Lose: ${diffsTwo.first}, Tie: ${diffsTwo.second}, Win: ${diffsTwo.third}")
+    val diffsTwo = eloRating.getRatingChangePossibilities(2)
+    println("${accountTwo.username} diffs | Win: ${diffsTwo.first}, Tie: ${diffsTwo.second}, Lose: ${diffsTwo.third}")
 
     println("${eloRating.processMatch(1.0f).first} | ${eloRating.processMatch(1.0f).second}")
 }
