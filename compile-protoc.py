@@ -13,8 +13,4 @@ if platform == "darwin":
 elif platform == "win32":
     protoc += "\\windows\\bin\\protoc.exe"
 
-print(platform)
-print(protoc)
-
-print(protoc+" -I="+src_dir+" --java_out="+java_src_dir+" --kotlin_out="+kotlin_src_dir+" "+proto_file)
 os.system(protoc+" -I="+src_dir+" --java_out="+java_src_dir+" --kotlin_out="+kotlin_src_dir+" "+proto_file)
