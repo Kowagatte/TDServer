@@ -1,5 +1,7 @@
 package ca.damocles.server
 
+import ca.damocles.proto.Packets
+import ca.damocles.proto.ServerPacketktKt
 import com.google.gson.Gson
 
 /**
@@ -17,6 +19,12 @@ open class Packet(val identity: String, val side: Byte, val type: Byte, val body
     override fun toString(): String {
         return Gson().toJson(this)
     }
+}
+
+fun main(){
+    val bytearray = Packets.ServerPacketkt.newBuilder().setName("Test").build().toByteArray()
+    val test = Packets.ServerPacketkt.parseFrom(bytearray)
+    println(test.name)
 }
 
 /* CLIENT PACKETS */
