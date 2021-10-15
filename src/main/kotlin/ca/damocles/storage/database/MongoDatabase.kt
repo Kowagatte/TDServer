@@ -6,7 +6,12 @@ import com.google.gson.JsonObject
 import com.mongodb.client.*
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.Filters.eq
+import com.mongodb.client.model.Updates
+import com.mongodb.client.model.Updates.combine
+import com.mongodb.client.model.Updates.set
+import com.mongodb.client.result.UpdateResult
 import org.bson.Document
+import org.bson.conversions.Bson
 import org.jetbrains.annotations.Nullable
 
 /**
@@ -71,11 +76,27 @@ class MongoDatabase : DatabaseDriver {
      * @return: if the operation was successful or not.
      */
     override fun update(table: String, condition: Pair<String, Any>, values: List<Pair<String, Any>>): Boolean {
-        TODO("Not yet implemented")
+        val collection = database.getCollection(table)
+        val filter = eq(condition.first, condition.second)
+        val updates: MutableList<Bson> = mutableListOf()
+        for(value in values){
+            updates.add(set(value.first, value.second))
+        }
+        return collection.updateMany(filter, combine(updates)).wasAcknowledged()
     }
 
-    override fun insert() {
-        TODO("Not yet implemented")
+    /**
+     * Inserts a jsonObject into the given mongodb collection,
+     * ***Currently no conflict checking***
+     * ***Always returns true***
+     *
+     * @param table: the collection the object is being inserted into.
+     * @param jsonObject: the object being inserted into the database.
+     * @return: if the operation was successful or not.
+     */
+    override fun insert(table: String, jsonObject: JsonObject): Boolean {
+        database.getCollection(table).insertOne(Document.parse(jsonObject.toString()))
+        return true
     }
 
     /**
@@ -85,6 +106,7 @@ class MongoDatabase : DatabaseDriver {
      * @return: the amount of dropped entries.
      */
     override fun remove(table: String, condition: Pair<String, Any>): Int {
-        TODO("Not yet implemented")
+        val filter = eq(condition.first, condition.second)
+        return database.getCollection(table).deleteMany(filter).deletedCount.toInt()
     }
 }

@@ -54,7 +54,13 @@ interface DatabaseDriver {
      */
     fun update(table: String, condition: Pair<String, Any>, values: List<Pair<String, Any>>): Boolean
 
-    fun insert()
+    /**
+     * Inserts a given json object into the database
+     * @param table: the table the object is being inserted in.
+     * @param jsonObject: the object being inserted into the database.
+     * @return: if the operation was successful.
+     */
+    fun insert(table: String, jsonObject: JsonObject): Boolean
 
     /**
      * Drops entries matching the given condition.
