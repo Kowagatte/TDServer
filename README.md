@@ -2,23 +2,26 @@
 #### This software is programmed and maintained by:
 + --=[ Kowagatte | Nicholas Noel Ryan ]=--
 
-##### With assistance from:
-+ --=[ Aikanwha | Dalton Wettlaufer ]=--
-
 This is the main server application for the game TopDownShooter aka TDS.
 A free to play online game programmed in ~~java~~ kotlin.
 
-***
+---
 <p align=center><b><font size="+1"><a href="https://github.com/Kowagatte/TDS-Server/releases">Working Builds</a></p>
 
-***
+---
 
-### Milestones
+## Version
+Current version is 0.0.0-DEVELOPMENT
+
+## __Documentation__
+Documentation can be found in the /documentation/ directory.
+
+## Milestones
 * Allow clients to connect to the server.
-* Store Accounts in a Database
-* ~~Connections can log in to accounts.~~
-* ~~Accounts can be created~~
-* ~~Responses can be sent to the client from the server.~~
+* ~~Database implementation~~
+* Connections can log in to accounts.
+* Responses can be sent to the client from the server.
+* Accounts can be created
 * Password recovery
 * Load a map
 * Collision Detection

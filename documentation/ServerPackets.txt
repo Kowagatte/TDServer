@@ -1,0 +1,6 @@
+Server Packets:
+    heart
+        none
+    response
+        code: Integer
+        info: String

@@ -1,0 +1,12 @@
+Client Packets:
+    Login
+        email: String
+        password: String
+    Close
+        none
+    CreateAccount
+        email: String
+        username: String
+        password: String
+    beat
+        none
