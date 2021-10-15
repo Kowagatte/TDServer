@@ -1,8 +1,5 @@
-
 package ca.damocles.storage
 
-
-import ca.damocles.storage.database.AccountDatabase
 import ca.damocles.storage.database.Database
 import ca.damocles.storage.database.Storable
 import com.google.gson.Gson
@@ -35,7 +32,7 @@ fun createAccount(email: String, username: String, password: String): Boolean{
     //check if username or email is taken.
     if(Database.accounts.byEmail(email) == Database.accounts.emptyAccount()) {
         if (Database.accounts.byExactUsername(username) == Database.accounts.emptyAccount()) {
-            AccountDatabase.addAccount(Account(UUID.randomUUID(), email, username, BCrypt.hashpw(password, BCrypt.gensalt())))
+            Database.accounts.add(Account(UUID.randomUUID(), email, username, BCrypt.hashpw(password, BCrypt.gensalt())))
             return true
         }
     }
@@ -50,11 +47,12 @@ fun createAccount(email: String, username: String, password: String): Boolean{
  * return a pair, (boolean, Account) (true if it passes and the corresponding account), ( false if it doesnt pass and null for the account)
  */
 fun authenticateLogin(email: String, password: String): Pair<Boolean, Account> {
-    val databaseAccount = AccountDatabase.getAccountByEmail(email)
+    val emptyAccount = Database.accounts.emptyAccount()
+    val databaseAccount = Database.accounts.byEmail(email)
     //if there's an account with this email in the database.
-    if (email == databaseAccount.email)
+    if (databaseAccount != emptyAccount)
         //and if the password provided matches the one stored.
         if (BCrypt.checkpw(password, databaseAccount.password))
             return Pair(true, databaseAccount)
-    return Pair(false,  AccountDatabase.getEmptyAccount())
+    return Pair(false,  emptyAccount)
 }

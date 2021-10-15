@@ -1,12 +1,20 @@
 package ca.damocles.storage.database
 
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import org.bson.Document
 
 /**
  * TODO is this still relevant?
  */
 interface Storable{
-    fun toDatabaseObject(): Document{
+
+    fun toDatabaseObject(): JsonObject{
+        return JsonParser.parseString(this.toString()).asJsonObject
+    }
+
+    fun toMongoObject(): Document{
         return Document.parse(this.toString())
     }
 }
@@ -28,7 +36,7 @@ object Database{
 /**
  * TODO document
  */
-enum class TableConstants(namespace: String){
+enum class TableConstants(val namespace: String){
     ACCOUNT("account"),
     MAP("map"),
     MATCH_RECORDS("matches");

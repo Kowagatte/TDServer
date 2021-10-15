@@ -8,6 +8,7 @@ import ca.damocles.storage.Account
 import ca.damocles.storage.database.AccountDatabase
 import ca.damocles.storage.authenticateLogin
 import ca.damocles.storage.createAccount
+import ca.damocles.storage.database.Database
 import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
@@ -28,7 +29,7 @@ import kotlin.coroutines.CoroutineContext
  */
 class EstablishedConnection(private val connectionSocket: SSLSocket){
 
-    var account: Account = AccountDatabase.getEmptyAccount()
+    var account: Account = Database.accounts.emptyAccount()
     private val coroutine: CoroutineContext
     private val heartbeat: CoroutineContext
     private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
