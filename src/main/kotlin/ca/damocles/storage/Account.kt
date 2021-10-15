@@ -9,12 +9,21 @@ import org.mindrot.jbcrypt.BCrypt
 /**
  * Data Class for storing Account Objects.
  */
-data class Account(val uuid: UUID, var email: String, var username: String, var password: String, val rating: Float = 1000f, val gameRecords: List<GameRecord> = listOf<GameRecord>()): Storable {
+data class Account(
+    val uuid: UUID,
+    var email: String,
+    var username: String,
+    var password: String,
+    val rating: Float = 1000f,
+    val gameRecords: MutableList<UUID> = mutableListOf()
+): Storable {
+
     companion object{
         fun fromJson(accountJson: String): Account {
             return Gson().fromJson(accountJson, Account::class.java)
         }
     }
+
     override fun toString(): String = Gson().toJson(this)
 }
 

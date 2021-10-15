@@ -2,23 +2,46 @@ package ca.damocles.storage
 
 import ca.damocles.storage.database.Storable
 import ca.damocles.game.EloRating
+import ca.damocles.game.GameOutcome
 import com.google.gson.Gson
 import java.util.*
 
-class GameRecord(map: MapRecord, playerOne: Account, playerTwo: Account, val outcome: Float): Storable {
+/**
+ * TODO Document
+ */
+class GameRecord(
+    map: MapRecord,
+    playerOne: Account,
+    playerTwo: Account,
+    val outcome: Float
+): Storable {
 
     val date: Date = Date()
-    val mapID: UUID = map.mapID
-    val playerOneUsername: String = playerOne.username
-    val playerOneUUID: UUID = playerOne.uuid
-    val playerTwoUsername: String = playerTwo.username
-    val playerTwoUUID: UUID = playerTwo.uuid
-    val playerOneRating: Float = playerOne.rating
-    val playerTwoRating: Float = playerTwo.rating
-    //TODO fix this to save the difference in ratings the players encountered
-    //val playerOneRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).first
-    //val playerTwoRatingDiff: Float = EloRating(playerOne, playerTwo).getDiffs(outcome).second
+    val map: UUID = map.mapID
+    val players: List<PlayerRecord>
 
+    init{
+
+        val ratings = EloRating(playerOne, playerTwo)
+        val diffs = ratings.getDiffs(outcome)
+
+        players = listOf(
+            PlayerRecord(
+                1,
+                playerOne.uuid,
+                playerOne.username,
+                playerOne.rating,
+                diffs.first
+            ),
+            PlayerRecord(
+                2,
+                playerTwo.uuid,
+                playerTwo.username,
+                playerTwo.rating,
+                diffs.second
+            )
+        )
+    }
 
     companion object{
         fun fromJson(gameRecordJson: String): GameRecord {
@@ -27,3 +50,14 @@ class GameRecord(map: MapRecord, playerOne: Account, playerTwo: Account, val out
     }
     override fun toString(): String = Gson().toJson(this)
 }
+
+/**
+ * TODO Document
+ */
+data class PlayerRecord(
+    val player: Int,
+    val id: UUID,
+    val username: String,
+    val rating: Float,
+    val diff: Float
+)
