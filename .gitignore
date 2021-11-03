@@ -2,3 +2,4 @@ TDServer.iml
 target/
 /src/main/resources/passwords.json
 .idea/
+.DS_Store
