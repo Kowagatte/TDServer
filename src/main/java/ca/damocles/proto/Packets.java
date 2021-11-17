@@ -14,43 +14,30 @@ public final class Packets {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ServerPacketktOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ServerPacketkt)
+  public interface ServerPacketOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ServerPacket)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    java.lang.String getName();
-    /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
   }
   /**
-   * Protobuf type {@code ca.damocles.proto.ServerPacketkt}
+   * Protobuf type {@code ca.damocles.proto.ServerPacket}
    */
-  public static final class ServerPacketkt extends
+  public static final class ServerPacket extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ca.damocles.proto.ServerPacketkt)
-      ServerPacketktOrBuilder {
+      // @@protoc_insertion_point(message_implements:ca.damocles.proto.ServerPacket)
+      ServerPacketOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ServerPacketkt.newBuilder() to construct.
-    private ServerPacketkt(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ServerPacket.newBuilder() to construct.
+    private ServerPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ServerPacketkt() {
-      name_ = "";
+    private ServerPacket() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ServerPacketkt();
+      return new ServerPacket();
     }
 
     @java.lang.Override
@@ -58,7 +45,7 @@ public final class Packets {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ServerPacketkt(
+    private ServerPacket(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -76,12 +63,6 @@ public final class Packets {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -103,53 +84,1071 @@ public final class Packets {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacketkt_descriptor;
+      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacketkt_fieldAccessorTable
+      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ca.damocles.proto.Packets.ServerPacketkt.class, ca.damocles.proto.Packets.ServerPacketkt.Builder.class);
+              ca.damocles.proto.Packets.ServerPacket.class, ca.damocles.proto.Packets.ServerPacket.Builder.class);
     }
 
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
-    /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
+    public interface ResponsePacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ServerPacket.ResponsePacket)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>int32 code = 1;</code>
+       * @return The code.
+       */
+      int getCode();
+
+      /**
+       * <code>string message = 2;</code>
+       * @return The message.
+       */
+      java.lang.String getMessage();
+      /**
+       * <code>string message = 2;</code>
+       * @return The bytes for message.
+       */
+      com.google.protobuf.ByteString
+          getMessageBytes();
     }
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * Protobuf type {@code ca.damocles.proto.ServerPacket.ResponsePacket}
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public static final class ResponsePacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ServerPacket.ResponsePacket)
+        ResponsePacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use ResponsePacket.newBuilder() to construct.
+      private ResponsePacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
       }
+      private ResponsePacket() {
+        message_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new ResponsePacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private ResponsePacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+
+                code_ = input.readInt32();
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                message_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ServerPacket.ResponsePacket.class, ca.damocles.proto.Packets.ServerPacket.ResponsePacket.Builder.class);
+      }
+
+      public static final int CODE_FIELD_NUMBER = 1;
+      private int code_;
+      /**
+       * <code>int32 code = 1;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+
+      public static final int MESSAGE_FIELD_NUMBER = 2;
+      private volatile java.lang.Object message_;
+      /**
+       * <code>string message = 2;</code>
+       * @return The message.
+       */
+      @java.lang.Override
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @return The bytes for message.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (code_ != 0) {
+          output.writeInt32(1, code_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (code_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, code_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ServerPacket.ResponsePacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ServerPacket.ResponsePacket other = (ca.damocles.proto.Packets.ServerPacket.ResponsePacket) obj;
+
+        if (getCode()
+            != other.getCode()) return false;
+        if (!getMessage()
+            .equals(other.getMessage())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getCode();
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessage().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ServerPacket.ResponsePacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ServerPacket.ResponsePacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ServerPacket.ResponsePacket)
+          ca.damocles.proto.Packets.ServerPacket.ResponsePacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ServerPacket.ResponsePacket.class, ca.damocles.proto.Packets.ServerPacket.ResponsePacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ServerPacket.ResponsePacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          code_ = 0;
+
+          message_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.ResponsePacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ServerPacket.ResponsePacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.ResponsePacket build() {
+          ca.damocles.proto.Packets.ServerPacket.ResponsePacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.ResponsePacket buildPartial() {
+          ca.damocles.proto.Packets.ServerPacket.ResponsePacket result = new ca.damocles.proto.Packets.ServerPacket.ResponsePacket(this);
+          result.code_ = code_;
+          result.message_ = message_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ServerPacket.ResponsePacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ServerPacket.ResponsePacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ServerPacket.ResponsePacket other) {
+          if (other == ca.damocles.proto.Packets.ServerPacket.ResponsePacket.getDefaultInstance()) return this;
+          if (other.getCode() != 0) {
+            setCode(other.getCode());
+          }
+          if (!other.getMessage().isEmpty()) {
+            message_ = other.message_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ServerPacket.ResponsePacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ServerPacket.ResponsePacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private int code_ ;
+        /**
+         * <code>int32 code = 1;</code>
+         * @return The code.
+         */
+        @java.lang.Override
+        public int getCode() {
+          return code_;
+        }
+        /**
+         * <code>int32 code = 1;</code>
+         * @param value The code to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCode(int value) {
+          
+          code_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 code = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCode() {
+          
+          code_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object message_ = "";
+        /**
+         * <code>string message = 2;</code>
+         * @return The message.
+         */
+        public java.lang.String getMessage() {
+          java.lang.Object ref = message_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            message_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string message = 2;</code>
+         * @return The bytes for message.
+         */
+        public com.google.protobuf.ByteString
+            getMessageBytes() {
+          java.lang.Object ref = message_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            message_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string message = 2;</code>
+         * @param value The message to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMessage(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          message_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string message = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMessage() {
+          
+          message_ = getDefaultInstance().getMessage();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string message = 2;</code>
+         * @param value The bytes for message to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMessageBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          message_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ServerPacket.ResponsePacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ServerPacket.ResponsePacket)
+      private static final ca.damocles.proto.Packets.ServerPacket.ResponsePacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ServerPacket.ResponsePacket();
+      }
+
+      public static ca.damocles.proto.Packets.ServerPacket.ResponsePacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<ResponsePacket>
+          PARSER = new com.google.protobuf.AbstractParser<ResponsePacket>() {
+        @java.lang.Override
+        public ResponsePacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ResponsePacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<ResponsePacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<ResponsePacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ServerPacket.ResponsePacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface PingPacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ServerPacket.PingPacket)
+        com.google.protobuf.MessageOrBuilder {
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ServerPacket.PingPacket}
+     */
+    public static final class PingPacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ServerPacket.PingPacket)
+        PingPacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use PingPacket.newBuilder() to construct.
+      private PingPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private PingPacket() {
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new PingPacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private PingPacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_PingPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ServerPacket.PingPacket.class, ca.damocles.proto.Packets.ServerPacket.PingPacket.Builder.class);
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ServerPacket.PingPacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ServerPacket.PingPacket other = (ca.damocles.proto.Packets.ServerPacket.PingPacket) obj;
+
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ServerPacket.PingPacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ServerPacket.PingPacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ServerPacket.PingPacket)
+          ca.damocles.proto.Packets.ServerPacket.PingPacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_PingPacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ServerPacket.PingPacket.class, ca.damocles.proto.Packets.ServerPacket.PingPacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ServerPacket.PingPacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.PingPacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ServerPacket.PingPacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.PingPacket build() {
+          ca.damocles.proto.Packets.ServerPacket.PingPacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ServerPacket.PingPacket buildPartial() {
+          ca.damocles.proto.Packets.ServerPacket.PingPacket result = new ca.damocles.proto.Packets.ServerPacket.PingPacket(this);
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ServerPacket.PingPacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ServerPacket.PingPacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ServerPacket.PingPacket other) {
+          if (other == ca.damocles.proto.Packets.ServerPacket.PingPacket.getDefaultInstance()) return this;
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ServerPacket.PingPacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ServerPacket.PingPacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ServerPacket.PingPacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ServerPacket.PingPacket)
+      private static final ca.damocles.proto.Packets.ServerPacket.PingPacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ServerPacket.PingPacket();
+      }
+
+      public static ca.damocles.proto.Packets.ServerPacket.PingPacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<PingPacket>
+          PARSER = new com.google.protobuf.AbstractParser<PingPacket>() {
+        @java.lang.Override
+        public PingPacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PingPacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<PingPacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<PingPacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ServerPacket.PingPacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     private byte memoizedIsInitialized = -1;
@@ -166,9 +1165,6 @@ public final class Packets {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -178,9 +1174,6 @@ public final class Packets {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -191,13 +1184,11 @@ public final class Packets {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ca.damocles.proto.Packets.ServerPacketkt)) {
+      if (!(obj instanceof ca.damocles.proto.Packets.ServerPacket)) {
         return super.equals(obj);
       }
-      ca.damocles.proto.Packets.ServerPacketkt other = (ca.damocles.proto.Packets.ServerPacketkt) obj;
+      ca.damocles.proto.Packets.ServerPacket other = (ca.damocles.proto.Packets.ServerPacket) obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -209,76 +1200,74 @@ public final class Packets {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(byte[] data)
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(java.io.InputStream input)
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseDelimitedFrom(java.io.InputStream input)
+    public static ca.damocles.proto.Packets.ServerPacket parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseDelimitedFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ca.damocles.proto.Packets.ServerPacketkt parseFrom(
+    public static ca.damocles.proto.Packets.ServerPacket parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -291,7 +1280,7 @@ public final class Packets {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ca.damocles.proto.Packets.ServerPacketkt prototype) {
+    public static Builder newBuilder(ca.damocles.proto.Packets.ServerPacket prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -307,26 +1296,26 @@ public final class Packets {
       return builder;
     }
     /**
-     * Protobuf type {@code ca.damocles.proto.ServerPacketkt}
+     * Protobuf type {@code ca.damocles.proto.ServerPacket}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ServerPacketkt)
-        ca.damocles.proto.Packets.ServerPacketktOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ServerPacket)
+        ca.damocles.proto.Packets.ServerPacketOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacketkt_descriptor;
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacketkt_fieldAccessorTable
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ca.damocles.proto.Packets.ServerPacketkt.class, ca.damocles.proto.Packets.ServerPacketkt.Builder.class);
+                ca.damocles.proto.Packets.ServerPacket.class, ca.damocles.proto.Packets.ServerPacket.Builder.class);
       }
 
-      // Construct using ca.damocles.proto.Packets.ServerPacketkt.newBuilder()
+      // Construct using ca.damocles.proto.Packets.ServerPacket.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -344,25 +1333,23 @@ public final class Packets {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        name_ = "";
-
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacketkt_descriptor;
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ServerPacket_descriptor;
       }
 
       @java.lang.Override
-      public ca.damocles.proto.Packets.ServerPacketkt getDefaultInstanceForType() {
-        return ca.damocles.proto.Packets.ServerPacketkt.getDefaultInstance();
+      public ca.damocles.proto.Packets.ServerPacket getDefaultInstanceForType() {
+        return ca.damocles.proto.Packets.ServerPacket.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ca.damocles.proto.Packets.ServerPacketkt build() {
-        ca.damocles.proto.Packets.ServerPacketkt result = buildPartial();
+      public ca.damocles.proto.Packets.ServerPacket build() {
+        ca.damocles.proto.Packets.ServerPacket result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -370,9 +1357,8 @@ public final class Packets {
       }
 
       @java.lang.Override
-      public ca.damocles.proto.Packets.ServerPacketkt buildPartial() {
-        ca.damocles.proto.Packets.ServerPacketkt result = new ca.damocles.proto.Packets.ServerPacketkt(this);
-        result.name_ = name_;
+      public ca.damocles.proto.Packets.ServerPacket buildPartial() {
+        ca.damocles.proto.Packets.ServerPacket result = new ca.damocles.proto.Packets.ServerPacket(this);
         onBuilt();
         return result;
       }
@@ -411,20 +1397,16 @@ public final class Packets {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ca.damocles.proto.Packets.ServerPacketkt) {
-          return mergeFrom((ca.damocles.proto.Packets.ServerPacketkt)other);
+        if (other instanceof ca.damocles.proto.Packets.ServerPacket) {
+          return mergeFrom((ca.damocles.proto.Packets.ServerPacket)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ca.damocles.proto.Packets.ServerPacketkt other) {
-        if (other == ca.damocles.proto.Packets.ServerPacketkt.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
-        }
+      public Builder mergeFrom(ca.damocles.proto.Packets.ServerPacket other) {
+        if (other == ca.damocles.proto.Packets.ServerPacket.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -440,93 +1422,17 @@ public final class Packets {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ca.damocles.proto.Packets.ServerPacketkt parsedMessage = null;
+        ca.damocles.proto.Packets.ServerPacket parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ca.damocles.proto.Packets.ServerPacketkt) e.getUnfinishedMessage();
+          parsedMessage = (ca.damocles.proto.Packets.ServerPacket) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private java.lang.Object name_ = "";
-      /**
-       * <code>string name = 1;</code>
-       * @return The name.
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return The bytes for name.
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -542,51 +1448,2926 @@ public final class Packets {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ServerPacketkt)
+      // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ServerPacket)
     }
 
-    // @@protoc_insertion_point(class_scope:ca.damocles.proto.ServerPacketkt)
-    private static final ca.damocles.proto.Packets.ServerPacketkt DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ca.damocles.proto.ServerPacket)
+    private static final ca.damocles.proto.Packets.ServerPacket DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ServerPacketkt();
+      DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ServerPacket();
     }
 
-    public static ca.damocles.proto.Packets.ServerPacketkt getDefaultInstance() {
+    public static ca.damocles.proto.Packets.ServerPacket getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ServerPacketkt>
-        PARSER = new com.google.protobuf.AbstractParser<ServerPacketkt>() {
+    private static final com.google.protobuf.Parser<ServerPacket>
+        PARSER = new com.google.protobuf.AbstractParser<ServerPacket>() {
       @java.lang.Override
-      public ServerPacketkt parsePartialFrom(
+      public ServerPacket parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ServerPacketkt(input, extensionRegistry);
+        return new ServerPacket(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ServerPacketkt> parser() {
+    public static com.google.protobuf.Parser<ServerPacket> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ServerPacketkt> getParserForType() {
+    public com.google.protobuf.Parser<ServerPacket> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public ca.damocles.proto.Packets.ServerPacketkt getDefaultInstanceForType() {
+    public ca.damocles.proto.Packets.ServerPacket getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientPacketOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ca.damocles.proto.ClientPacket}
+   */
+  public static final class ClientPacket extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket)
+      ClientPacketOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientPacket.newBuilder() to construct.
+    private ClientPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientPacket() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientPacket();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientPacket(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ca.damocles.proto.Packets.ClientPacket.class, ca.damocles.proto.Packets.ClientPacket.Builder.class);
+    }
+
+    public interface LoginPacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.LoginPacket)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      java.lang.String getEmail();
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      com.google.protobuf.ByteString
+          getEmailBytes();
+
+      /**
+       * <code>string password = 2;</code>
+       * @return The password.
+       */
+      java.lang.String getPassword();
+      /**
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
+       */
+      com.google.protobuf.ByteString
+          getPasswordBytes();
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket.LoginPacket}
+     */
+    public static final class LoginPacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.LoginPacket)
+        LoginPacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use LoginPacket.newBuilder() to construct.
+      private LoginPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private LoginPacket() {
+        email_ = "";
+        password_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new LoginPacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private LoginPacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                email_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                password_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_LoginPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.LoginPacket.class, ca.damocles.proto.Packets.ClientPacket.LoginPacket.Builder.class);
+      }
+
+      public static final int EMAIL_FIELD_NUMBER = 1;
+      private volatile java.lang.Object email_;
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PASSWORD_FIELD_NUMBER = 2;
+      private volatile java.lang.Object password_;
+      /**
+       * <code>string password = 2;</code>
+       * @return The password.
+       */
+      @java.lang.Override
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.LoginPacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ClientPacket.LoginPacket other = (ca.damocles.proto.Packets.ClientPacket.LoginPacket) obj;
+
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+        if (!getPassword()
+            .equals(other.getPassword())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.LoginPacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ClientPacket.LoginPacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.LoginPacket)
+          ca.damocles.proto.Packets.ClientPacket.LoginPacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_LoginPacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ClientPacket.LoginPacket.class, ca.damocles.proto.Packets.ClientPacket.LoginPacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ClientPacket.LoginPacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          email_ = "";
+
+          password_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.LoginPacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ClientPacket.LoginPacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.LoginPacket build() {
+          ca.damocles.proto.Packets.ClientPacket.LoginPacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.LoginPacket buildPartial() {
+          ca.damocles.proto.Packets.ClientPacket.LoginPacket result = new ca.damocles.proto.Packets.ClientPacket.LoginPacket(this);
+          result.email_ = email_;
+          result.password_ = password_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ClientPacket.LoginPacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.LoginPacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.LoginPacket other) {
+          if (other == ca.damocles.proto.Packets.ClientPacket.LoginPacket.getDefaultInstance()) return this;
+          if (!other.getEmail().isEmpty()) {
+            email_ = other.email_;
+            onChanged();
+          }
+          if (!other.getPassword().isEmpty()) {
+            password_ = other.password_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ClientPacket.LoginPacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.LoginPacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object email_ = "";
+        /**
+         * <code>string email = 1;</code>
+         * @return The email.
+         */
+        public java.lang.String getEmail() {
+          java.lang.Object ref = email_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            email_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return The bytes for email.
+         */
+        public com.google.protobuf.ByteString
+            getEmailBytes() {
+          java.lang.Object ref = email_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            email_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmail(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          email_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearEmail() {
+          
+          email_ = getDefaultInstance().getEmail();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The bytes for email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmailBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          email_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object password_ = "";
+        /**
+         * <code>string password = 2;</code>
+         * @return The password.
+         */
+        public java.lang.String getPassword() {
+          java.lang.Object ref = password_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            password_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string password = 2;</code>
+         * @return The bytes for password.
+         */
+        public com.google.protobuf.ByteString
+            getPasswordBytes() {
+          java.lang.Object ref = password_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            password_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string password = 2;</code>
+         * @param value The password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPassword(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPassword() {
+          
+          password_ = getDefaultInstance().getPassword();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 2;</code>
+         * @param value The bytes for password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.LoginPacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.LoginPacket)
+      private static final ca.damocles.proto.Packets.ClientPacket.LoginPacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.LoginPacket();
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.LoginPacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<LoginPacket>
+          PARSER = new com.google.protobuf.AbstractParser<LoginPacket>() {
+        @java.lang.Override
+        public LoginPacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new LoginPacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<LoginPacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<LoginPacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket.LoginPacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface ClosePacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.ClosePacket)
+        com.google.protobuf.MessageOrBuilder {
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket.ClosePacket}
+     */
+    public static final class ClosePacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.ClosePacket)
+        ClosePacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use ClosePacket.newBuilder() to construct.
+      private ClosePacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private ClosePacket() {
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new ClosePacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private ClosePacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.ClosePacket.class, ca.damocles.proto.Packets.ClientPacket.ClosePacket.Builder.class);
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.ClosePacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ClientPacket.ClosePacket other = (ca.damocles.proto.Packets.ClientPacket.ClosePacket) obj;
+
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.ClosePacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ClientPacket.ClosePacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.ClosePacket)
+          ca.damocles.proto.Packets.ClientPacket.ClosePacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ClientPacket.ClosePacket.class, ca.damocles.proto.Packets.ClientPacket.ClosePacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ClientPacket.ClosePacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.ClosePacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ClientPacket.ClosePacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.ClosePacket build() {
+          ca.damocles.proto.Packets.ClientPacket.ClosePacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.ClosePacket buildPartial() {
+          ca.damocles.proto.Packets.ClientPacket.ClosePacket result = new ca.damocles.proto.Packets.ClientPacket.ClosePacket(this);
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ClientPacket.ClosePacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.ClosePacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.ClosePacket other) {
+          if (other == ca.damocles.proto.Packets.ClientPacket.ClosePacket.getDefaultInstance()) return this;
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ClientPacket.ClosePacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.ClosePacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.ClosePacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.ClosePacket)
+      private static final ca.damocles.proto.Packets.ClientPacket.ClosePacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.ClosePacket();
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.ClosePacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<ClosePacket>
+          PARSER = new com.google.protobuf.AbstractParser<ClosePacket>() {
+        @java.lang.Override
+        public ClosePacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ClosePacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<ClosePacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<ClosePacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket.ClosePacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface CreateAccountPacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      java.lang.String getEmail();
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      com.google.protobuf.ByteString
+          getEmailBytes();
+
+      /**
+       * <code>string username = 2;</code>
+       * @return The username.
+       */
+      java.lang.String getUsername();
+      /**
+       * <code>string username = 2;</code>
+       * @return The bytes for username.
+       */
+      com.google.protobuf.ByteString
+          getUsernameBytes();
+
+      /**
+       * <code>string password = 3;</code>
+       * @return The password.
+       */
+      java.lang.String getPassword();
+      /**
+       * <code>string password = 3;</code>
+       * @return The bytes for password.
+       */
+      com.google.protobuf.ByteString
+          getPasswordBytes();
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
+     */
+    public static final class CreateAccountPacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+        CreateAccountPacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use CreateAccountPacket.newBuilder() to construct.
+      private CreateAccountPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private CreateAccountPacket() {
+        email_ = "";
+        username_ = "";
+        password_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new CreateAccountPacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private CreateAccountPacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                email_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                username_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                password_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
+      }
+
+      public static final int EMAIL_FIELD_NUMBER = 1;
+      private volatile java.lang.Object email_;
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int USERNAME_FIELD_NUMBER = 2;
+      private volatile java.lang.Object username_;
+      /**
+       * <code>string username = 2;</code>
+       * @return The username.
+       */
+      @java.lang.Override
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          username_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string username = 2;</code>
+       * @return The bytes for username.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PASSWORD_FIELD_NUMBER = 3;
+      private volatile java.lang.Object password_;
+      /**
+       * <code>string password = 3;</code>
+       * @return The password.
+       */
+      @java.lang.Override
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string password = 3;</code>
+       * @return The bytes for password.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) obj;
+
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+        if (!getUsername()
+            .equals(other.getUsername())) return false;
+        if (!getPassword()
+            .equals(other.getPassword())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUsername().hashCode();
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          email_ = "";
+
+          username_ = "";
+
+          password_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket build() {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket buildPartial() {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket(this);
+          result.email_ = email_;
+          result.username_ = username_;
+          result.password_ = password_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other) {
+          if (other == ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance()) return this;
+          if (!other.getEmail().isEmpty()) {
+            email_ = other.email_;
+            onChanged();
+          }
+          if (!other.getUsername().isEmpty()) {
+            username_ = other.username_;
+            onChanged();
+          }
+          if (!other.getPassword().isEmpty()) {
+            password_ = other.password_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object email_ = "";
+        /**
+         * <code>string email = 1;</code>
+         * @return The email.
+         */
+        public java.lang.String getEmail() {
+          java.lang.Object ref = email_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            email_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return The bytes for email.
+         */
+        public com.google.protobuf.ByteString
+            getEmailBytes() {
+          java.lang.Object ref = email_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            email_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmail(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          email_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearEmail() {
+          
+          email_ = getDefaultInstance().getEmail();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The bytes for email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmailBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          email_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object username_ = "";
+        /**
+         * <code>string username = 2;</code>
+         * @return The username.
+         */
+        public java.lang.String getUsername() {
+          java.lang.Object ref = username_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            username_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string username = 2;</code>
+         * @return The bytes for username.
+         */
+        public com.google.protobuf.ByteString
+            getUsernameBytes() {
+          java.lang.Object ref = username_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            username_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string username = 2;</code>
+         * @param value The username to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUsername(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          username_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string username = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUsername() {
+          
+          username_ = getDefaultInstance().getUsername();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string username = 2;</code>
+         * @param value The bytes for username to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUsernameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          username_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object password_ = "";
+        /**
+         * <code>string password = 3;</code>
+         * @return The password.
+         */
+        public java.lang.String getPassword() {
+          java.lang.Object ref = password_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            password_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string password = 3;</code>
+         * @return The bytes for password.
+         */
+        public com.google.protobuf.ByteString
+            getPasswordBytes() {
+          java.lang.Object ref = password_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            password_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string password = 3;</code>
+         * @param value The password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPassword(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPassword() {
+          
+          password_ = getDefaultInstance().getPassword();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 3;</code>
+         * @param value The bytes for password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+      private static final ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket();
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<CreateAccountPacket>
+          PARSER = new com.google.protobuf.AbstractParser<CreateAccountPacket>() {
+        @java.lang.Override
+        public CreateAccountPacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CreateAccountPacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<CreateAccountPacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<CreateAccountPacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface PongPacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.PongPacket)
+        com.google.protobuf.MessageOrBuilder {
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket.PongPacket}
+     */
+    public static final class PongPacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.PongPacket)
+        PongPacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use PongPacket.newBuilder() to construct.
+      private PongPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private PongPacket() {
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new PongPacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private PongPacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_PongPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.PongPacket.class, ca.damocles.proto.Packets.ClientPacket.PongPacket.Builder.class);
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.PongPacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ClientPacket.PongPacket other = (ca.damocles.proto.Packets.ClientPacket.PongPacket) obj;
+
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.PongPacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ClientPacket.PongPacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.PongPacket)
+          ca.damocles.proto.Packets.ClientPacket.PongPacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_PongPacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ClientPacket.PongPacket.class, ca.damocles.proto.Packets.ClientPacket.PongPacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ClientPacket.PongPacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.PongPacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ClientPacket.PongPacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.PongPacket build() {
+          ca.damocles.proto.Packets.ClientPacket.PongPacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.PongPacket buildPartial() {
+          ca.damocles.proto.Packets.ClientPacket.PongPacket result = new ca.damocles.proto.Packets.ClientPacket.PongPacket(this);
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ClientPacket.PongPacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.PongPacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.PongPacket other) {
+          if (other == ca.damocles.proto.Packets.ClientPacket.PongPacket.getDefaultInstance()) return this;
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ClientPacket.PongPacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.PongPacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.PongPacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.PongPacket)
+      private static final ca.damocles.proto.Packets.ClientPacket.PongPacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.PongPacket();
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.PongPacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<PongPacket>
+          PARSER = new com.google.protobuf.AbstractParser<PongPacket>() {
+        @java.lang.Override
+        public PongPacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PongPacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<PongPacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<PongPacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket.PongPacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket)) {
+        return super.equals(obj);
+      }
+      ca.damocles.proto.Packets.ClientPacket other = (ca.damocles.proto.Packets.ClientPacket) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static ca.damocles.proto.Packets.ClientPacket parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket)
+        ca.damocles.proto.Packets.ClientPacketOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.class, ca.damocles.proto.Packets.ClientPacket.Builder.class);
+      }
+
+      // Construct using ca.damocles.proto.Packets.ClientPacket.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_descriptor;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket getDefaultInstanceForType() {
+        return ca.damocles.proto.Packets.ClientPacket.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket build() {
+        ca.damocles.proto.Packets.ClientPacket result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket buildPartial() {
+        ca.damocles.proto.Packets.ClientPacket result = new ca.damocles.proto.Packets.ClientPacket(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ca.damocles.proto.Packets.ClientPacket) {
+          return mergeFrom((ca.damocles.proto.Packets.ClientPacket)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket other) {
+        if (other == ca.damocles.proto.Packets.ClientPacket.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ca.damocles.proto.Packets.ClientPacket parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ca.damocles.proto.Packets.ClientPacket) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket)
+    }
+
+    // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket)
+    private static final ca.damocles.proto.Packets.ClientPacket DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket();
+    }
+
+    public static ca.damocles.proto.Packets.ClientPacket getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ClientPacket>
+        PARSER = new com.google.protobuf.AbstractParser<ClientPacket>() {
+      @java.lang.Override
+      public ClientPacket parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientPacket(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientPacket> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientPacket> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public ca.damocles.proto.Packets.ClientPacket getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_damocles_proto_ServerPacketkt_descriptor;
+    internal_static_ca_damocles_proto_ServerPacket_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_damocles_proto_ServerPacketkt_fieldAccessorTable;
+      internal_static_ca_damocles_proto_ServerPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ServerPacket_PingPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_LoginPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_PongPacket_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -596,19 +4377,67 @@ public final class Packets {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rpackets.proto\022\021ca.damocles.proto\"\036\n\016Se" +
-      "rverPacketkt\022\014\n\004name\030\001 \001(\tb\006proto3"
+      "\n\rpackets.proto\022\021ca.damocles.proto\"M\n\014Se" +
+      "rverPacket\032/\n\016ResponsePacket\022\014\n\004code\030\001 \001" +
+      "(\005\022\017\n\007message\030\002 \001(\t\032\014\n\nPingPacket\"\245\001\n\014Cl" +
+      "ientPacket\032.\n\013LoginPacket\022\r\n\005email\030\001 \001(\t" +
+      "\022\020\n\010password\030\002 \001(\t\032\r\n\013ClosePacket\032H\n\023Cre" +
+      "ateAccountPacket\022\r\n\005email\030\001 \001(\t\022\020\n\010usern" +
+      "ame\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\032\014\n\nPongPacke" +
+      "tb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_ca_damocles_proto_ServerPacketkt_descriptor =
+    internal_static_ca_damocles_proto_ServerPacket_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ca_damocles_proto_ServerPacketkt_fieldAccessorTable = new
+    internal_static_ca_damocles_proto_ServerPacket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_damocles_proto_ServerPacketkt_descriptor,
-        new java.lang.String[] { "Name", });
+        internal_static_ca_damocles_proto_ServerPacket_descriptor,
+        new java.lang.String[] { });
+    internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor =
+      internal_static_ca_damocles_proto_ServerPacket_descriptor.getNestedTypes().get(0);
+    internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ServerPacket_ResponsePacket_descriptor,
+        new java.lang.String[] { "Code", "Message", });
+    internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor =
+      internal_static_ca_damocles_proto_ServerPacket_descriptor.getNestedTypes().get(1);
+    internal_static_ca_damocles_proto_ServerPacket_PingPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ServerPacket_PingPacket_descriptor,
+        new java.lang.String[] { });
+    internal_static_ca_damocles_proto_ClientPacket_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_ca_damocles_proto_ClientPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_descriptor,
+        new java.lang.String[] { });
+    internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor =
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(0);
+    internal_static_ca_damocles_proto_ClientPacket_LoginPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor,
+        new java.lang.String[] { "Email", "Password", });
+    internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor =
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(1);
+    internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor,
+        new java.lang.String[] { });
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor =
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(2);
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor,
+        new java.lang.String[] { "Email", "Username", "Password", });
+    internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor =
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(3);
+    internal_static_ca_damocles_proto_ClientPacket_PongPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor,
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

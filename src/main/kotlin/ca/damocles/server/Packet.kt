@@ -1,7 +1,7 @@
 package ca.damocles.server
 
 import ca.damocles.proto.Packets
-import ca.damocles.proto.ServerPacketktKt
+import ca.damocles.utilities.generateAlphaString
 import com.google.gson.Gson
 
 /**
@@ -22,9 +22,13 @@ open class Packet(val identity: String, val side: Byte, val type: Byte, val body
 }
 
 fun main(){
-    val bytearray = Packets.ServerPacketkt.newBuilder().setName("Test").build().toByteArray()
-    val test = Packets.ServerPacketkt.parseFrom(bytearray)
-    println(test.name)
+    val packet = LoginPacket(generateAlphaString(3), "nnryanp@gmail.com", "12345qwesd")
+    println(packet)
+    val byteArray = Packets.ClientPacket.LoginPacket.newBuilder().setEmail("nnryanp@gmail.com").setPassword("12345qwesd").build().toByteArray()
+    println(byteArray)
+    val test = Packets.ClientPacket.LoginPacket.parseFrom(byteArray)
+    println(test.email)
+    println(test.password)
 }
 
 /* CLIENT PACKETS */
