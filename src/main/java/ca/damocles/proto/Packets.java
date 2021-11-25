@@ -1569,6 +1569,760 @@ public final class Packets {
               ca.damocles.proto.Packets.ClientPacket.class, ca.damocles.proto.Packets.ClientPacket.Builder.class);
     }
 
+    public interface CreateAccountPacketOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      java.lang.String getEmail();
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      com.google.protobuf.ByteString
+          getEmailBytes();
+
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The password.
+       */
+      java.lang.String getPassword();
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
+       */
+      com.google.protobuf.ByteString
+          getPasswordBytes();
+    }
+    /**
+     * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
+     */
+    public static final class CreateAccountPacket extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+        CreateAccountPacketOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use CreateAccountPacket.newBuilder() to construct.
+      private CreateAccountPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private CreateAccountPacket() {
+        email_ = "";
+        password_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new CreateAccountPacket();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private CreateAccountPacket(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                email_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                password_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
+      }
+
+      public static final int EMAIL_FIELD_NUMBER = 1;
+      private volatile java.lang.Object email_;
+      /**
+       * <code>string email = 1;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          email_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string email = 1;</code>
+       * @return The bytes for email.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PASSWORD_FIELD_NUMBER = 2;
+      private volatile java.lang.Object password_;
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The password.
+       */
+      @java.lang.Override
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       * @return The bytes for password.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
+        }
+        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)) {
+          return super.equals(obj);
+        }
+        ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) obj;
+
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+        if (!getPassword()
+            .equals(other.getPassword())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacketOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
+        }
+
+        // Construct using ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          email_ = "";
+
+          password_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
+          return ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket build() {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket buildPartial() {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket(this);
+          result.email_ = email_;
+          result.password_ = password_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) {
+            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other) {
+          if (other == ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance()) return this;
+          if (!other.getEmail().isEmpty()) {
+            email_ = other.email_;
+            onChanged();
+          }
+          if (!other.getPassword().isEmpty()) {
+            password_ = other.password_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object email_ = "";
+        /**
+         * <code>string email = 1;</code>
+         * @return The email.
+         */
+        public java.lang.String getEmail() {
+          java.lang.Object ref = email_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            email_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return The bytes for email.
+         */
+        public com.google.protobuf.ByteString
+            getEmailBytes() {
+          java.lang.Object ref = email_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            email_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmail(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          email_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearEmail() {
+          
+          email_ = getDefaultInstance().getEmail();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string email = 1;</code>
+         * @param value The bytes for email to set.
+         * @return This builder for chaining.
+         */
+        public Builder setEmailBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          email_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object password_ = "";
+        /**
+         * <pre>
+         *string username = 2;
+         * </pre>
+         *
+         * <code>string password = 2;</code>
+         * @return The password.
+         */
+        public java.lang.String getPassword() {
+          java.lang.Object ref = password_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            password_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         *string username = 2;
+         * </pre>
+         *
+         * <code>string password = 2;</code>
+         * @return The bytes for password.
+         */
+        public com.google.protobuf.ByteString
+            getPasswordBytes() {
+          java.lang.Object ref = password_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            password_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         *string username = 2;
+         * </pre>
+         *
+         * <code>string password = 2;</code>
+         * @param value The password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPassword(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         *string username = 2;
+         * </pre>
+         *
+         * <code>string password = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPassword() {
+          
+          password_ = getDefaultInstance().getPassword();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         *string username = 2;
+         * </pre>
+         *
+         * <code>string password = 2;</code>
+         * @param value The bytes for password to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+      }
+
+      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
+      private static final ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket();
+      }
+
+      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<CreateAccountPacket>
+          PARSER = new com.google.protobuf.AbstractParser<CreateAccountPacket>() {
+        @java.lang.Override
+        public CreateAccountPacket parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CreateAccountPacket(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<CreateAccountPacket> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<CreateAccountPacket> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     public interface LoginPacketOrBuilder extends
         // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.LoginPacket)
         com.google.protobuf.MessageOrBuilder {
@@ -2705,874 +3459,6 @@ public final class Packets {
 
     }
 
-    public interface CreateAccountPacketOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.CreateAccountPacket)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>string email = 1;</code>
-       * @return The email.
-       */
-      java.lang.String getEmail();
-      /**
-       * <code>string email = 1;</code>
-       * @return The bytes for email.
-       */
-      com.google.protobuf.ByteString
-          getEmailBytes();
-
-      /**
-       * <code>string username = 2;</code>
-       * @return The username.
-       */
-      java.lang.String getUsername();
-      /**
-       * <code>string username = 2;</code>
-       * @return The bytes for username.
-       */
-      com.google.protobuf.ByteString
-          getUsernameBytes();
-
-      /**
-       * <code>string password = 3;</code>
-       * @return The password.
-       */
-      java.lang.String getPassword();
-      /**
-       * <code>string password = 3;</code>
-       * @return The bytes for password.
-       */
-      com.google.protobuf.ByteString
-          getPasswordBytes();
-    }
-    /**
-     * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
-     */
-    public static final class CreateAccountPacket extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
-        CreateAccountPacketOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use CreateAccountPacket.newBuilder() to construct.
-      private CreateAccountPacket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private CreateAccountPacket() {
-        email_ = "";
-        username_ = "";
-        password_ = "";
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new CreateAccountPacket();
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private CreateAccountPacket(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                email_ = s;
-                break;
-              }
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                username_ = s;
-                break;
-              }
-              case 26: {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                password_ = s;
-                break;
-              }
-              default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
-      }
-
-      public static final int EMAIL_FIELD_NUMBER = 1;
-      private volatile java.lang.Object email_;
-      /**
-       * <code>string email = 1;</code>
-       * @return The email.
-       */
-      @java.lang.Override
-      public java.lang.String getEmail() {
-        java.lang.Object ref = email_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          email_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string email = 1;</code>
-       * @return The bytes for email.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = email_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          email_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int USERNAME_FIELD_NUMBER = 2;
-      private volatile java.lang.Object username_;
-      /**
-       * <code>string username = 2;</code>
-       * @return The username.
-       */
-      @java.lang.Override
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          username_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string username = 2;</code>
-       * @return The bytes for username.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int PASSWORD_FIELD_NUMBER = 3;
-      private volatile java.lang.Object password_;
-      /**
-       * <code>string password = 3;</code>
-       * @return The password.
-       */
-      @java.lang.Override
-      public java.lang.String getPassword() {
-        java.lang.Object ref = password_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          password_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>string password = 3;</code>
-       * @return The bytes for password.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getPasswordBytes() {
-        java.lang.Object ref = password_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          password_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
-        }
-        if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)) {
-          return super.equals(obj);
-        }
-        ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) obj;
-
-        if (!getEmail()
-            .equals(other.getEmail())) return false;
-        if (!getUsername()
-            .equals(other.getUsername())) return false;
-        if (!getPassword()
-            .equals(other.getPassword())) return false;
-        if (!unknownFields.equals(other.unknownFields)) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-        hash = (53 * hash) + getEmail().hashCode();
-        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getUsername().hashCode();
-        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getPassword().hashCode();
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code ca.damocles.proto.ClientPacket.CreateAccountPacket}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ca.damocles.proto.ClientPacket.CreateAccountPacket)
-          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacketOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.class, ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder.class);
-        }
-
-        // Construct using ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          email_ = "";
-
-          username_ = "";
-
-          password_ = "";
-
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return ca.damocles.proto.Packets.internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
-        }
-
-        @java.lang.Override
-        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
-          return ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket build() {
-          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket buildPartial() {
-          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket result = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket(this);
-          result.email_ = email_;
-          result.username_ = username_;
-          result.password_ = password_;
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) {
-            return mergeFrom((ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket other) {
-          if (other == ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.getDefaultInstance()) return this;
-          if (!other.getEmail().isEmpty()) {
-            email_ = other.email_;
-            onChanged();
-          }
-          if (!other.getUsername().isEmpty()) {
-            username_ = other.username_;
-            onChanged();
-          }
-          if (!other.getPassword().isEmpty()) {
-            password_ = other.password_;
-            onChanged();
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-
-        private java.lang.Object email_ = "";
-        /**
-         * <code>string email = 1;</code>
-         * @return The email.
-         */
-        public java.lang.String getEmail() {
-          java.lang.Object ref = email_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            email_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string email = 1;</code>
-         * @return The bytes for email.
-         */
-        public com.google.protobuf.ByteString
-            getEmailBytes() {
-          java.lang.Object ref = email_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            email_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string email = 1;</code>
-         * @param value The email to set.
-         * @return This builder for chaining.
-         */
-        public Builder setEmail(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          email_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string email = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearEmail() {
-          
-          email_ = getDefaultInstance().getEmail();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string email = 1;</code>
-         * @param value The bytes for email to set.
-         * @return This builder for chaining.
-         */
-        public Builder setEmailBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          email_ = value;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object username_ = "";
-        /**
-         * <code>string username = 2;</code>
-         * @return The username.
-         */
-        public java.lang.String getUsername() {
-          java.lang.Object ref = username_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            username_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string username = 2;</code>
-         * @return The bytes for username.
-         */
-        public com.google.protobuf.ByteString
-            getUsernameBytes() {
-          java.lang.Object ref = username_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            username_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string username = 2;</code>
-         * @param value The username to set.
-         * @return This builder for chaining.
-         */
-        public Builder setUsername(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          username_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string username = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearUsername() {
-          
-          username_ = getDefaultInstance().getUsername();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string username = 2;</code>
-         * @param value The bytes for username to set.
-         * @return This builder for chaining.
-         */
-        public Builder setUsernameBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          username_ = value;
-          onChanged();
-          return this;
-        }
-
-        private java.lang.Object password_ = "";
-        /**
-         * <code>string password = 3;</code>
-         * @return The password.
-         */
-        public java.lang.String getPassword() {
-          java.lang.Object ref = password_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            password_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>string password = 3;</code>
-         * @return The bytes for password.
-         */
-        public com.google.protobuf.ByteString
-            getPasswordBytes() {
-          java.lang.Object ref = password_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            password_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>string password = 3;</code>
-         * @param value The password to set.
-         * @return This builder for chaining.
-         */
-        public Builder setPassword(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
-          password_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string password = 3;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearPassword() {
-          
-          password_ = getDefaultInstance().getPassword();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>string password = 3;</code>
-         * @param value The bytes for password to set.
-         * @return This builder for chaining.
-         */
-        public Builder setPasswordBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          password_ = value;
-          onChanged();
-          return this;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
-      }
-
-      // @@protoc_insertion_point(class_scope:ca.damocles.proto.ClientPacket.CreateAccountPacket)
-      private static final ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket();
-      }
-
-      public static ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<CreateAccountPacket>
-          PARSER = new com.google.protobuf.AbstractParser<CreateAccountPacket>() {
-        @java.lang.Override
-        public CreateAccountPacket parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CreateAccountPacket(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<CreateAccountPacket> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<CreateAccountPacket> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
     public interface PongPacketOrBuilder extends
         // @@protoc_insertion_point(interface_extends:ca.damocles.proto.ClientPacket.PongPacket)
         com.google.protobuf.MessageOrBuilder {
@@ -4349,6 +4235,11 @@ public final class Packets {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ca_damocles_proto_ClientPacket_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -4358,11 +4249,6 @@ public final class Packets {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor;
   private static final 
@@ -4379,12 +4265,11 @@ public final class Packets {
     java.lang.String[] descriptorData = {
       "\n\rpackets.proto\022\021ca.damocles.proto\"M\n\014Se" +
       "rverPacket\032/\n\016ResponsePacket\022\014\n\004code\030\001 \001" +
-      "(\005\022\017\n\007message\030\002 \001(\t\032\014\n\nPingPacket\"\245\001\n\014Cl" +
-      "ientPacket\032.\n\013LoginPacket\022\r\n\005email\030\001 \001(\t" +
-      "\022\020\n\010password\030\002 \001(\t\032\r\n\013ClosePacket\032H\n\023Cre" +
-      "ateAccountPacket\022\r\n\005email\030\001 \001(\t\022\020\n\010usern" +
-      "ame\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\032\014\n\nPongPacke" +
-      "tb\006proto3"
+      "(\005\022\017\n\007message\030\002 \001(\t\032\014\n\nPingPacket\"\223\001\n\014Cl" +
+      "ientPacket\0326\n\023CreateAccountPacket\022\r\n\005ema" +
+      "il\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\032.\n\013LoginPacke" +
+      "t\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\032\r\n\013Cl" +
+      "osePacket\032\014\n\nPongPacketb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4414,24 +4299,24 @@ public final class Packets {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ca_damocles_proto_ClientPacket_descriptor,
         new java.lang.String[] { });
-    internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor =
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor =
       internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(0);
+    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor,
+        new java.lang.String[] { "Email", "Password", });
+    internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor =
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(1);
     internal_static_ca_damocles_proto_ClientPacket_LoginPacket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ca_damocles_proto_ClientPacket_LoginPacket_descriptor,
         new java.lang.String[] { "Email", "Password", });
     internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor =
-      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(1);
+      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(2);
     internal_static_ca_damocles_proto_ClientPacket_ClosePacket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ca_damocles_proto_ClientPacket_ClosePacket_descriptor,
         new java.lang.String[] { });
-    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor =
-      internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(2);
-    internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ca_damocles_proto_ClientPacket_CreateAccountPacket_descriptor,
-        new java.lang.String[] { "Email", "Username", "Password", });
     internal_static_ca_damocles_proto_ClientPacket_PongPacket_descriptor =
       internal_static_ca_damocles_proto_ClientPacket_descriptor.getNestedTypes().get(3);
     internal_static_ca_damocles_proto_ClientPacket_PongPacket_fieldAccessorTable = new

@@ -19,13 +19,13 @@ message ClientPacket{
     string password = 2;
   }
 
-  message ClosePacket{}
-
   message CreateAccountPacket{
     string email = 1;
     string username = 2;
     string password = 3;
   }
+
+  message ClosePacket{}
 
   message PongPacket{}
 

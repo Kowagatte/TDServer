@@ -23,6 +23,68 @@ object ClientPacketKt {
     internal fun _build(): ca.damocles.proto.Packets.ClientPacket = _builder.build()
   }
   @kotlin.jvm.JvmSynthetic
+  inline fun createAccountPacket(block: ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket =
+    ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl._create(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.newBuilder()).apply { block() }._build()
+  object CreateAccountPacketKt {
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    @com.google.protobuf.kotlin.ProtoDslMarker
+    class Dsl private constructor(
+      private val _builder: ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder
+    ) {
+      companion object {
+        @kotlin.jvm.JvmSynthetic
+        @kotlin.PublishedApi
+        internal fun _create(builder: ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder): Dsl = Dsl(builder)
+      }
+
+      @kotlin.jvm.JvmSynthetic
+      @kotlin.PublishedApi
+      internal fun _build(): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket = _builder.build()
+
+      /**
+       * <code>string email = 1;</code>
+       */
+      var email: kotlin.String
+        @JvmName("getEmail")
+        get() = _builder.getEmail()
+        @JvmName("setEmail")
+        set(value) {
+          _builder.setEmail(value)
+        }
+      /**
+       * <code>string email = 1;</code>
+       */
+      fun clearEmail() {
+        _builder.clearEmail()
+      }
+
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       */
+      var password: kotlin.String
+        @JvmName("getPassword")
+        get() = _builder.getPassword()
+        @JvmName("setPassword")
+        set(value) {
+          _builder.setPassword(value)
+        }
+      /**
+       * <pre>
+       *string username = 2;
+       * </pre>
+       *
+       * <code>string password = 2;</code>
+       */
+      fun clearPassword() {
+        _builder.clearPassword()
+      }
+    }
+  }
+  @kotlin.jvm.JvmSynthetic
   inline fun loginPacket(block: ca.damocles.proto.ClientPacketKt.LoginPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.LoginPacket =
     ca.damocles.proto.ClientPacketKt.LoginPacketKt.Dsl._create(ca.damocles.proto.Packets.ClientPacket.LoginPacket.newBuilder()).apply { block() }._build()
   object LoginPacketKt {
@@ -97,77 +159,6 @@ object ClientPacketKt {
     }
   }
   @kotlin.jvm.JvmSynthetic
-  inline fun createAccountPacket(block: ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket =
-    ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl._create(ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.newBuilder()).apply { block() }._build()
-  object CreateAccountPacketKt {
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    @com.google.protobuf.kotlin.ProtoDslMarker
-    class Dsl private constructor(
-      private val _builder: ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder
-    ) {
-      companion object {
-        @kotlin.jvm.JvmSynthetic
-        @kotlin.PublishedApi
-        internal fun _create(builder: ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.Builder): Dsl = Dsl(builder)
-      }
-
-      @kotlin.jvm.JvmSynthetic
-      @kotlin.PublishedApi
-      internal fun _build(): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket = _builder.build()
-
-      /**
-       * <code>string email = 1;</code>
-       */
-      var email: kotlin.String
-        @JvmName("getEmail")
-        get() = _builder.getEmail()
-        @JvmName("setEmail")
-        set(value) {
-          _builder.setEmail(value)
-        }
-      /**
-       * <code>string email = 1;</code>
-       */
-      fun clearEmail() {
-        _builder.clearEmail()
-      }
-
-      /**
-       * <code>string username = 2;</code>
-       */
-      var username: kotlin.String
-        @JvmName("getUsername")
-        get() = _builder.getUsername()
-        @JvmName("setUsername")
-        set(value) {
-          _builder.setUsername(value)
-        }
-      /**
-       * <code>string username = 2;</code>
-       */
-      fun clearUsername() {
-        _builder.clearUsername()
-      }
-
-      /**
-       * <code>string password = 3;</code>
-       */
-      var password: kotlin.String
-        @JvmName("getPassword")
-        get() = _builder.getPassword()
-        @JvmName("setPassword")
-        set(value) {
-          _builder.setPassword(value)
-        }
-      /**
-       * <code>string password = 3;</code>
-       */
-      fun clearPassword() {
-        _builder.clearPassword()
-      }
-    }
-  }
-  @kotlin.jvm.JvmSynthetic
   inline fun pongPacket(block: ca.damocles.proto.ClientPacketKt.PongPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.PongPacket =
     ca.damocles.proto.ClientPacketKt.PongPacketKt.Dsl._create(ca.damocles.proto.Packets.ClientPacket.PongPacket.newBuilder()).apply { block() }._build()
   object PongPacketKt {
@@ -192,14 +183,14 @@ object ClientPacketKt {
 inline fun ca.damocles.proto.Packets.ClientPacket.copy(block: ca.damocles.proto.ClientPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket =
   ca.damocles.proto.ClientPacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
 @kotlin.jvm.JvmSynthetic
+inline fun ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.copy(block: ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket =
+  ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+@kotlin.jvm.JvmSynthetic
 inline fun ca.damocles.proto.Packets.ClientPacket.LoginPacket.copy(block: ca.damocles.proto.ClientPacketKt.LoginPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.LoginPacket =
   ca.damocles.proto.ClientPacketKt.LoginPacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
 @kotlin.jvm.JvmSynthetic
 inline fun ca.damocles.proto.Packets.ClientPacket.ClosePacket.copy(block: ca.damocles.proto.ClientPacketKt.ClosePacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.ClosePacket =
   ca.damocles.proto.ClientPacketKt.ClosePacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
-@kotlin.jvm.JvmSynthetic
-inline fun ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket.copy(block: ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.CreateAccountPacket =
-  ca.damocles.proto.ClientPacketKt.CreateAccountPacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
 @kotlin.jvm.JvmSynthetic
 inline fun ca.damocles.proto.Packets.ClientPacket.PongPacket.copy(block: ca.damocles.proto.ClientPacketKt.PongPacketKt.Dsl.() -> kotlin.Unit): ca.damocles.proto.Packets.ClientPacket.PongPacket =
   ca.damocles.proto.ClientPacketKt.PongPacketKt.Dsl._create(this.toBuilder()).apply { block() }._build()
