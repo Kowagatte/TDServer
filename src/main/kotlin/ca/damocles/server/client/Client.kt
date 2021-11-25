@@ -5,13 +5,11 @@ import ca.damocles.proto.Packets
 import ca.damocles.server.Server
 import ca.damocles.storage.Account
 import ca.damocles.storage.database.Database
-import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
 import javax.net.ssl.SSLSocket
 import kotlin.coroutines.CoroutineContext
 import com.google.protobuf.Any
-import com.google.protobuf.Message
 
 /**
  * Class EstablishedConnection

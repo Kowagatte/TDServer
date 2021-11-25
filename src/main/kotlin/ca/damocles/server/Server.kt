@@ -3,6 +3,7 @@ package ca.damocles.server
 import ca.damocles.server.client.EstablishedConnection
 import ca.damocles.utilities.Files
 import java.io.*
+import java.net.ServerSocket
 import javax.net.ssl.SSLServerSocket
 import javax.net.ssl.SSLServerSocketFactory
 import kotlin.system.exitProcess
@@ -16,7 +17,7 @@ import kotlin.system.exitProcess
  */
 object Server{
 
-    lateinit var serverSocket: SSLServerSocket
+    lateinit var serverSocket: ServerSocket
     private lateinit var ServerThread: CommandHandler
     //TODO change to a Hashed List with an identifier key attached to an established connection.
     val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
@@ -37,7 +38,7 @@ object Server{
      */
     fun start(){
         try{
-            serverSocket = SSLServerSocketFactory.getDefault().createServerSocket(port) as SSLServerSocket
+            serverSocket = ServerSocket(port)
             ClientGate.start()
             println("Started")
         }catch(e: IOException){
