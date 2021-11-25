@@ -1,19 +1,17 @@
 package ca.damocles.server.client
 
+import ca.damocles.packets.ClientPackets
+import ca.damocles.proto.Packets
 import ca.damocles.server.Server
-import ca.damocles.server.Packet
-import ca.damocles.server.PingPacket
-import ca.damocles.server.ResponsePacket
 import ca.damocles.storage.Account
-import ca.damocles.storage.database.AccountDatabase
-import ca.damocles.storage.authenticateLogin
-import ca.damocles.storage.createAccount
 import ca.damocles.storage.database.Database
 import ca.damocles.utilities.generateAlphaString
 import kotlinx.coroutines.*
 import java.io.*
 import javax.net.ssl.SSLSocket
 import kotlin.coroutines.CoroutineContext
+import com.google.protobuf.Any
+import com.google.protobuf.Message
 
 /**
  * Class EstablishedConnection
@@ -32,8 +30,8 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
     var account: Account = Database.accounts.emptyAccount()
     private val coroutine: CoroutineContext
     private val heartbeat: CoroutineContext
-    private val bufferedWriter: BufferedWriter = BufferedWriter(OutputStreamWriter(connectionSocket.outputStream))
-    private val bufferedReader: BufferedReader = BufferedReader(InputStreamReader(connectionSocket.inputStream))
+    private val inputStream = connectionSocket.inputStream
+    private val outputStream = connectionSocket.outputStream
     private var beating = true
     private var isRunning = true
 
@@ -43,43 +41,37 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
      */
     init{
         coroutine = GlobalScope.launch {
-            while(isRunning){
+            loop@ while(isRunning){
                 try{
-                    val line: String = getMessageFromClient()
-                    if(line != ""){
-                        println(line)
-                        val incomingPacket: Packet = Packet.fromJson(line)
-                        when(incomingPacket.type){
-                            //TODO Move this to a packetHandler class
-                            0.toByte() -> {
-                                val response = authenticateLogin(incomingPacket.body["email"].toString(), incomingPacket.body["password"].toString())
-                                if(response.first){
-                                    account = response.second
-                                    send(ResponsePacket(incomingPacket.identity, "Login Successful!", 200))
-                                }else{
-                                    send(ResponsePacket(incomingPacket.identity, "Login Not Successful!", 401))
-                                }
+                    val message: ByteArray = getMessageFromClient()
+                    if(message.isEmpty()){
+                        val incomingPacket: Any = Any.parseFrom(message)
+                        when(ClientPackets.inferType(incomingPacket)){
+
+                            ClientPackets.CREATE_ACCOUNT->{
+                                val packet: Packets.ClientPacket.LoginPacket = incomingPacket.unpack(ClientPackets.LOGIN.clazz) as Packets.ClientPacket.LoginPacket
+
+
+
+
                             }
-                            1.toByte() -> {
-                                disconnect()
+
+                            ClientPackets.LOGIN->{
+
                             }
-                            2.toByte() ->{
-                                val response = createAccount(incomingPacket.body["email"].toString(), incomingPacket.body["username"].toString(), incomingPacket.body["password"].toString())
-                                if(response){
-                                    send(ResponsePacket(incomingPacket.identity, "Created account!", 200))
-                                }else{
-                                    send(ResponsePacket(incomingPacket.identity, "Could not create account!", 400))
-                                }
+
+                            ClientPackets.CLOSE->{
+
                             }
-                            3.toByte() ->{
-                                beating = true
+
+                            ClientPackets.PONG->{
+
                             }
+
+                            else -> continue@loop
                         }
-                        //TODO("Process( Line -> Packet ) : Then -> Handle the packet.")
                     }
-                }catch(e: IOException){
-                    disconnect()
-                }
+                }catch(e: IOException){ disconnect() }
             }
         }
         /*
@@ -90,7 +82,7 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
         heartbeat = GlobalScope.launch {
             while(true){
                 beating = false
-                send(PingPacket(generateAlphaString()))
+                //send(PingPacket(generateAlphaString()))
                 delay(30000L)
                 if(!beating){
                     disconnect()
@@ -103,9 +95,11 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
     /**
      * IO blocking call done in a separate context.
      */
-    private suspend fun getMessageFromClient(): String =
+    private suspend fun getMessageFromClient(): ByteArray =
         withContext(Dispatchers.IO){
-            bufferedReader.readLine()
+            val targetArray = ByteArray(inputStream.available())
+            inputStream.read(targetArray)
+            targetArray
         }
 
     /**
@@ -124,10 +118,10 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
     /**
      *
      */
-    fun send(packet: Packet){
+/*    fun send(packet: Packet){
         bufferedWriter.write(packet.toString())
         bufferedWriter.newLine()
         bufferedWriter.flush()
-    }
+    }*/
 
 }
