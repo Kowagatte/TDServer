@@ -3,7 +3,7 @@
 + --=[ Kowagatte | Nicholas Noel Ryan ]=--
 
 This is the main server application for the game TopDownShooter aka TDS.
-A free to play online game programmed in ~~java~~ kotlin.
+An online game programmed in ~~java~~ kotlin.
 
 ---
 <p align=center><b><font size="+1"><a href="https://github.com/Kowagatte/TDS-Server/releases">Working Builds</a></p>
