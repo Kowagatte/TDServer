@@ -1,7 +1,7 @@
 # Networking
 Networking breakdown for TDS
 
-## Packets
+## ca.damocles.proto.Packets
 Protobuf classes that contain data to be sent between server and client.
 
 ### __Client Packets__
@@ -27,4 +27,4 @@ Such as;
  * Server status
 
 ### __Packet Transfer__
-Packets are converted to Byte Arrays and sent over the Socket.
+ca.damocles.proto.Packets are converted to Byte Arrays and sent over the Socket.

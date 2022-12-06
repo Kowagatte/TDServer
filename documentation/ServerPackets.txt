@@ -1,4 +1,4 @@
-Server Packets:
+Server ca.damocles.proto.Packets:
     heart
         none
     response

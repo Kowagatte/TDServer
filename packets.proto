@@ -1,5 +1,4 @@
 syntax = "proto3";
-package ca.damocles.proto;
 
 message ServerPacket{
 
@@ -15,6 +14,11 @@ message ServerPacket{
 message ClientPacket{
 
   message LoginPacket{
+    string email = 1;
+    string password = 2;
+  }
+
+  message DummyPacket{
     string email = 1;
     string password = 2;
   }

@@ -1,4 +1,4 @@
-Client Packets:
+Client ca.damocles.proto.Packets:
     Login
         email: String
         password: String

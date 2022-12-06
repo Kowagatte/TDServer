@@ -5,11 +5,17 @@ import ca.damocles.proto.Packets
 import ca.damocles.server.Server
 import ca.damocles.storage.Account
 import ca.damocles.storage.database.Database
-import kotlinx.coroutines.*
-import java.io.*
-import javax.net.ssl.SSLSocket
-import kotlin.coroutines.CoroutineContext
+import ca.damocles.utilities.reverseBytes
+import ca.damocles.utilities.toBytes
 import com.google.protobuf.Any
+import com.google.protobuf.GeneratedMessageV3
+import kotlinx.coroutines.*
+import java.io.IOException
+import java.net.Socket
+import java.net.SocketException
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Class EstablishedConnection
@@ -23,7 +29,7 @@ import com.google.protobuf.Any
  * TODO It handles all packets sent to the server from the client, which should be moved to a packet handler class
  * as well as having the incoming packet's queued instead of having them all being resolved at once.
  */
-class EstablishedConnection(private val connectionSocket: SSLSocket){
+class EstablishedConnection(private val connectionSocket: Socket){
 
     var account: Account = Database.accounts.emptyAccount()
     private val coroutine: CoroutineContext
@@ -42,12 +48,11 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
             loop@ while(isRunning){
                 try{
                     val message: ByteArray = getMessageFromClient()
-                    if(message.isEmpty()){
+                    if(message.isNotEmpty()){
                         val incomingPacket: Any = Any.parseFrom(message)
                         when(ClientPackets.inferType(incomingPacket)){
 
                             ClientPackets.CREATE_ACCOUNT->{
-                                val packet: Packets.ClientPacket.LoginPacket = incomingPacket.unpack(ClientPackets.LOGIN.clazz) as Packets.ClientPacket.LoginPacket
 
 
 
@@ -55,7 +60,11 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
                             }
 
                             ClientPackets.LOGIN->{
-
+                                val packet: Packets.ClientPacket.LoginPacket = incomingPacket.unpack(ClientPackets.LOGIN.clazz) as Packets.ClientPacket.LoginPacket
+                                println("Receiving Login packet")
+                                println("\tEmail: ${packet.email}\n\tPassword: ${packet.password}")
+                                val p = Packets.ServerPacket.ResponsePacket.newBuilder().setCode(200).setMessage("This is a response").build()
+                                send(p)
                             }
 
                             ClientPackets.CLOSE->{
@@ -69,7 +78,10 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
                             else -> continue@loop
                         }
                     }
-                }catch(e: IOException){ disconnect() }
+                }catch(e: IOException){
+                    e.printStackTrace()
+                    disconnect()
+                }
             }
         }
         /*
@@ -83,7 +95,7 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
                 //send(PingPacket(generateAlphaString()))
                 delay(30000L)
                 if(!beating){
-                    disconnect()
+                    //disconnect()
                 }
             }
         }
@@ -95,9 +107,17 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
      */
     private suspend fun getMessageFromClient(): ByteArray =
         withContext(Dispatchers.IO){
-            val targetArray = ByteArray(inputStream.available())
-            inputStream.read(targetArray)
-            targetArray
+            return@withContext if(inputStream.available() > 0){
+                val ba = ByteArray(4)
+                inputStream.read(ba)
+                val size = ByteBuffer.wrap(ba).order(ByteOrder.LITTLE_ENDIAN).int
+                println(size)
+                val targetArray = ByteArray(size)
+                inputStream.read(targetArray)
+                targetArray
+            }else{
+                ByteArray(0)
+            }
         }
 
     /**
@@ -105,6 +125,7 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
      * a disconnected packet so the client knows it was terminated.
      */
     fun disconnect(){
+        println("killed socket")
         isRunning = false
         Server.listOfEstablishedConnections.remove(this)
         coroutine.cancel()
@@ -116,10 +137,11 @@ class EstablishedConnection(private val connectionSocket: SSLSocket){
     /**
      *
      */
-/*    fun send(packet: Packet){
-        bufferedWriter.write(packet.toString())
-        bufferedWriter.newLine()
-        bufferedWriter.flush()
-    }*/
+    private fun send(unPacked: GeneratedMessageV3){
+        val packet = Any.pack(unPacked)
+        outputStream.write(packet.toByteArray().size.toBytes())
+        outputStream.write(packet.toByteArray())
+        outputStream.flush()
+    }
 
 }

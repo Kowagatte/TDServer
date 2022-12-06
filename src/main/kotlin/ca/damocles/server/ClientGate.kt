@@ -2,6 +2,7 @@ package ca.damocles.server
 
 import ca.damocles.server.client.EstablishedConnection
 import java.io.IOException
+import java.net.Socket
 import javax.net.ssl.SSLSocket
 import kotlin.concurrent.thread
 
@@ -25,9 +26,9 @@ object ClientGate{
             isOpen = true
             acceptanceThread = thread{
                 while(isOpen){
-                    val clientSocket: SSLSocket
+                    val clientSocket: Socket
                     try{
-                        clientSocket = Server.serverSocket.accept() as SSLSocket
+                        clientSocket = Server.serverSocket.accept()
                         val connection = EstablishedConnection(clientSocket)
                         if(Server.isFull()){
                             connection.disconnect()

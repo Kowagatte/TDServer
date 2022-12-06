@@ -21,17 +21,12 @@ object Server{
     private lateinit var ServerThread: CommandHandler
     //TODO change to a Hashed List with an identifier key attached to an established connection.
     val listOfEstablishedConnections: MutableList<EstablishedConnection> = ArrayList()
-    private val maxClientConnections: Int
-    private val port: Int
+    private val maxClientConnections: Int = Files.properties.getNumber("max_connections").toInt()
+    private val port: Int = Files.properties.getNumber("port").toInt()
     val isRunning: Boolean
         get() = ServerThread.isRunning
     val amountOfPlayers: Int
         get() = listOfEstablishedConnections.size
-
-    init{
-        maxClientConnections = Files.properties.getNumber("max_connections").toInt()
-        port = Files.properties.getNumber("port").toInt()
-    }
 
     /**
      * Starts the server socket, the main thread and the ClientGate.
