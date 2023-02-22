@@ -2,7 +2,7 @@
 
 [ext_resource path="res://server.gd" type="Script" id=1]
 [ext_resource path="res://scripts/clients.gd" type="Script" id=2]
-[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/fonts/Roboto-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scripts/GameFactory.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
