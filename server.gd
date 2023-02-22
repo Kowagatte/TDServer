@@ -7,10 +7,11 @@ var secret: String
 var api = "http://api.damocles.ca:8080"
 
 onready var auth = get_node("Clients")
+onready var gamef = get_node("Games")
 
 func _ready():
 	
-	# This might break
+	# Gets secret passphrase used to request controlled functionality from API
 	var file = File.new()
 	if file.file_exists(passwords):
 		file.open(passwords, File.READ)
@@ -18,15 +19,17 @@ func _ready():
 		secret = data["secret"]
 		file.close()
 	
+	# Instantiate server
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_server(port, max_players)
 	get_tree().network_peer = peer
 	
 	var _c = get_tree().connect("network_peer_connected", self, "_player_connected")
 	_c = get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
-	
-	account("Nick")
 
+# --------------------------------------------------------------------------------------------------
+
+# Networked signals
 
 func _player_connected(id):
 	rpc_id(id, "connectionConfirmation")
@@ -36,6 +39,10 @@ func _player_connected(id):
 func _player_disconnected(id):
 	auth.remove_player(id)
 	print("Player with ID (", id, ") Disconnected.")
+
+# --------------------------------------------------------------------------------------------------
+
+# Login Remote Call
 
 # Sent when a user attempts to login.
 # A request is sent to the internal API containing the credentials.
@@ -60,8 +67,11 @@ func login_callback(result, response, headers, body, id, req):
 	if response == 200:
 		# Probably will not work, need to respond with actuall account info.
 		auth.add_player(id, JSON.parse(body.get_string_from_utf8()).result)
-		rpc_id(id, "switchScenes", "Game")
+		#rpc_id(id, "switchScenes", "Game")
 
+# --------------------------------------------------------------------------------------------------
+
+# Account Info Remote Call
 
 remote func account(username):
 	var id = get_tree().get_rpc_sender_id()
@@ -75,12 +85,12 @@ remote func account(username):
 
 func account_callback(result, response, headers, body, id, req):
 	req.call_deferred("free")
-	#rpc_id(id, "response", response, body.get_string_from_utf8())
 	if response == 200:
 		print(body.get_string_from_utf8())
-		# Probably will not work, need to respond with actuall account info.
-		#auth.add_player(id, JSON.parse(body.get_string_from_utf8()).result)
-		#rpc_id(id, "switchScenes", "Game")
+
+# --------------------------------------------------------------------------------------------------
+
+# Create Account Remote Call
 
 remote func createAccount(email, username, password):
 	var id = get_tree().get_rpc_sender_id()
@@ -98,5 +108,4 @@ func createAccount_callback(result, response, headers, body, id, req):
 	req.call_deferred("free")
 	rpc_id(id, "response", response, body.get_string_from_utf8())
 
-func createGame(playerOne, playerTwo):
-	pass
+# --------------------------------------------------------------------------------------------------

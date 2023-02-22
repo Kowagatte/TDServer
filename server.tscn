@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://server.gd" type="Script" id=1]
 [ext_resource path="res://scripts/clients.gd" type="Script" id=2]
 [ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/GameFactory.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -64,3 +65,4 @@ text = "0"
 script = ExtResource( 2 )
 
 [node name="Games" type="Node2D" parent="."]
+script = ExtResource( 4 )
