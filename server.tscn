@@ -66,3 +66,5 @@ script = ExtResource( 2 )
 
 [node name="Games" type="Node2D" parent="."]
 script = ExtResource( 4 )
+
+[node name="requests" type="Node2D" parent="Games"]

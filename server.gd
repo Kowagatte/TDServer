@@ -61,7 +61,7 @@ remote func login(email, password):
 	httpRequest.request(url, headers, false, HTTPClient.METHOD_POST, query)
 
 
-func login_callback(result, response, headers, body, id, req):
+func login_callback(_result, response, _headers, body, id, req):
 	req.call_deferred("free")
 	rpc_id(id, "response", response, body.get_string_from_utf8())
 	if response == 200:
@@ -83,7 +83,7 @@ remote func account(username):
 	var url = "%s/tds/account/%s" % [api, username]
 	httpRequest.request(url, headers, false, HTTPClient.METHOD_GET)
 
-func account_callback(result, response, headers, body, id, req):
+func account_callback(_result, response, _headers, body, _id, req):
 	req.call_deferred("free")
 	if response == 200:
 		print(body.get_string_from_utf8())
@@ -104,7 +104,7 @@ remote func createAccount(email, username, password):
 	httpRequest.request(url, headers, false, HTTPClient.METHOD_POST, query)
 
 
-func createAccount_callback(result, response, headers, body, id, req):
+func createAccount_callback(_result, response, _headers, body, id, req):
 	req.call_deferred("free")
 	rpc_id(id, "response", response, body.get_string_from_utf8())
 

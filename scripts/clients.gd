@@ -17,9 +17,15 @@ func remove_player(id):
 		clients.erase(id)
 	update_counter()
 
-func number_connected():
+func size():
 	return clients.size()
+
+func get(id):
+	if clients.has(id):
+		return clients[id]
+	else:
+		return false
 
 func update_counter():
 	var label = get_parent().get_node("UI/Panel/client-count") as Label
-	label.text = String(number_connected())
+	label.text = String(size())
