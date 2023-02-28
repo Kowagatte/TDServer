@@ -10,8 +10,8 @@ var half_corner = preload("res://nodes/walls/half_corner.tscn")
 var half_t = preload("res://nodes/walls/half_t.tscn")
 var middle_wall = preload("res://nodes/walls/middle_wall.tscn")
 var outer_wall = preload("res://nodes/walls/outer_wall.tscn")
-# var spawn = preload("res://nodes/spawn.tscn")
-# var coin = preload("res://nodes/Coin.tscn")
+var spawn = preload("res://nodes/spawn.tscn")
+var coin = preload("res://nodes/Coin.tscn")
 
 # Returns the preloaded node corrosponding to the given long text name
 func create_wall(wall_type):
@@ -30,10 +30,10 @@ func create_wall(wall_type):
 			return middle_wall
 		"outer_wall":
 			return outer_wall
-		#"spawn":
-			#return spawn
-		#"coin":
-			#return coin
+		"spawn":
+			return spawn
+		"coin":
+			return coin
 		_:
 			pass
 
