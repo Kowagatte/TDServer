@@ -1,6 +1,4 @@
-TDServer.iml
-target/
+*.DS_Store
 *passwords.json
 .idea/
-.DS_Store
 temp.md
