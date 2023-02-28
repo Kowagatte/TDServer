@@ -27,9 +27,6 @@ func _ready():
 	var _c = get_tree().connect("network_peer_connected", self, "_player_connected")
 	_c = get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 
-	# TODO purely testing, should be removed before merge.
-	gamef.createGame(0, 0)
-
 # --------------------------------------------------------------------------------------------------
 
 # Networked signals
@@ -110,5 +107,15 @@ remote func createAccount(email, username, password):
 func createAccount_callback(_result, response, _headers, body, id, req):
 	req.call_deferred("free")
 	rpc_id(id, "response", response, body.get_string_from_utf8())
+
+# --------------------------------------------------------------------------------------------------
+
+# TODO purely testing.
+
+remote func startGame():
+	var id = get_tree().get_rpc_sender_id()
+	# TODO purely testing, should be removed before merge.
+	gamef.createGame(id, 0)
+
 
 # --------------------------------------------------------------------------------------------------

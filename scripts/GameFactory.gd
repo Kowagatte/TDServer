@@ -24,7 +24,7 @@ func generateGame(_result, response, _headers, body, req, playerOneID, playerTwo
 		# Create game object on tree
 		var game_inst = game_obj.instance()
 		game_inst.name = id
-		game_inst.players[0] = playerOneID
-		game_inst.players[1] = playerTwoID
+		game_inst.player_ids[0] = playerOneID
+		game_inst.player_ids[1] = playerTwoID
 		add_child(game_inst)
 	
