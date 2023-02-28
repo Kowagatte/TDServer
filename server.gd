@@ -27,6 +27,9 @@ func _ready():
 	var _c = get_tree().connect("network_peer_connected", self, "_player_connected")
 	_c = get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
 
+	# TODO purely testing, should be removed before merge.
+	gamef.createGame(0, 0)
+
 # --------------------------------------------------------------------------------------------------
 
 # Networked signals
