@@ -1,5 +1,6 @@
 TDServer.iml
 target/
-/src/main/resources/passwords.json
+*passwords.json
 .idea/
 .DS_Store
+temp.md
