@@ -7,7 +7,7 @@ var score = [0, 0]
 var player_ids = [-1, -1]
 
 onready var map = get_node("map")
-onready var players = get_node("players")
+onready var players = get_node("map/players")
 var player_node = preload("res://nodes/player.tscn")
 
 # Checks if the id (rpc sender) is a player in the game.
@@ -19,7 +19,7 @@ func is_playing(id):
 remote func control_player(x, y):
 	var sender = get_tree().get_rpc_sender_id()
 	if is_playing(sender):
-		var player = get_node("players/%s" % sender)
+		var player = get_node("map/players/%s" % sender)
 		player.move(x, y)
 
 # Ready up sequence, This is used to start the game..

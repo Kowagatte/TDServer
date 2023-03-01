@@ -20,6 +20,7 @@ func _physics_process(_delta):
 		last_velocity = velocity
 		rotation_degrees = rotation_map[velocity.x+1][velocity.y+1]
 	var _m = move_and_slide(velocity.normalized() * move_speed)
+	rpc_unreliable_id(int(self.name), "updatePos", self.position.x, self.position.y, rotation_degrees)
 
 func move(x, y):
 	velocity.x = x
