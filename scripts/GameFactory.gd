@@ -27,4 +27,6 @@ func generateGame(_result, response, _headers, body, req, playerOneID, playerTwo
 		game_inst.player_ids[0] = playerOneID
 		game_inst.player_ids[1] = playerTwoID
 		add_child(game_inst)
+		get_parent().gameCreated(playerOneID, id)
+		get_parent().gameCreated(playerTwoID, id)
 	

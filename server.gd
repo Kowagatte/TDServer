@@ -67,7 +67,7 @@ func login_callback(_result, response, _headers, body, id, req):
 	if response == 200:
 		# Probably will not work, need to respond with actuall account info.
 		auth.add_player(id, JSON.parse(body.get_string_from_utf8()).result)
-		#rpc_id(id, "switchScenes", "Game")
+		rpc_id(id, "switchScenes", "CreateGameScreen")
 
 # --------------------------------------------------------------------------------------------------
 
@@ -115,7 +115,9 @@ func createAccount_callback(_result, response, _headers, body, id, req):
 remote func startGame():
 	var id = get_tree().get_rpc_sender_id()
 	# TODO purely testing, should be removed before merge.
-	gamef.createGame(id, 0)
+	gamef.createGame(id, -1)
 
+func gameCreated(player, gameid):
+	rpc_id(player, "gameCreated", gameid)
 
 # --------------------------------------------------------------------------------------------------
