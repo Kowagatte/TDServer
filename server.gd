@@ -67,7 +67,7 @@ func login_callback(_result, response, _headers, body, id, req):
 	if response == 200:
 		# Probably will not work, need to respond with actuall account info.
 		auth.add_player(id, JSON.parse(body.get_string_from_utf8()).result)
-		#rpc_id(id, "switchScenes", "Game")
+		rpc_id(id, "switchScenes", "CreateGameScreen")
 
 # --------------------------------------------------------------------------------------------------
 
@@ -107,5 +107,10 @@ remote func createAccount(email, username, password):
 func createAccount_callback(_result, response, _headers, body, id, req):
 	req.call_deferred("free")
 	rpc_id(id, "response", response, body.get_string_from_utf8())
+
+# --------------------------------------------------------------------------------------------------
+
+# TODO purely testing.
+
 
 # --------------------------------------------------------------------------------------------------
