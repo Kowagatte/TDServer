@@ -14,13 +14,7 @@ var player_node = preload("res://nodes/player.tscn")
 func is_playing(id):
 	return id in player_ids
 
-# Entry point to control a player inside this game instance.
-# Don't know how I want to implement this yet..
-remote func control_player(x, y):
-	var sender = get_tree().get_rpc_sender_id()
-	if is_playing(sender):
-		var player = get_node("map/players/%s" % sender)
-		player.move(x, y)
+
 
 # Ready up sequence, This is used to start the game..
 remote func ready_up():

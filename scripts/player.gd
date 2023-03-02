@@ -25,3 +25,10 @@ func _physics_process(_delta):
 func move(x, y):
 	velocity.x = x
 	velocity.y = y
+
+# Entry point to control a player inside this game instance.
+# Don't know how I want to implement this yet..
+remote func control_player(x, y):
+	var sender = get_tree().get_rpc_sender_id()
+	var player = get_node("map/players/%s" % sender)
+	player.move(x, y)
