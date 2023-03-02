@@ -112,12 +112,5 @@ func createAccount_callback(_result, response, _headers, body, id, req):
 
 # TODO purely testing.
 
-remote func startGame():
-	var id = get_tree().get_rpc_sender_id()
-	# TODO purely testing, should be removed before merge.
-	gamef.createGame(id, -1)
-
-func gameCreated(player, gameid):
-	rpc_id(player, "gameCreated", gameid)
 
 # --------------------------------------------------------------------------------------------------

@@ -5,10 +5,11 @@ var game_obj = preload("res://nodes/game.tscn")
 
 
 # Should generate a unique ID with no collisions.
-func createGame(playerOneID, playerTwoID):
+remote func createGame():
+	var id = get_tree().get_rpc_sender_id()
 	var httpRequest = HTTPRequest.new()
 	requests.add_child(httpRequest)
-	httpRequest.connect("request_completed", self, "generateGame", [httpRequest, playerOneID, playerTwoID])
+	httpRequest.connect("request_completed", self, "generateGame", [httpRequest, id, -1])
 	var headers = ["Content-Type: application/json"]
 	var url = "%s/tds/generateID/" % self.get_parent().api
 	httpRequest.request(url, headers, false, HTTPClient.METHOD_GET)
@@ -27,6 +28,6 @@ func generateGame(_result, response, _headers, body, req, playerOneID, playerTwo
 		game_inst.player_ids[0] = playerOneID
 		game_inst.player_ids[1] = playerTwoID
 		add_child(game_inst)
-		get_parent().gameCreated(playerOneID, id)
-		get_parent().gameCreated(playerTwoID, id)
-	
+		#Send game creation notification to both players
+		get_parent().rpc_id(playerOneID, "gameCreated", id)
+		get_parent().rpc_id(playerTwoID, "gameCreated", id)
