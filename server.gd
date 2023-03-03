@@ -109,8 +109,3 @@ func createAccount_callback(_result, response, _headers, body, id, req):
 	rpc_id(id, "response", response, body.get_string_from_utf8())
 
 # --------------------------------------------------------------------------------------------------
-
-# TODO purely testing.
-
-
-# --------------------------------------------------------------------------------------------------

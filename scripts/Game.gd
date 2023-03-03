@@ -15,7 +15,6 @@ func is_playing(id):
 	return id in player_ids
 
 
-
 # Ready up sequence, This is used to start the game..
 remote func ready_up():
 	var sender = get_tree().get_rpc_sender_id()
