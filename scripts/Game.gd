@@ -6,8 +6,8 @@ var is_ready = [false, false]
 var score = [0, 0]
 var player_ids = [-1, -1]
 
-onready var map = get_node("map")
-onready var players = get_node("map/players")
+@onready var map = get_node("map")
+@onready var players = get_node("map/players")
 var player_node = preload("res://nodes/player.tscn")
 
 # Checks if the id (rpc sender) is a player in the game.
@@ -16,8 +16,8 @@ func is_playing(id):
 
 
 # Ready up sequence, This is used to start the game..
-remote func ready_up():
-	var sender = get_tree().get_rpc_sender_id()
+@rpc("any_peer") func ready_up():
+	var sender = get_tree().get_remote_sender_id()
 	# Check if the sender is in the current game.
 	if is_playing(sender):
 		# Get if player one or player two.
@@ -43,11 +43,11 @@ func _ready():
 	# Load the map from a mapfile.
 	map.loadMap("res://resources/dust2.json")
 
-	var p1 = player_node.instance()
+	var p1 = player_node.instantiate()
 	p1.name = String(player_ids[0])
 	players.add_child(p1)
 
-	var p2 = player_node.instance()
+	var p2 = player_node.instantiate()
 	p2.name = String(player_ids[1])
 	players.add_child(p2)
 

@@ -40,17 +40,17 @@ func create_wall(wall_type):
 # Loads the map from the given map file.
 func loadMap(map_path):
 	# Opens the map file
-	var file = File.new()
-	if file.file_exists(map_path): # "res://resources/dust2.json"
-		file.open(map_path, File.READ)
-
+	var file = FileAccess.open(map_path, FileAccess.READ)
+	if FileAccess.file_exists(map_path): # "res://resources/dust2.json"
 		# Formats the file as a JSON object
-		var data = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		var data = test_json_conv.get_data()
 		
 		# Loops through each wall section in the JSON object
 		for wall in data["walls"]:
 			# Instantiates the wall from the given text
-			var w = create_wall(wall["wall"]).instance()
+			var w = create_wall(wall["wall"]).instantiate()
 			# Centers the wall object on the cordinates specified
 			w.set_position(Vector2( (48*int(wall["x"]))+24 , (48*int(wall["y"]))+24 ))
 			# Rotates the wall as specified
