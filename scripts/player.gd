@@ -15,19 +15,20 @@ func _ready():
 	position.y = 72
 
 func _physics_process(_delta):
-	if velocity != Vector2.ZERO:
-		last_velocity = velocity
-		rotation_degrees = rotation_map[velocity.x+1][velocity.y+1]
-	set_velocity(velocity.normalized() * move_speed)
+	if direction != Vector2.ZERO:
+		last_velocity = direction
+		rotation_degrees = rotation_map[direction.x+1][direction.y+1]
+	set_velocity(direction.normalized() * move_speed)
 	move_and_slide()
-	var _m = velocity
-	rpc_id(int(self.name), "updatePos", self.position.x, self.position.y, rotation_degrees)
+	rpc_id(self.name.to_int(), "updatePos", self.position.x, self.position.y, rotation_degrees)
 
 func move(x, y):
-	velocity.x = x
-	velocity.y = y
+	direction.x = x
+	direction.y = y
 
 # Entry point to control a player inside this game instance.
 # Don't know how I want to implement this yet..
 @rpc("any_peer") func control_player(x, y):
 	move(x, y)
+
+@rpc func updatePos(_x, _y, _rot): pass
