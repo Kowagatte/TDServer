@@ -14,6 +14,8 @@ var player_node = preload("res://nodes/player.tscn")
 func is_playing(id):
 	return id in player_ids
 
+func is_full():
+	return player_ids.count(-1) == 0
 
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
@@ -26,6 +28,14 @@ func is_playing(id):
 		if(player_num != -1):
 			is_ready[player_num] = true
 
+func add_player(id):
+	if not is_full():
+		player_ids[player_ids.find(-1)] = id
+		var player = player_node.instantiate()
+		player.name = String.num_int64(id)
+		players.add_child(player)
+	else:
+		get_parent().get_parent().rpc_id(id, "response", 400, "Game is already full.")
 
 # Main loop of Game Object..
 func _process(_delta):
@@ -48,9 +58,9 @@ func _ready():
 	p1.name = String.num_int64(player_ids[0])
 	players.add_child(p1)
 
-	var p2 = player_node.instantiate()
-	p2.name = String.num_int64(player_ids[1])
-	players.add_child(p2)
+	#var p2 = player_node.instantiate()
+	#p2.name = String.num_int64(player_ids[1])
+	#players.add_child(p2)
 
 
 	
