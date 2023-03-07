@@ -3,6 +3,14 @@ extends Node2D
 @onready var requests = get_node("requests")
 var game_obj = preload("res://nodes/game.tscn")
 
+@rpc("any_peer") func joinGame(gameID):
+	var id = multiplayer.get_remote_sender_id()
+	if has_node(gameID):
+		var game = get_node(gameID)
+		game.add_player(id)
+		get_parent().rpc_id(id, "gameCreated", gameID)
+	else:
+		get_parent().rpc_id(id, "response", 400, "Game does not exist.")
 
 # Should generate a unique ID with no collisions.
 @rpc("any_peer") func createGame():
