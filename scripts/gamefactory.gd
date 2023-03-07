@@ -9,6 +9,7 @@ var game_obj = preload("res://nodes/game.tscn")
 		var game = get_node(gameID)
 		game.add_player(id)
 		get_parent().rpc_id(id, "gameCreated", gameID)
+		get_parent().rpc_id(id, "response", 200, "Game Found!")
 	else:
 		get_parent().rpc_id(id, "response", 400, "Game does not exist.")
 
@@ -35,5 +36,5 @@ func generateGame(_result, response, _headers, body, req, playerOneID):
 		game_inst.name = id
 		game_inst.player_ids[0] = playerOneID
 		add_child(game_inst)
-		#Send game creation notification to both players
+		
 		get_parent().rpc_id(playerOneID, "gameCreated", id)
