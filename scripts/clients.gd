@@ -6,7 +6,7 @@ func _ready():
 	pass # Replace with function body.
 
 func is_anyone_connected():
-	return not clients.empty()
+	return not clients.is_empty()
 
 func add_player(id, player):
 	clients[id] = player
@@ -20,12 +20,6 @@ func remove_player(id):
 func size():
 	return clients.size()
 
-func get(id):
-	if clients.has(id):
-		return clients[id]
-	else:
-		return false
-
 func update_counter():
 	var label = get_parent().get_node("UI/Panel/client-count") as Label
-	label.text = String(size())
+	label.text = String.num_int64(size())
