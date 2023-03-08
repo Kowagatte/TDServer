@@ -19,11 +19,14 @@ func _ready():
 	died()
 
 func _physics_process(_delta):
-	if direction != Vector2.ZERO:
-		last_velocity = direction
-		rotation_degrees = rotation_map[direction.x+1][direction.y+1]
-	set_velocity(direction.normalized() * move_speed)
-	move_and_slide()
+	if game.started:
+		if direction != Vector2.ZERO:
+			last_velocity = direction
+			rotation_degrees = rotation_map[direction.x+1][direction.y+1]
+		set_velocity(direction.normalized() * move_speed)
+		move_and_slide()
+	
+	# Send position updates to players
 	game.send_location(self.name.to_int(), self.position.x, self.position.y, rotation_degrees)
 
 func move(x, y):
