@@ -1,7 +1,0 @@
-res://root.tscn
-res://nodes/game.tscn
-res://scripts/gamefactory.gd
-res://scripts/game.gd
-res://nodes/player.tscn
-res://scripts/player.gd
-res://nodes/walls/cross.tscn

@@ -6,6 +6,7 @@ var is_ready = [false, false]
 var score = [0, 0]
 var player_ids = [-1, -1]
 
+@onready var server = get_parent().get_parent()
 @onready var map = get_node("map")
 @onready var players = get_node("map/players")
 var player_node = preload("res://nodes/player.tscn")
@@ -14,6 +15,17 @@ var player_node = preload("res://nodes/player.tscn")
 func is_playing(id):
 	return id in player_ids
 
+func is_full():
+	return player_ids.count(-1) == 0
+
+func send_location(id, x, y, rot):
+	for player in player_ids:
+		if player != -1 and server.auth.clients.has(player):
+			rpc_id(player, "update_pos", id, x, y, rot)
+
+@rpc func update_pos(_player, _x, _y, _rot): pass
+
+@rpc func spawn_enemy(_id): pass
 
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
@@ -26,6 +38,18 @@ func is_playing(id):
 		if(player_num != -1):
 			is_ready[player_num] = true
 
+func add_player(id):
+	if not is_full():
+		var index = player_ids.find(-1)
+		player_ids[index] = id
+		var player = player_node.instantiate()
+		player.name = String.num_int64(id)
+		players.add_child(player)
+		
+		rpc_id(id, "spawn_enemy", player_ids[1-index])
+		rpc_id(player_ids[1-index], "spawn_enemy", id)
+	else:
+		get_parent().get_parent().rpc_id(id, "response", 400, "Game is already full.")
 
 # Main loop of Game Object..
 func _process(_delta):
@@ -47,10 +71,3 @@ func _ready():
 	
 	p1.name = String.num_int64(player_ids[0])
 	players.add_child(p1)
-
-	var p2 = player_node.instantiate()
-	p2.name = String.num_int64(player_ids[1])
-	players.add_child(p2)
-
-
-	
