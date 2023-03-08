@@ -55,6 +55,11 @@ func add_player(id):
 	else:
 		get_parent().get_parent().rpc_id(id, "response", 400, "Game is already full.")
 
+func gameOver():
+	await get_tree().create_timer(5).timeout
+	get_parent().remove_child(self)
+	call_deferred("free")
+
 # ------------------------------------------------------------------------------------------------
 
 # Godot functions
@@ -66,12 +71,12 @@ func _process(_delta):
 			stopped = true
 			for player in player_ids:
 				rpc_id(player, "sendState", "ended", null)
+			gameOver()
 	
 	# This utilizes the read_up sequence to start the game.
 	# Added the started variable purely because monitoring based on pause state would retrigger
 	#    a start every time the game is paused for unrelated reasons.
 	if !started:
-		# TODO: No idea if this comparison works? Not familar with GDScript boolean array comparison logic.
 		if is_ready[0] and is_ready[1]:
 			started = true
 
