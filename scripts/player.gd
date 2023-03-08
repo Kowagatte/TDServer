@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var game = get_parent().get_parent().get_parent()
 
+var collectedCoins = []
+
 # Move speed for the given player node.
 var move_speed = 192
 # Last direction seen, this is to orientate AFK nodes.
@@ -28,7 +30,12 @@ func move(x, y):
 	direction.x = x
 	direction.y = y
 
-# Entry point to control a player inside this game instance.
-# Don't know how I want to implement this yet..
 @rpc("any_peer") func control_player(x, y):
 	move(x, y)
+
+@rpc("any_peer")
+func died():
+	for coin in collectedCoins:
+		coin.release(self)
+	collectedCoins.clear()
+	pass
