@@ -1,8 +1,10 @@
 extends Node2D
 
 var started = false
+var stopped = false
 var is_ready = [false, false]
 var score = [0, 0]
+var max_score = -1
 var player_ids = [-1, -1]
 
 @onready var server = get_parent().get_parent()
@@ -58,6 +60,12 @@ func add_player(id):
 
 func _process(_delta):
 	
+	if not stopped:
+		if score.any(func(number): return number == max_score):
+			stopped = true
+			for player in player_ids:
+				rpc_id(player, "sendState", "ended", null)
+	
 	# This utilizes the read_up sequence to start the game.
 	# Added the started variable purely because monitoring based on pause state would retrigger
 	#    a start every time the game is paused for unrelated reasons.
@@ -65,8 +73,6 @@ func _process(_delta):
 		# TODO: No idea if this comparison works? Not familar with GDScript boolean array comparison logic.
 		if is_ready[0] and is_ready[1]:
 			started = true
-			#for player in player_ids:
-			#	rpc_id(player, "sendState", "started", null)
 
 func _ready():
 	# Load the map from a mapfile.
