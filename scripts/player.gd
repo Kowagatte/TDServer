@@ -19,7 +19,7 @@ func _ready():
 	died()
 
 func _physics_process(_delta):
-	if game.started:
+	if game.started and not game.stopped:
 		if direction != Vector2.ZERO:
 			last_velocity = direction
 			rotation_degrees = rotation_map[direction.x+1][direction.y+1]
