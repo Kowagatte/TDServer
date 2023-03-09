@@ -38,3 +38,4 @@ func generateGame(_result, response, _headers, body, req, playerOneID):
 		add_child(game_inst)
 		
 		get_parent().rpc_id(playerOneID, "gameCreated", id)
+		game_inst.rpc_id(playerOneID, "sendState", "waitingForPlayer", null)

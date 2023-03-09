@@ -1,9 +1,9 @@
 extends Node2D
 
 var started = false
-var paused = true
 var is_ready = [false, false]
 var score = [0, 0]
+var max_score = -1
 var player_ids = [-1, -1]
 
 @onready var server = get_parent().get_parent()
@@ -11,7 +11,9 @@ var player_ids = [-1, -1]
 @onready var players = get_node("map/players")
 var player_node = preload("res://nodes/player.tscn")
 
-# Checks if the id (rpc sender) is a player in the game.
+# ------------------------------------------------------------------------------------------------
+
+# Checks if the id is a player in the game.
 func is_playing(id):
 	return id in player_ids
 
@@ -23,13 +25,10 @@ func send_location(id, x, y, rot):
 		if player != -1 and server.auth.clients.has(player):
 			rpc_id(player, "update_pos", id, x, y, rot)
 
-@rpc func update_pos(_player, _x, _y, _rot): pass
 
-@rpc func spawn_enemy(_id): pass
-@rpc func updateScore(_score): pass
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
-	var sender = get_tree().get_remote_sender_id()
+	var sender = multiplayer.get_remote_sender_id()
 	# Check if the sender is in the current game.
 	if is_playing(sender):
 		# Get if player one or player two.
@@ -48,20 +47,37 @@ func add_player(id):
 		
 		rpc_id(id, "spawn_enemy", player_ids[1-index])
 		rpc_id(player_ids[1-index], "spawn_enemy", id)
+		
+		rpc_id(id, "sendState", "gameStarting", null)
+		rpc_id(player_ids[1-index], "sendState", "gameStarting", null)
+		
 	else:
 		get_parent().get_parent().rpc_id(id, "response", 400, "Game is already full.")
 
-# Main loop of Game Object..
-func _process(_delta):
+func gameOver():
+	await get_tree().create_timer(5).timeout
+	get_parent().remove_child(self)
+	call_deferred("free")
 
+# ------------------------------------------------------------------------------------------------
+
+# Godot functions
+
+func _process(_delta):
+	
+	if not stopped:
+		if score.any(func(number): return number == max_score):
+			stopped = true
+			for player in player_ids:
+				rpc_id(player, "sendState", "ended", null)
+			gameOver()
+	
 	# This utilizes the read_up sequence to start the game.
 	# Added the started variable purely because monitoring based on pause state would retrigger
 	#    a start every time the game is paused for unrelated reasons.
 	if !started:
-		# TODO: No idea if this comparison works? Not familar with GDScript boolean array comparison logic.
-		if is_ready:
+		if is_ready[0] and is_ready[1]:
 			started = true
-			paused = false
 
 func _ready():
 	# Load the map from a mapfile.
@@ -71,3 +87,16 @@ func _ready():
 	
 	p1.name = String.num_int64(player_ids[0])
 	players.add_child(p1)
+	
+
+# ------------------------------------------------------------------------------------------------
+
+# RPC Templates
+
+@rpc func update_pos(_player, _x, _y, _rot): pass
+
+@rpc func spawn_enemy(_id): pass
+
+@rpc func sendState(_state, _content): pass
+
+@rpc func updateScore(_score): pass
