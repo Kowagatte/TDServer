@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://hhy5c2crrrym"]
 
-[ext_resource path="res://resources/spawn.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://c67rx7ghepgh5" path="res://resources/spawn.png" id="1"]
 
 [node name="spawn" type="Sprite2D"]
 z_index = -1
-texture = ExtResource( 1 )
+texture = ExtResource("1")

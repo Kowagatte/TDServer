@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var game = get_parent().get_parent().get_parent()
+@onready var map = get_parent().get_parent()
 
 var collectedCoins = []
 
@@ -38,4 +39,4 @@ func died():
 	for coin in collectedCoins:
 		coin.release(self)
 	collectedCoins.clear()
-	pass
+	position = map.spawns[game.player_ids.find(self.name.to_int())].position
