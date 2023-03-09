@@ -1,7 +1,6 @@
 extends Node2D
 
 var started = false
-var stopped = false
 var is_ready = [false, false]
 var score = [0, 0]
 var max_score = -1

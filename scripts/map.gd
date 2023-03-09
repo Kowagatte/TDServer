@@ -52,7 +52,6 @@ func loadMap(map_path):
 		for wall in data["walls"]:
 			# Instantiates the wall from the given text
 			var w = create_wall(wall["wall"]).instantiate()
-			
 			if wall["wall"] == "player_one_spawn":
 				spawns[0] = w
 
@@ -61,7 +60,7 @@ func loadMap(map_path):
 			
 			if wall["wall"] == "coin":
 				get_parent().max_score += 1
-			
+
 			# Centers the wall object on the cordinates specified
 			w.set_position(Vector2( (48*int(wall["x"]))+24 , (48*int(wall["y"]))+24 ))
 			# Rotates the wall as specified
