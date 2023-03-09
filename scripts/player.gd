@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var game = get_parent().get_parent().get_parent()
+@onready var map = get_parent().get_parent()
+
+var collectedCoins = []
 
 # Move speed for the given player node.
 var move_speed = 192
@@ -13,8 +16,7 @@ var rotation_map = [[270, 225, 180], [315, 0, 135], [0, 45, 90]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.x = 72
-	position.y = 72
+	died()
 
 func _physics_process(_delta):
 	if direction != Vector2.ZERO:
@@ -28,7 +30,15 @@ func move(x, y):
 	direction.x = x
 	direction.y = y
 
-# Entry point to control a player inside this game instance.
-# Don't know how I want to implement this yet..
 @rpc("any_peer") func control_player(x, y):
 	move(x, y)
+
+@rpc("any_peer")
+func died():
+	for coin in collectedCoins:
+		coin.release(self)
+	collectedCoins.clear()
+	for player in game.player_ids:
+		game.rpc_id(player, "updateScore", game.score)
+	
+	position = map.spawns[game.player_ids.find(self.name.to_int())].position

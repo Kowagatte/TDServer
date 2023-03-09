@@ -13,6 +13,7 @@ var outer_wall = preload("res://nodes/walls/outer_wall.tscn")
 var spawn = preload("res://nodes/spawn.tscn")
 var coin = preload("res://nodes/coin.tscn")
 
+var spawns = [0,0]
 # Returns the preloaded node corrosponding to the given long text name
 func create_wall(wall_type):
 	match wall_type:
@@ -30,7 +31,7 @@ func create_wall(wall_type):
 			return middle_wall
 		"outer_wall":
 			return outer_wall
-		"spawn":
+		"player_one_spawn", "player_two_spawn":
 			return spawn
 		"coin":
 			return coin
@@ -51,9 +52,16 @@ func loadMap(map_path):
 		for wall in data["walls"]:
 			# Instantiates the wall from the given text
 			var w = create_wall(wall["wall"]).instantiate()
+			
+			if wall["wall"] == "player_one_spawn":
+				spawns[0] = w
+
+			if wall["wall"] == "player_two_spawn":
+				spawns[1] = w
 			# Centers the wall object on the cordinates specified
 			w.set_position(Vector2( (48*int(wall["x"]))+24 , (48*int(wall["y"]))+24 ))
 			# Rotates the wall as specified
 			w.rotation_degrees = int(wall["rotation"])
 			# Adds the instantiated node to the tree
+			w.name = "%s" % w.position
 			add_child(w)

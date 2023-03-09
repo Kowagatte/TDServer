@@ -26,7 +26,7 @@ func send_location(id, x, y, rot):
 @rpc func update_pos(_player, _x, _y, _rot): pass
 
 @rpc func spawn_enemy(_id): pass
-
+@rpc func updateScore(_score): pass
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
 	var sender = get_tree().get_remote_sender_id()
