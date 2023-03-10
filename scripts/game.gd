@@ -1,6 +1,7 @@
 extends Node2D
 
 var started = false
+var stopped = false
 var is_ready = [false, false]
 var score = [0, 0]
 var max_score = -1
@@ -9,7 +10,10 @@ var player_ids = [-1, -1]
 @onready var server = get_parent().get_parent()
 @onready var map = get_node("map")
 @onready var players = get_node("map/players")
+@onready var bullets = get_node("map/bullets")
+
 var player_node = preload("res://nodes/player.tscn")
+var bullet_node = preload("res://nodes/bullet.tscn")
 
 # ------------------------------------------------------------------------------------------------
 
@@ -25,6 +29,10 @@ func send_location(id, x, y, rot):
 		if player != -1 and server.auth.clients.has(player):
 			rpc_id(player, "update_pos", id, x, y, rot)
 
+func send_bullet(id, x, y, rot):
+	for player in player_ids:
+		if player != -1 and server.auth.clients.has(player):
+			rpc_id(player, "update_bullet", id, x, y, rot)
 
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
@@ -44,6 +52,10 @@ func add_player(id):
 		var player = player_node.instantiate()
 		player.name = String.num_int64(id)
 		players.add_child(player)
+		
+		var bullet = bullet_node.instantiate()
+		bullet.name = str(id)
+		bullets.add_child(bullet)
 		
 		rpc_id(id, "spawn_enemy", player_ids[1-index])
 		rpc_id(player_ids[1-index], "spawn_enemy", id)
@@ -83,8 +95,11 @@ func _ready():
 	# Load the map from a mapfile.
 	map.loadMap("res://resources/dust2.json")
 
+	var bullet = bullet_node.instantiate()
+	bullet.name = str(player_ids[0])
+	bullets.add_child(bullet)
+
 	var p1 = player_node.instantiate()
-	
 	p1.name = String.num_int64(player_ids[0])
 	players.add_child(p1)
 	
@@ -94,6 +109,8 @@ func _ready():
 # RPC Templates
 
 @rpc func update_pos(_player, _x, _y, _rot): pass
+
+@rpc func update_bullet(_id, _x, _y, _rot): pass
 
 @rpc func spawn_enemy(_id): pass
 

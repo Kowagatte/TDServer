@@ -10,3 +10,5 @@ script = ExtResource("1_abeb4")
 script = ExtResource("2_3b8g3")
 
 [node name="players" type="Node2D" parent="map"]
+
+[node name="bullets" type="Node2D" parent="map"]
