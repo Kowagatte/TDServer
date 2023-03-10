@@ -8,7 +8,7 @@ var collectedCoins = []
 # Move speed for the given player node.
 var move_speed = 192
 # Last direction seen, this is to orientate AFK nodes.
-var last_velocity = Vector2.ZERO
+var last_velocity = Vector2(1, -1)
 # Orientation of the node
 var direction = Vector2(0, 0)
 # Map of angles for proper rotation.
@@ -16,6 +16,9 @@ var rotation_map = [[270, 225, 180], [315, 0, 135], [0, 45, 90]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	died()
+
+func shot():
 	died()
 
 func _physics_process(_delta):
@@ -33,15 +36,22 @@ func move(x, y):
 	direction.x = x
 	direction.y = y
 
+@rpc("any_peer")
+func try_shoot():
+	if game.started and not game.stopped:
+		var bullet = game.get_node("map/bullets/%s" % self.name)
+		if not bullet.visible:
+			bullet.fire(position, last_velocity)
+
 @rpc("any_peer") func control_player(x, y):
 	move(x, y)
 
-@rpc("any_peer")
 func died():
 	for coin in collectedCoins:
 		coin.release(self)
 	collectedCoins.clear()
 	for player in game.player_ids:
-		game.rpc_id(player, "updateScore", game.score)
+		if player != -1:
+			game.rpc_id(player, "updateScore", game.score)
 	
 	position = map.spawns[game.player_ids.find(self.name.to_int())].position
