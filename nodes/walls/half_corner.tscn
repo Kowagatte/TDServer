@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ux3qivqtx0nx"]
+[gd_scene load_steps=5 format=3 uid="uid://ux3qivqtx0nx"]
 
 [ext_resource type="Texture2D" uid="uid://8x5orpehdm1h" path="res://resources/walls/half_corner.png" id="1"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_86k2d"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 28)
@@ -11,6 +12,7 @@ size = Vector2(20, 8)
 [node name="half_corner" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_86k2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1")

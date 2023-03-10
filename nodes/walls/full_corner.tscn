@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://0aynk54bplrn"]
+[gd_scene load_steps=5 format=3 uid="uid://0aynk54bplrn"]
 
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_er8ts"]
 [ext_resource type="Texture2D" uid="uid://cyybwk3pdhnfx" path="res://resources/walls/full_corner.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -11,6 +12,7 @@ size = Vector2(40, 8)
 [node name="full_corner" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_er8ts")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2")

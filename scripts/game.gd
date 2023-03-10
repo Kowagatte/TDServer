@@ -50,11 +50,13 @@ func add_player(id):
 		var index = player_ids.find(-1)
 		player_ids[index] = id
 		var player = player_node.instantiate()
+		player.collision_layer = 0b00000000000000000001
 		player.name = String.num_int64(id)
 		players.add_child(player)
 		
 		var bullet = bullet_node.instantiate()
 		bullet.name = str(id)
+		bullet.collision_mask = 0b00000000000000000110
 		bullets.add_child(bullet)
 		
 		rpc_id(id, "spawn_enemy", player_ids[1-index])
@@ -97,10 +99,12 @@ func _ready():
 
 	var bullet = bullet_node.instantiate()
 	bullet.name = str(player_ids[0])
+	bullet.collision_mask = 0b00000000000000000101
 	bullets.add_child(bullet)
 
 	var p1 = player_node.instantiate()
 	p1.name = String.num_int64(player_ids[0])
+	p1.collision_layer = 0b00000000000000000010
 	players.add_child(p1)
 	
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://yqyujsgkr6et"]
+[gd_scene load_steps=4 format=3 uid="uid://yqyujsgkr6et"]
 
 [ext_resource type="Texture2D" uid="uid://chg84ghkphcks" path="res://resources/walls/middle_wall.png" id="1"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_avu70"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(8, 48)
@@ -8,6 +9,7 @@ size = Vector2(8, 48)
 [node name="middle_wall" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_avu70")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1")
