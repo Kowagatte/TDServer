@@ -10,12 +10,13 @@ func _ready():
 	area.area_entered.connect(collided)
 
 func release(player):
-	rpc_id(player.name.to_int(), "toggleVisiblity", true)
+	for player_id in game.player_ids:
+		if player_id != -1:
+			rpc_id(player_id, "toggleVisiblity", true)
 	visible = true
 	var playerNum = game.player_ids.find(player.name.to_int())
 	game.score[playerNum] -= 1
 	
-
 
 func collided(collider):
 	if visible:
