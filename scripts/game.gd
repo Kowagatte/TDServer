@@ -1,4 +1,4 @@
-extends Node2D
+extends SubViewport
 
 var started = false
 var stopped = false
