@@ -2,3 +2,5 @@
 *passwords.json
 .idea/
 .godot/
+export/
+export_presets.cfg
