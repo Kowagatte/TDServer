@@ -4,7 +4,7 @@ var started = false
 var stopped = false
 var is_ready = [false, false]
 var score = [0, 0]
-var max_score = -1
+var max_score = 0
 var player_ids = [-1, -1]
 
 @onready var server = get_parent().get_parent()
