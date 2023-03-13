@@ -1,13 +1,15 @@
 extends Node2D
 
 # Stores the email associated to the peer_id
-# Example structure: var id_to_email = {1: "test@test.co"}
+# Example structure: {1916423372: "test@test.co"}
 var id_to_email = {}
+
 # Stores the peer_ids (Multiple) associated with the email
-# Example structure: var email_to_id = {"test@test.co": [1]}
+# Example structure: {"test@test.co": [1916423372]}
 var email_to_id = {}
+
 # Stores the games (Multiple) associated with the email
-# Example structure: var games = {"test@test.co": {'012345678': 1}}
+# Example structure: { "test@test.co": { "EjOKge3G": 1916423372, "GmevD8-b": 1110041536 } }
 var games = {}
 
 # Checks if there are any ids connected.

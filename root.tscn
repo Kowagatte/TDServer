@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvvq2tam8a1nv"]
+[gd_scene load_steps=5 format=3 uid="uid://bvvq2tam8a1nv"]
 
 [ext_resource type="Script" path="res://Server.gd" id="1_vfs0f"]
 [ext_resource type="Script" path="res://scripts/clients.gd" id="2_2oaj7"]
 [ext_resource type="Script" path="res://scripts/gamefactory.gd" id="2_jauwm"]
+[ext_resource type="Script" path="res://scripts/serverui.gd" id="2_r82jk"]
 
 [node name="root" type="Node2D"]
 
@@ -19,6 +20,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 972.0
 offset_bottom = 712.0
+script = ExtResource("2_r82jk")
 
 [node name="status" type="Label" parent="Server/UI/Panel"]
 layout_mode = 1
@@ -65,6 +67,19 @@ offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "0"
+
+[node name="games" type="Button" parent="Server/UI/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.623
+anchor_top = 0.589
+anchor_right = 0.623
+anchor_bottom = 0.589
+offset_left = -51.556
+offset_top = -15.368
+offset_right = 52.444
+offset_bottom = 15.632
+text = "Print Games"
 
 [node name="Games" type="Node2D" parent="Server"]
 script = ExtResource("2_jauwm")
