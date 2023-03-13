@@ -10,6 +10,7 @@ var game_obj = preload("res://nodes/game.tscn")
 		get_parent().rpc_id(id, "response", 200, "Game Found!")
 		var game = get_node(gameID)
 		game.add_player(id)
+		get_parent().get_node("Clients").link_game(id, gameID)
 	else:
 		get_parent().rpc_id(id, "response", 400, "Game does not exist.")
 
@@ -38,4 +39,5 @@ func generateGame(_result, response, _headers, body, req, playerOneID):
 		add_child(game_inst)
 		
 		get_parent().rpc_id(playerOneID, "gameCreated", id)
+		get_parent().get_node("Clients").link_game(playerOneID, id)
 		game_inst.rpc_id(playerOneID, "sendState", "waitingForPlayer", null)

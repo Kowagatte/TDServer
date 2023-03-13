@@ -26,12 +26,12 @@ func is_full():
 
 func send_location(id, x, y, rot):
 	for player in player_ids:
-		if player != -1 and server.auth.clients.has(player):
+		if player != -1 and server.auth.id_to_email.has(player):
 			rpc_id(player, "update_pos", id, x, y, rot)
 
 func send_bullet(id, x, y, rot):
 	for player in player_ids:
-		if player != -1 and server.auth.clients.has(player):
+		if player != -1 and server.auth.id_to_email.has(player):
 			rpc_id(player, "update_bullet", id, x, y, rot)
 
 # Ready up sequence, This is used to start the game..

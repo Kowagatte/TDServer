@@ -53,19 +53,18 @@ func _ready():
 	print("Login Request from ", id)
 	var httpRequest = HTTPRequest.new()
 	add_child(httpRequest)
-	httpRequest.connect("request_completed",Callable(self,"login_callback").bind(id, httpRequest))
+	httpRequest.connect("request_completed",Callable(self,"login_callback").bind(id, httpRequest, email))
 	var query = JSON.stringify({"secret": secret, "email": email, "password": password})
 	var headers = ["Content-Type: application/json"]
 	var url = "%s/tds/compare/" % api
 	httpRequest.request(url, headers, HTTPClient.METHOD_POST, query)
 
 
-func login_callback(_result, rc, _headers, body, id, req):
+func login_callback(_result, rc, _headers, body, id, req, email):
 	req.call_deferred("free")
 	rpc_id(id, "response", rc, body.get_string_from_utf8())
 	if rc == 200:
-		# Probably will not work, need to respond with actuall account info.
-		auth.add_player(id, 1)
+		auth.add_player(id, email)
 		rpc_id(id, "switchScenes", "CreateGameScreen")
 
 # -----
