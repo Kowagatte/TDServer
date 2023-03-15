@@ -24,8 +24,6 @@ func is_playing(id):
 func is_full():
 	return player_ids.count(-1) == 0
 
-# ------------------------------------------------------------------------------------------------
-
 func send_location(id, x, y, rot):
 	for player in player_ids:
 		if player != -1 and server.auth.id_to_email.has(player):
@@ -35,6 +33,11 @@ func send_bullet(id, x, y, rot):
 	for player in player_ids:
 		if player != -1 and server.auth.id_to_email.has(player):
 			rpc_id(player, "update_bullet", id, x, y, rot)
+
+func gameOver():
+	await get_tree().create_timer(5).timeout
+	get_parent().remove_child(self)
+	call_deferred("free")
 
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
@@ -47,14 +50,21 @@ func send_bullet(id, x, y, rot):
 		if(player_num != -1):
 			is_ready[player_num] = true
 
+# ------------------------------------------------------------------------------------------------
+
+# Player manipulation
+
+
+# Replaces player with a different player_id
+func replace_player(id, newID):
+	pass
+
 # Adds a player to the game scene.
 func add_player(id):
 	get_parent().rpc_id(id, "gameJoined", self.name)
 	
 	var index = player_ids.find(-1)
 	player_ids[index] = id
-	print(player_ids)
-	print(index)
 	
 	var player = player_node.instantiate()
 	player.name = str(id)
@@ -80,16 +90,20 @@ func add_player(id):
 		rpc_id(id, "sendState", "gameStarting", null)
 		rpc_id(player_ids[1-index], "sendState", "gameStarting", null)
 
-func gameOver():
-	await get_tree().create_timer(5).timeout
-	get_parent().remove_child(self)
-	call_deferred("free")
-
 # ------------------------------------------------------------------------------------------------
 
 # Godot functions
 
 func _process(_delta):
+	
+	
+	# Checks if both players are still connected otherwise it pauses the game.
+	if started:
+		if not (server.auth.id_to_email.has(player_ids[0]) and server.auth.id_to_email.has(player_ids[1])):
+			stopped = true
+			for player in player_ids:
+				if server.auth.id_to_email.has(player):
+					rpc_id(player, "sendState", "paused", null)
 	
 	if not stopped:
 		if score.any(func(number): return number == max_score):

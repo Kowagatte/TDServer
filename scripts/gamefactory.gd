@@ -4,6 +4,18 @@ extends Node2D
 @onready var requests = get_node("requests")
 var game_obj = preload("res://nodes/game.tscn")
 
+@rpc("any_peer")
+func requestInprogressGames():
+	pass
+
+@rpc("any_peer")
+func rejoinGame(gameID):
+	pass
+
+# This is the method that should be used when a client requests to join a game
+# Passing a specific ID will cause them to join the game.
+# Issues happen if the player is already in the game and requests to play against
+#    themselves.
 @rpc("any_peer") func joinGame(gameID):
 	var id = multiplayer.get_remote_sender_id()
 	if has_node(gameID):
@@ -15,7 +27,7 @@ var game_obj = preload("res://nodes/game.tscn")
 		else:
 			server.rpc_id(id, "response", 400, "Game is already full.")
 	else:
-		server.rpc_id(id, "response", 400, "Game does not exist.")
+		server.rpc_id(id, "response", 404, "Game does not exist.")
 
 # Should generate a unique ID with no collisions.
 @rpc("any_peer") func createGame():
@@ -47,3 +59,5 @@ func generateGame(_result, response, _headers, body, req, playerOneID):
 		
 
 @rpc func gameJoined(_gameID): pass
+
+@rpc func sendGames(_games): pass
