@@ -123,6 +123,4 @@ func _peer_disconnected(id):
 @rpc func ping(): pass
 @rpc func response(_repsonse, _message): pass
 @rpc func switchScenes(_scene): pass
-@rpc func gameCreated(_id): pass
 @rpc func connectionConfirmation(): pass
-
