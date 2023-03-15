@@ -36,14 +36,14 @@ func move(x, y):
 	direction.x = x
 	direction.y = y
 
-@rpc("any_peer")
+@rpc("any_peer", "unreliable_ordered")
 func try_shoot():
 	if game.started and not game.stopped:
 		var bullet = game.get_node("map/bullets/%s" % self.name)
 		if not bullet.visible:
 			bullet.fire(position, last_velocity)
 
-@rpc("any_peer") func control_player(x, y):
+@rpc("any_peer", "unreliable") func control_player(x, y):
 	move(x, y)
 
 func died():
