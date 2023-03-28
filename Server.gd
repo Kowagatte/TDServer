@@ -5,7 +5,7 @@ extends Node2D
 var port = 9696
 var max_peers = 20
 
-var api = "http://api.damocles.ca:8080"
+var api = "https://api.damocles.ca"
 var passwords = "res://passwords.json"
 var secret: String
 
