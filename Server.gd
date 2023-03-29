@@ -2,19 +2,16 @@ extends Node2D
 
 @onready var auth = get_node("Clients")
 
-var port = 9696
-var max_peers = 20
+@onready var settings = get_node("/root/Settings")
 
-var api = "https://api.damocles.ca"
-var passwords = "res://passwords.json"
 var secret: String
 
 var enet = ENetMultiplayerPeer.new()
 var multiplayer_api: MultiplayerAPI
 
 func loadSecret():
-	var file = FileAccess.open(passwords, FileAccess.READ)
-	if FileAccess.file_exists(passwords):
+	if FileAccess.file_exists(settings.passwords):
+		var file = FileAccess.open(settings.passwords, FileAccess.READ)
 		var test_json_conv = JSON.new()
 		test_json_conv.parse(file.get_as_text())
 		var data = test_json_conv.get_data()
@@ -32,12 +29,12 @@ func _ready():
 	enet.peer_disconnected.connect(_peer_disconnected)
 	
 	multiplayer_api = MultiplayerAPI.create_default_interface()
-	enet.create_server(port, max_peers)
+	enet.create_server(settings.port, settings.max_peers)
 	
 	get_tree().set_multiplayer(multiplayer_api, self.get_path())
 	multiplayer_api.multiplayer_peer = enet
 	
-	print("Server started on port ", port)
+	print("Server started on port ", settings.port)
 
 # ------------------------------------------------------------------------------------------------
 
@@ -56,7 +53,7 @@ func _ready():
 	httpRequest.connect("request_completed",Callable(self,"login_callback").bind(id, httpRequest, email))
 	var query = JSON.stringify({"secret": secret, "email": email, "password": password})
 	var headers = ["Content-Type: application/json"]
-	var url = "%s/tds/compare/" % api
+	var url = "%s/tds/compare/" % settings.api
 	httpRequest.request(url, headers, HTTPClient.METHOD_POST, query)
 
 
@@ -76,7 +73,7 @@ func login_callback(_result, rc, _headers, body, id, req, email):
 	add_child(httpRequest)
 	httpRequest.connect("request_completed",Callable(self,"account_callback").bind(id, httpRequest))
 	var headers = ["Content-Type: application/json"]
-	var url = "%s/tds/account/%s" % [api, username]
+	var url = "%s/tds/account/%s" % [settings.api, username]
 	httpRequest.request(url, headers, HTTPClient.METHOD_GET)
 
 func account_callback(_result, rc, _headers, body, _id, req):
@@ -94,7 +91,7 @@ func account_callback(_result, rc, _headers, body, _id, req):
 	httpRequest.connect("request_completed",Callable(self,"createAccount_callback").bind(id, httpRequest))
 	var query = JSON.stringify({"secret": secret, "email": email, "username": username, "password": password})
 	var headers = ["Content-Type: application/json"]
-	var url = "%s/tds/createAccount/" % api
+	var url = "%s/tds/createAccount/" % settings.api
 	httpRequest.request(url, headers, HTTPClient.METHOD_POST, query)
 
 
@@ -110,6 +107,7 @@ func _peer_connected(id):
 	await get_tree().create_timer(1).timeout
 	print("Client connected with id ", id)
 	rpc_id(id, "connectionConfirmation")
+	rpc_id(id, "receiveVersion", settings.version)
 
 func _peer_disconnected(id):
 	print("Client with id ", id, " disconnected.")
@@ -124,3 +122,4 @@ func _peer_disconnected(id):
 @rpc func response(_repsonse, _message): pass
 @rpc func switchScenes(_scene): pass
 @rpc func connectionConfirmation(): pass
+@rpc func receiveVersion(_version): pass
