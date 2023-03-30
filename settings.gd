@@ -1,7 +1,7 @@
 extends Node
 
 
-var port = 9697
+var port = 9696
 var max_peers = 20
 
 var api = "https://api.damocles.ca"
