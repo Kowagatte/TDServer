@@ -36,7 +36,7 @@ func rejoinGame(gameID):
 	requests.add_child(httpRequest)
 	httpRequest.connect("request_completed",Callable(self,"generateGame").bind(httpRequest, id))
 	var headers = ["Content-Type: application/json"]
-	var url = "%s/tds/generateID/" % self.get_parent().api
+	var url = "%s/tds/generateID/" % Settings.api
 	httpRequest.request(url, headers, HTTPClient.METHOD_GET)
 
 

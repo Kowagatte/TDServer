@@ -8,4 +8,4 @@ var api = "https://api.damocles.ca"
 
 var passwords = "res://passwords.json"
 
-var version = "v0.2.0-beta"
+var version = "v0.3.0-beta"
