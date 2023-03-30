@@ -1,18 +1,33 @@
 extends Node2D
 
+@onready var server = get_parent()
 @onready var requests = get_node("requests")
 var game_obj = preload("res://nodes/game.tscn")
 
+@rpc("any_peer")
+func requestInprogressGames():
+	pass
+
+@rpc("any_peer")
+func rejoinGame(gameID):
+	pass
+
+# This is the method that should be used when a client requests to join a game
+# Passing a specific ID will cause them to join the game.
+# Issues happen if the player is already in the game and requests to play against
+#    themselves.
 @rpc("any_peer") func joinGame(gameID):
 	var id = multiplayer.get_remote_sender_id()
 	if has_node(gameID):
-		get_parent().rpc_id(id, "gameCreated", gameID)
-		get_parent().rpc_id(id, "response", 200, "Game Found!")
 		var game = get_node(gameID)
-		game.add_player(id)
-		get_parent().get_node("Clients").link_game(id, gameID)
+		if not game.is_full():
+			server.rpc_id(id, "response", 200, "Game Found!")
+			game.add_player(id)
+			server.get_node("Clients").link_game(id, gameID)
+		else:
+			server.rpc_id(id, "response", 400, "Game is already full.")
 	else:
-		get_parent().rpc_id(id, "response", 400, "Game does not exist.")
+		server.rpc_id(id, "response", 404, "Game does not exist.")
 
 # Should generate a unique ID with no collisions.
 @rpc("any_peer") func createGame():
@@ -21,7 +36,7 @@ var game_obj = preload("res://nodes/game.tscn")
 	requests.add_child(httpRequest)
 	httpRequest.connect("request_completed",Callable(self,"generateGame").bind(httpRequest, id))
 	var headers = ["Content-Type: application/json"]
-	var url = "%s/tds/generateID/" % self.get_parent().api
+	var url = "%s/tds/generateID/" % Settings.api
 	httpRequest.request(url, headers, HTTPClient.METHOD_GET)
 
 
@@ -35,9 +50,14 @@ func generateGame(_result, response, _headers, body, req, playerOneID):
 		# Create game object on tree
 		var game_inst = game_obj.instantiate()
 		game_inst.name = id
-		game_inst.player_ids[0] = playerOneID
 		add_child(game_inst)
 		
-		get_parent().rpc_id(playerOneID, "gameCreated", id)
+		game_inst.add_player(playerOneID)
+		
 		get_parent().get_node("Clients").link_game(playerOneID, id)
 		game_inst.rpc_id(playerOneID, "sendState", "waitingForPlayer", null)
+		
+
+@rpc func gameJoined(_gameID): pass
+
+@rpc func sendGames(_games): pass

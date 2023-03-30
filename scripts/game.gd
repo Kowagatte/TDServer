@@ -34,6 +34,11 @@ func send_bullet(id, x, y, rot):
 		if player != -1 and server.auth.id_to_email.has(player):
 			rpc_id(player, "update_bullet", id, x, y, rot)
 
+func gameOver():
+	await get_tree().create_timer(5).timeout
+	get_parent().remove_child(self)
+	call_deferred("free")
+
 # Ready up sequence, This is used to start the game..
 @rpc("any_peer") func ready_up():
 	var sender = multiplayer.get_remote_sender_id()
@@ -45,39 +50,60 @@ func send_bullet(id, x, y, rot):
 		if(player_num != -1):
 			is_ready[player_num] = true
 
+# ------------------------------------------------------------------------------------------------
+
+# Player manipulation
+
+
+# Replaces player with a different player_id
+func replace_player(id, newID):
+	pass
+
+# Adds a player to the game scene.
 func add_player(id):
-	if not is_full():
-		var index = player_ids.find(-1)
-		player_ids[index] = id
-		var player = player_node.instantiate()
+	get_parent().rpc_id(id, "gameJoined", self.name)
+	
+	var index = player_ids.find(-1)
+	player_ids[index] = id
+	
+	var player = player_node.instantiate()
+	player.name = str(id)
+	
+	var bullet = bullet_node.instantiate()
+	bullet.name = str(id)
+	
+	# Creates the proper collision layering
+	if index == 0:
+		player.collision_layer = 0b00000000000000000010
+		bullet.collision_mask = 0b00000000000000000101
+	else:
 		player.collision_layer = 0b00000000000000000001
-		player.name = String.num_int64(id)
-		players.add_child(player)
-		
-		var bullet = bullet_node.instantiate()
-		bullet.name = str(id)
 		bullet.collision_mask = 0b00000000000000000110
-		bullets.add_child(bullet)
-		
+	
+	players.add_child(player)
+	bullets.add_child(bullet)
+	
+	# If this is the second player being added.
+	if index == 1:
 		rpc_id(id, "spawn_enemy", player_ids[1-index])
 		rpc_id(player_ids[1-index], "spawn_enemy", id)
-		
 		rpc_id(id, "sendState", "gameStarting", null)
 		rpc_id(player_ids[1-index], "sendState", "gameStarting", null)
-		
-	else:
-		get_parent().get_parent().rpc_id(id, "response", 400, "Game is already full.")
-
-func gameOver():
-	await get_tree().create_timer(5).timeout
-	get_parent().remove_child(self)
-	call_deferred("free")
 
 # ------------------------------------------------------------------------------------------------
 
 # Godot functions
 
 func _process(_delta):
+	
+	
+	# Checks if both players are still connected otherwise it pauses the game.
+	if started:
+		if not (server.auth.id_to_email.has(player_ids[0]) and server.auth.id_to_email.has(player_ids[1])):
+			stopped = true
+			for player in player_ids:
+				if server.auth.id_to_email.has(player):
+					rpc_id(player, "sendState", "paused", null)
 	
 	if not stopped:
 		if score.any(func(number): return number == max_score):
@@ -96,17 +122,6 @@ func _process(_delta):
 func _ready():
 	# Load the map from a mapfile.
 	map.loadMap("res://resources/dust2.json")
-
-	var bullet = bullet_node.instantiate()
-	bullet.name = str(player_ids[0])
-	bullet.collision_mask = 0b00000000000000000101
-	bullets.add_child(bullet)
-
-	var p1 = player_node.instantiate()
-	p1.name = String.num_int64(player_ids[0])
-	p1.collision_layer = 0b00000000000000000010
-	players.add_child(p1)
-	
 
 # ------------------------------------------------------------------------------------------------
 
